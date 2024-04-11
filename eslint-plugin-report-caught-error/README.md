@@ -24,7 +24,7 @@ yarn add @arabasta/eslint-plugin-report-caught-error --dev
 
 ```js
 // ...
-import reportCaughtError from "@arabasta/eslint-plugin-report-caught-error";
+import reportCaughtError from '@arabasta/eslint-plugin-report-caught-error';
 
 export default [
   // ...
@@ -49,13 +49,14 @@ export default [
 ✅ Set in the `recommended` configuration\
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/developer-guide/working-with-rules#providing-suggestions)
 
-| Rule                       | Description                                       | ✅ | 💡 |
-| -------------------------- | ------------------------------------------------- | :-: | :-: |
-| report-caught-error        | Enforce that caught errors are reported           | ✅ | 💡 |
+| Rule                | Description                             | ✅  | 💡  |
+| ------------------- | --------------------------------------- | :-: | :-: |
+| report-caught-error | Enforce that caught errors are reported | ✅  | 💡  |
 
 ### `report-caught-error`
 
 Examples of incorrect code for this rule:
+
 ```js
 try {
 } catch (error) {
@@ -64,6 +65,7 @@ try {
 ```
 
 Examples of correct code for this rule:
+
 ```js
 try {
 } catch (error) {

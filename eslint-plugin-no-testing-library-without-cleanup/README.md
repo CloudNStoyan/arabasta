@@ -24,7 +24,7 @@ yarn add @arabasta/eslint-plugin-no-testing-library-without-cleanup --dev
 
 ```js
 // ...
-import noTestingLibraryWithoutCleanup from "@arabasta/eslint-plugin-no-testing-library-without-cleanup";
+import noTestingLibraryWithoutCleanup from '@arabasta/eslint-plugin-no-testing-library-without-cleanup';
 
 export default [
   // ...
@@ -48,13 +48,14 @@ export default [
 
 ✅ Set in the `recommended` configuration
 
-| Rule                                           | Description                                                                               | ✅ |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------- | :-: |
-| no-testing-library-without-cleanup             | Enforce the usage of the cleanup function when importing from Testing Library             | ✅ |
+| Rule                               | Description                                                                   | ✅  |
+| ---------------------------------- | ----------------------------------------------------------------------------- | :-: |
+| no-testing-library-without-cleanup | Enforce the usage of the cleanup function when importing from Testing Library | ✅  |
 
 ### `no-testing-library-without-cleanup`
 
 Examples of incorrect code for this rule:
+
 ```js
 import { renderHook } from '@testing-library/react';
 
@@ -62,6 +63,7 @@ renderHook();
 ```
 
 Examples of correct code for this rule:
+
 ```js
 import { cleanup, renderHook } from '@testing-library/react';
 

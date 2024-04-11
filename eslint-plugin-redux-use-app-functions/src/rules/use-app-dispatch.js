@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
@@ -6,24 +6,24 @@ module.exports = {
     messages: {
       useAppDispatch: "You must use 'useAppDispatch' instead of 'useDispatch'.",
     },
-    type: "problem",
+    type: 'problem',
     docs: {
-      description: "Enforces the usage of useAppDispatch.",
+      description: 'Enforces the usage of useAppDispatch.',
       recommended: true,
     },
-    fixable: "code",
+    fixable: 'code',
     schema: [],
   },
   create(context) {
     return {
       CallExpression(node) {
-        if (node.callee.type === "Identifier") {
-          if (node.callee.name === "useDispatch") {
+        if (node.callee.type === 'Identifier') {
+          if (node.callee.name === 'useDispatch') {
             context.report({
               node,
-              messageId: "useAppDispatch",
+              messageId: 'useAppDispatch',
               fix: (fixer) => {
-                return fixer.replaceText(node.callee, "useAppDispatch");
+                return fixer.replaceText(node.callee, 'useAppDispatch');
               },
             });
           }

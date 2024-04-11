@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
@@ -7,28 +7,28 @@ module.exports = {
       useAppFunctions:
         "You must use 'useAppSelector' instead of 'useSelector'.",
     },
-    type: "problem",
+    type: 'problem',
     docs: {
-      description: "Enforces the usage of useAppSelector.",
+      description: 'Enforces the usage of useAppSelector.',
       recommended: true,
     },
-    fixable: "code",
+    fixable: 'code',
     schema: [],
   },
   create(context) {
     return {
       CallExpression(node) {
-        if (node.callee.type === "Identifier") {
-          if (node.callee.name === "useSelector") {
+        if (node.callee.type === 'Identifier') {
+          if (node.callee.name === 'useSelector') {
             context.report({
               node,
-              messageId: "useAppFunctions",
+              messageId: 'useAppFunctions',
               data: {
-                correctFunction: "useAppSelector",
+                correctFunction: 'useAppSelector',
                 incorrectFunction: node.callee.name,
               },
               fix: (fixer) => {
-                return fixer.replaceText(node.callee, "useAppSelector");
+                return fixer.replaceText(node.callee, 'useAppSelector');
               },
             });
           }

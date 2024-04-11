@@ -7,8 +7,8 @@ ESLint plugin that disallows destructuring arrays as objects.
 
 > **Note**
 > This plugin utilizes the awesome power of TypeScript's type checking.\
-These rules are slower to run and and you will need to specify a path to your `tsconfig.json` file in the `"project"` property of `"parserOptions"`.\
-For more information see: https://typescript-eslint.io/getting-started/typed-linting
+> These rules are slower to run and and you will need to specify a path to your `tsconfig.json` file in the `"project"` property of `"parserOptions"`.\
+> For more information see: https://typescript-eslint.io/getting-started/typed-linting
 
 ## Installation
 
@@ -29,7 +29,7 @@ yarn add @arabasta/eslint-plugin-no-destructuring-arrays-as-objects --dev
 
 ```js
 // ...
-import noDestructuringArraysAsObjects from "@arabasta/eslint-plugin-no-destructuring-arrays-as-objects";
+import noDestructuringArraysAsObjects from '@arabasta/eslint-plugin-no-destructuring-arrays-as-objects';
 
 export default [
   // ...
@@ -37,9 +37,9 @@ export default [
     ...noDestructuringArraysAsObjects.configs.recommended,
     languageOptions: {
       parserOptions: {
-        project: "./tsconfig.json",
+        project: './tsconfig.json',
       },
-    }
+    },
   },
 ];
 ```
@@ -64,22 +64,24 @@ export default [
 
 ✅ Set in the `recommended` configuration
 
-| Rule                                            | Description                                      | ✅ |
-| ----------------------------------------------- | ------------------------------------------------ | :-: |
-| no-destructuring-arrays-as-objects              | Disallow destructuring arrays as objects         | ✅ |
+| Rule                               | Description                              | ✅  |
+| ---------------------------------- | ---------------------------------------- | :-: |
+| no-destructuring-arrays-as-objects | Disallow destructuring arrays as objects | ✅  |
 
 ### `no-destructuring-arrays-as-objects`
 
 Examples of incorrect code for this rule:
+
 ```js
-  const foo = [];
-  const { length } = foo;
+const foo = [];
+const { length } = foo;
 ```
 
 Examples of correct code for this rule:
+
 ```js
-  const foo = { bar: true };
-  const { bar } = foo;
+const foo = { bar: true };
+const { bar } = foo;
 ```
 
 ## License

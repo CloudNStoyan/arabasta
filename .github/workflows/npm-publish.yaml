@@ -1,6 +1,6 @@
 name: Publish a package to NPM
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       package:

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
@@ -7,24 +7,24 @@ module.exports = {
       useCreateAppAsyncThunk:
         "You must use 'createAppAsyncThunk' instead of 'createAsyncThunk'.",
     },
-    type: "problem",
+    type: 'problem',
     docs: {
-      description: "Enforces the usage of createAppAsyncThunk.",
+      description: 'Enforces the usage of createAppAsyncThunk.',
       recommended: true,
     },
-    fixable: "code",
+    fixable: 'code',
     schema: [],
   },
   create(context) {
     return {
       CallExpression(node) {
-        if (node.callee.type === "Identifier") {
-          if (node.callee.name === "createAsyncThunk") {
+        if (node.callee.type === 'Identifier') {
+          if (node.callee.name === 'createAsyncThunk') {
             context.report({
               node,
-              messageId: "useCreateAppAsyncThunk",
+              messageId: 'useCreateAppAsyncThunk',
               fix: (fixer) => {
-                return fixer.replaceText(node.callee, "createAppAsyncThunk");
+                return fixer.replaceText(node.callee, 'createAppAsyncThunk');
               },
             });
           }

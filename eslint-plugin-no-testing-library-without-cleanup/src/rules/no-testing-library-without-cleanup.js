@@ -1,19 +1,19 @@
-"use strict";
+'use strict';
 
-const TESTING_LIBRARY_SCOPE = "@testing-library";
-const CLEANUP_FUNCTION_NAME = "cleanup";
+const TESTING_LIBRARY_SCOPE = '@testing-library';
+const CLEANUP_FUNCTION_NAME = 'cleanup';
 
 /** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
   meta: {
     messages: {
       noTestingLibraryWithoutCleanup:
-        "When importing from Testing Library you should use the cleanup function.",
+        'When importing from Testing Library you should use the cleanup function.',
     },
-    type: "problem",
+    type: 'problem',
     docs: {
       description:
-        "Enforce the usage of the cleanup function when importing from Testing Library.",
+        'Enforce the usage of the cleanup function when importing from Testing Library.',
       recommended: true,
     },
     schema: [],
@@ -22,17 +22,17 @@ module.exports = {
     /** @param {import('estree').Node} node */
     function isLiteralString(node) {
       return (
-        (node.type === "Literal" && typeof node.value === "string") ||
-        (node.type === "TemplateLiteral" && node.expressions.length === 0)
+        (node.type === 'Literal' && typeof node.value === 'string') ||
+        (node.type === 'TemplateLiteral' && node.expressions.length === 0)
       );
     }
 
     /** @param {import('estree').CallExpression} node */
     function isCommonImport(node) {
-      if (node.callee.type !== "Identifier") {
+      if (node.callee.type !== 'Identifier') {
         return false;
       }
-      if (node.callee.name !== "require") {
+      if (node.callee.name !== 'require') {
         return false;
       }
 
@@ -61,7 +61,7 @@ module.exports = {
 
         if (
           source &&
-          source.type === "Literal" &&
+          source.type === 'Literal' &&
           source.value.startsWith(TESTING_LIBRARY_SCOPE)
         ) {
           hasTestingLibraryImport = true;
@@ -91,18 +91,18 @@ module.exports = {
           return;
         }
 
-        if (node.callee.property && node.callee.property.name === CLEANUP_FUNCTION_NAME) {
+        if (
+          node.callee.property &&
+          node.callee.property.name === CLEANUP_FUNCTION_NAME
+        ) {
           hasCleanupFunctionInvoked = true;
         }
       },
-      "Program:exit": () => {
-        if (
-          hasTestingLibraryImport &&
-          !hasCleanupFunctionInvoked
-        ) {
+      'Program:exit': () => {
+        if (hasTestingLibraryImport && !hasCleanupFunctionInvoked) {
           context.report({
             node: testingLibraryImportNode,
-            messageId: "noTestingLibraryWithoutCleanup",
+            messageId: 'noTestingLibraryWithoutCleanup',
           });
         }
       },
