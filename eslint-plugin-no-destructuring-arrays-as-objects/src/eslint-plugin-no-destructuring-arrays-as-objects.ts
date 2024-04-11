@@ -15,6 +15,7 @@ const plugin = {
 
 plugin.configs = {
   recommended: {
+    name: "@arabasta/no-destructuring-arrays-as-objects/recommended",
     plugins: {
       "@arabasta/no-destructuring-arrays-as-objects": plugin,
     },

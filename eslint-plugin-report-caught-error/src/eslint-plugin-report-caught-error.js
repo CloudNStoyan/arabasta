@@ -15,6 +15,7 @@ const plugin = {
 
 plugin.configs = {
   recommended: {
+    name: "@arabasta/report-caught-error/recommended",
     plugins: {
       "@arabasta/report-caught-error": plugin,
     },

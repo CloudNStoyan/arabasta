@@ -19,6 +19,7 @@ const plugin = {
 
 plugin.configs = {
   recommended: {
+    name: "@arabasta/redux-use-app-functions/recommended",
     plugins: {
       "@arabasta/redux-use-app-functions": plugin,
     },

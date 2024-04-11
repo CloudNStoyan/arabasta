@@ -15,6 +15,7 @@ const plugin = {
 
 plugin.configs = {
   recommended: {
+    name: "@arabasta/eslint-plugin-no-testing-library-without-cleanup/recommended",
     plugins: {
       "@arabasta/eslint-plugin-no-testing-library-without-cleanup": plugin,
     },
