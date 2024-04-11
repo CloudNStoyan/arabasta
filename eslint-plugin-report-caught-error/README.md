@@ -1,5 +1,8 @@
 # `@arabasta/eslint-plugin-report-caught-error`
 
+[![NPM Version](https://img.shields.io/npm/v/%40arabasta%2Feslint-plugin-report-caught-error)](https://www.npmjs.com/package/@arabasta/eslint-plugin-report-caught-error)
+[![NPM License](https://img.shields.io/npm/l/%40arabasta%2Feslint-plugin-report-caught-error)](https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-report-caught-error/LICENSE)
+
 ESLint plugin that enforces caught errors in try/catches to be reported.
 
 ## Installation

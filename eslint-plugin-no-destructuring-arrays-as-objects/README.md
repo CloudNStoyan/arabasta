@@ -1,5 +1,8 @@
 # `@arabasta/eslint-plugin-no-destructuring-arrays-as-objects`
 
+[![NPM Version](https://img.shields.io/npm/v/%40arabasta%2Feslint-plugin-no-destructuring-arrays-as-objects)](https://www.npmjs.com/package/@arabasta/eslint-plugin-no-destructuring-arrays-as-objects)
+[![NPM License](https://img.shields.io/npm/l/%40arabasta%2Feslint-plugin-no-destructuring-arrays-as-objects)](https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-no-destructuring-arrays-as-objects/LICENSE)
+
 ESLint plugin that disallows destructuring arrays as objects.
 
 > **Note**

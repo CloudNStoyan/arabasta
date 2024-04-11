@@ -1,5 +1,8 @@
 # `@arabasta/eslint-plugin-no-testing-library-without-cleanup`
 
+[![NPM Version](https://img.shields.io/npm/v/%40arabasta%2Feslint-plugin-no-testing-library-without-cleanup)](https://www.npmjs.com/package/@arabasta/eslint-plugin-no-testing-library-without-cleanup)
+[![NPM License](https://img.shields.io/npm/l/%40arabasta%2Feslint-plugin-no-testing-library-without-cleanup)](https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-no-testing-library-without-cleanup/LICENSE)
+
 ESLint plugin that enforces the usage of the cleanup function when importing from Testing Library.
 
 ## Installation

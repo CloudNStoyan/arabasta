@@ -1,5 +1,8 @@
 # `@arabasta/eslint-plugin-redux-use-app-functions`
 
+[![NPM Version](https://img.shields.io/npm/v/%40arabasta%2Feslint-plugin-redux-use-app-functions)](https://www.npmjs.com/package/@arabasta/eslint-plugin-redux-use-app-functions)
+[![NPM License](https://img.shields.io/npm/l/%40arabasta%2Feslint-plugin-redux-use-app-functions)](https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-redux-use-app-functions/LICENSE)
+
 ESLint plugin that enforces the usage of redux app specific functions.
 
 ## Installation
