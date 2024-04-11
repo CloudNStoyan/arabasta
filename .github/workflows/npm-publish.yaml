@@ -1,0 +1,53 @@
+name: Publish a package to NPM
+
+on: 
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package'
+        required: true
+        type: choice
+        options:
+          - eslint-plugin-no-destructuring-arrays-as-objects
+          - eslint-plugin-no-testing-library-without-cleanup
+          - eslint-plugin-redux-use-app-functions
+          - eslint-plugin-report-caught-error
+      build:
+        description: 'True to build before publishing'
+        required: True
+        type: boolean
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.package }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    defaults:
+      run:
+        working-directory: ${{ inputs.package }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - if: ${{ inputs.build }}
+        run: npm run build
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
