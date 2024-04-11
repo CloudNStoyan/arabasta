@@ -23,10 +23,6 @@ module.exports = {
             context.report({
               node,
               messageId: 'useAppFunctions',
-              data: {
-                correctFunction: 'useAppSelector',
-                incorrectFunction: node.callee.name,
-              },
               fix: (fixer) => {
                 return fixer.replaceText(node.callee, 'useAppSelector');
               },
