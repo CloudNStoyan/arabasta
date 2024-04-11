@@ -4,7 +4,7 @@ const reportCaughtErrorRule = require("./rules/report-caught-error.js");
 const plugin = {
   meta: {
     name: "@arabasta/report-caught-error",
-    version: "1.0.0",
+    version: "1.0.2",
   },
   configs: {},
   rules: {

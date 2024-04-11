@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-plugin-redux-use-app-functions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESLint plugin that enforces the usage of redux app specific functions",
   "author": "Stoyan Kolev",
   "repository": {

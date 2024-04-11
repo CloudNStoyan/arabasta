@@ -4,7 +4,7 @@ const noTestingLibraryWithoutCleanup = require("./rules/no-testing-library-witho
 const plugin = {
   meta: {
     name: "@arabasta/eslint-plugin-no-testing-library-without-cleanup",
-    version: "1.0.0",
+    version: "1.0.1",
   },
   configs: {},
   rules: {
