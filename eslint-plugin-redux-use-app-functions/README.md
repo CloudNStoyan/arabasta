@@ -11,10 +11,10 @@ Assuming you already have ESLint installed, run:
 
 ```sh
 # npm
-npm install @arabasta/eslint-plugin-redux-use-app-functions --save-dev
+npm install --save-dev @arabasta/eslint-plugin-redux-use-app-functions
 
 # yarn
-yarn add @arabasta/eslint-plugin-redux-use-app-functions --dev
+yarn add --dev @arabasta/eslint-plugin-redux-use-app-functions
 
 # pnpm
 pnpm add --save-dev @arabasta/eslint-plugin-redux-use-app-functions

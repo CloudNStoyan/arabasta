@@ -11,10 +11,10 @@ Assuming you already have ESLint installed, run:
 
 ```sh
 # npm
-npm install @arabasta/eslint-plugin-no-testing-library-without-cleanup --save-dev
+npm install --save-dev @arabasta/eslint-plugin-no-testing-library-without-cleanup
 
 # yarn
-yarn add @arabasta/eslint-plugin-no-testing-library-without-cleanup --dev
+yarn add --dev @arabasta/eslint-plugin-no-testing-library-without-cleanup
 
 # pnpm
 pnpm add --save-dev @arabasta/eslint-plugin-no-testing-library-without-cleanup

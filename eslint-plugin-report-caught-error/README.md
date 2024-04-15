@@ -11,10 +11,10 @@ Assuming you already have ESLint installed, run:
 
 ```sh
 # npm
-npm install @arabasta/eslint-plugin-report-caught-error --save-dev
+npm install --save-dev @arabasta/eslint-plugin-report-caught-error
 
 # yarn
-yarn add @arabasta/eslint-plugin-report-caught-error --dev
+yarn add --dev @arabasta/eslint-plugin-report-caught-error
 
 # pnpm
 pnpm add --save-dev @arabasta/eslint-plugin-report-caught-error
@@ -85,6 +85,7 @@ Examples of correct code for this rule:
 try {
 } catch (error) {
   console.error(error);
+  foo();
 }
 ```
 

@@ -16,10 +16,10 @@ Assuming you already have ESLint installed, run:
 
 ```sh
 # npm
-npm install @arabasta/eslint-plugin-no-destructuring-arrays-as-objects --save-dev
+npm install --save-dev @arabasta/eslint-plugin-no-destructuring-arrays-as-objects
 
 # yarn
-yarn add @arabasta/eslint-plugin-no-destructuring-arrays-as-objects --dev
+yarn add --dev @arabasta/eslint-plugin-no-destructuring-arrays-as-objects
 
 # pnpm
 pnpm add --save-dev @arabasta/eslint-plugin-no-destructuring-arrays-as-objects
