@@ -12,10 +12,6 @@ on:
           - eslint-plugin-no-testing-library-without-cleanup
           - eslint-plugin-redux-use-app-functions
           - eslint-plugin-report-caught-error
-      build:
-        description: 'True to build before publishing'
-        required: True
-        type: boolean
 
 jobs:
   build:
@@ -46,8 +42,7 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - if: ${{ inputs.build }}
-        run: npm run build
+      - run: npm run build --if-present
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
