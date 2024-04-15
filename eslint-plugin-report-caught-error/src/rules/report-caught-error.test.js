@@ -33,7 +33,7 @@ ruleTester.run(
         code: normalizeIndent`
           try {
           } catch (error) {
-            reportUnknownError(error);
+            console.error(error);
           }
         `,
       },
@@ -42,8 +42,8 @@ ruleTester.run(
         code: normalizeIndent`
           try {
           } catch (err) {
-            reportUnknownError(err);
-          }        
+            console.error(err);
+          }
         `,
       },
       {
@@ -56,24 +56,24 @@ ruleTester.run(
         `,
       },
       {
-        name: "when setting the report function name to 'console.error'.",
+        name: "when setting the report function name to 'reportUnknownError'.",
         code: normalizeIndent`
           try {
           } catch (error) {
-            console.error(error);
+            reportUnknownError(error);
           }
         `,
-        options: ['console.error'],
+        options: ['reportUnknownError'],
       },
       {
-        name: "when setting the report function name to 'console.error' and the report function is called with a different error identifier than 'error'.",
+        name: "when setting the report function name to 'reportUnknownError' and the report function is called with a different error identifier than 'error'.",
         code: normalizeIndent`
           try {
           } catch (err) {
-            console.error(err);
-          }        
+            reportUnknownError(err);
+          }
         `,
-        options: ['console.error'],
+        options: ['reportUnknownError'],
       },
       {
         name: 'when setting the report function name to a very nested and long name.',
@@ -94,8 +94,8 @@ ruleTester.run(
           try {
           } catch (error) {
             let a = 1;
-            reportUnknownError(error);
-          }        
+            console.error(error);
+          }
         `,
         errors: [
           {
@@ -105,10 +105,10 @@ ruleTester.run(
                 messageId: 'addReportError',
                 output: normalizeIndent`
                 try {
-                } catch (error) { reportUnknownError(error);
+                } catch (error) { console.error(error);
                   let a = 1;
-                  reportUnknownError(error);
-                }        
+                  console.error(error);
+                }
               `,
               },
             ],
@@ -119,7 +119,7 @@ ruleTester.run(
         name: 'when the first statement is a function call, but its not the report function.',
         code: normalizeIndent`
           try {
-          } catch(error) {  
+          } catch(error) {
             foo(error);
           }
         `,
@@ -131,8 +131,8 @@ ruleTester.run(
                 messageId: 'fixFunctionName',
                 output: normalizeIndent`
                 try {
-                } catch(error) {  
-                  reportUnknownError(error);
+                } catch(error) {
+                  console.error(error);
                 }
               `,
               },
@@ -145,8 +145,8 @@ ruleTester.run(
         code: normalizeIndent`
             try {
             } catch (error) {
-              reportUnknownError();
-            }        
+              console.error();
+            }
         `,
         errors: [
           {
@@ -157,8 +157,8 @@ ruleTester.run(
                 output: normalizeIndent`
                 try {
                 } catch (error) {
-                  reportUnknownError(error);
-                }        
+                  console.error(error);
+                }
                 `,
               },
             ],
@@ -170,8 +170,8 @@ ruleTester.run(
         code: normalizeIndent`
             try {
             } catch (error) {
-              reportUnknownError(someOtherValue);
-            }        
+              console.error(someOtherValue);
+            }
         `,
         errors: [
           {
@@ -182,8 +182,8 @@ ruleTester.run(
                 output: normalizeIndent`
                 try {
                 } catch (error) {
-                  reportUnknownError(error);
-                }        
+                  console.error(error);
+                }
                 `,
               },
             ],

@@ -15,6 +15,9 @@ npm install @arabasta/eslint-plugin-report-caught-error --save-dev
 
 # yarn
 yarn add @arabasta/eslint-plugin-report-caught-error --dev
+
+# pnpm
+pnpm add --save-dev @arabasta/eslint-plugin-report-caught-error
 ```
 
 ## Usage
@@ -39,7 +42,7 @@ export default [
 {
   "extends": [
     // ...
-    "plugin:arabasta/report-caught-error/recommended-legacy"
+    "plugin:@arabasta/report-caught-error/recommended-legacy"
   ]
 }
 ```
@@ -55,6 +58,18 @@ export default [
 
 ### `report-caught-error`
 
+#### Options
+
+This rule has a string option. The string should be your report function.
+
+- `console.error` (default)
+
+For example, in order to configure your report function to be `reportUnknownError`, you can use the following configuration:
+
+```json
+"@arabasta/report-caught-error/report-caught-error": [<severity>, "reportUnknownError"]
+```
+
 Examples of incorrect code for this rule:
 
 ```js
@@ -69,7 +84,7 @@ Examples of correct code for this rule:
 ```js
 try {
 } catch (error) {
-  reportUnknownError(error);
+  console.error(error);
 }
 ```
 

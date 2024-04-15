@@ -1,5 +1,7 @@
 'use strict';
 
+const DEFAULT_REPORT_FUNCTION = 'console.error';
+
 /** @param {import('eslint').Rule.Node} node */
 function getFullFunctionName(node) {
   if (node.type === 'Identifier' && !node.object) {
@@ -54,7 +56,7 @@ module.exports = {
     schema: [{ type: 'string' }],
   },
   create(context) {
-    const ALLOWED_FUNCTION_NAME = context.options[0] || 'reportUnknownError';
+    const ALLOWED_FUNCTION_NAME = context.options[0] || DEFAULT_REPORT_FUNCTION;
 
     return {
       CatchClause(node) {
