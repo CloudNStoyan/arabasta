@@ -15,6 +15,9 @@ npm install @arabasta/eslint-plugin-redux-use-app-functions --save-dev
 
 # yarn
 yarn add @arabasta/eslint-plugin-redux-use-app-functions --dev
+
+# pnpm
+pnpm add --save-dev @arabasta/eslint-plugin-redux-use-app-functions
 ```
 
 ## Usage
@@ -39,7 +42,7 @@ export default [
 {
   "extends": [
     // ...
-    "plugin:arabasta/redux-use-app-functions/recommended-legacy"
+    "plugin:@arabasta/redux-use-app-functions/recommended-legacy"
   ]
 }
 ```

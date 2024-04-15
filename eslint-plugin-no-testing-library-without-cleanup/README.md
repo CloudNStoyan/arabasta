@@ -15,6 +15,9 @@ npm install @arabasta/eslint-plugin-no-testing-library-without-cleanup --save-de
 
 # yarn
 yarn add @arabasta/eslint-plugin-no-testing-library-without-cleanup --dev
+
+# pnpm
+pnpm add --save-dev @arabasta/eslint-plugin-no-testing-library-without-cleanup
 ```
 
 ## Usage
@@ -39,7 +42,7 @@ export default [
 {
   "extends": [
     // ...
-    "plugin:arabasta/no-testing-library-without-cleanup/recommended-legacy"
+    "plugin:@arabasta/no-testing-library-without-cleanup/recommended-legacy"
   ]
 }
 ```

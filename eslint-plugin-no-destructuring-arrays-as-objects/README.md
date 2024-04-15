@@ -20,6 +20,9 @@ npm install @arabasta/eslint-plugin-no-destructuring-arrays-as-objects --save-de
 
 # yarn
 yarn add @arabasta/eslint-plugin-no-destructuring-arrays-as-objects --dev
+
+# pnpm
+pnpm add --save-dev @arabasta/eslint-plugin-no-destructuring-arrays-as-objects
 ```
 
 ## Usage

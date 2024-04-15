@@ -6,7 +6,7 @@ const useCreateAppAsyncThunkRule = require('./rules/use-create-app-async-thunk.j
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-redux-use-app-functions',
-    version: '1.0.1',
+    version: '1.0.3',
   },
   configs: {},
   rules: {
