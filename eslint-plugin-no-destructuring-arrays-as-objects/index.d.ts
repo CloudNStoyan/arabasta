@@ -6,5 +6,5 @@ export const configs: {
 };
 
 export const rules: {
-  'no-testing-library-without-cleanup': TSESLint.AnyRuleModule;
+  'no-destructuring-arrays-as-objects': TSESLint.AnyRuleModule;
 };
