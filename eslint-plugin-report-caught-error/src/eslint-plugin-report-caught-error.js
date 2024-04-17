@@ -3,8 +3,8 @@ const reportCaughtErrorRule = require('./rules/report-caught-error.js');
 /** @type {import('eslint').ESLint.Plugin} */
 const plugin = {
   meta: {
-    name: '@arabasta/report-caught-error',
-    version: '1.0.4',
+    name: '@arabasta/eslint-plugin-report-caught-error',
+    version: '1.0.5',
   },
   configs: {},
   rules: {
