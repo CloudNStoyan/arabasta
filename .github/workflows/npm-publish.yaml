@@ -12,6 +12,7 @@ on:
           - eslint-plugin-no-testing-library-without-cleanup
           - eslint-plugin-redux-use-app-functions
           - eslint-plugin-report-caught-error
+          - eslint-plugin-require-useeffect-dependency-array
 
 jobs:
   build:
