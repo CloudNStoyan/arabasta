@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-plugin-no-testing-library-without-cleanup",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ESLint plugin that enforces the usage of the cleanup function when importing from Testing Library",
   "author": "Stoyan Kolev",
   "repository": {
