@@ -1,6 +1,7 @@
 {
   "name": "@arabasta/eslint-plugin-require-useeffect-dependency-array",
-  "version": "1.0.8",
+  "version": "1.0.9",
+  "type": "commonjs",
   "description": "ESLint plugin that enforces that React useEffect has a dependency array",
   "author": "Stoyan Kolev",
   "repository": {

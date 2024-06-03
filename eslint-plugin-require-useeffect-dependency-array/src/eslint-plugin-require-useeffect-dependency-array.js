@@ -4,7 +4,7 @@ const requireDependencyArrayRule = require('./rules/require-useeffect-dependency
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-require-useeffect-dependency-array',
-    version: '1.0.8',
+    version: '1.0.9',
   },
   configs: {},
   rules: {

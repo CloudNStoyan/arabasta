@@ -1,6 +1,7 @@
 {
   "name": "@arabasta/eslint-plugin-report-caught-error",
-  "version": "1.0.5",
+  "version": "1.0.6",
+  "type": "commonjs",
   "description": "ESLint plugin that enforces caught errors in try/catches to be reported",
   "author": "Stoyan Kolev",
   "repository": {

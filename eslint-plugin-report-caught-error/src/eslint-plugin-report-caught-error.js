@@ -4,7 +4,7 @@ const reportCaughtErrorRule = require('./rules/report-caught-error.js');
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-report-caught-error',
-    version: '1.0.5',
+    version: '1.0.6',
   },
   configs: {},
   rules: {

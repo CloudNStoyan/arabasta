@@ -1,6 +1,7 @@
 {
   "name": "@arabasta/eslint-plugin-no-destructuring-arrays-as-objects",
-  "version": "1.0.4",
+  "version": "1.0.5",
+  "type": "commonjs",
   "description": "ESLint plugin that disallows destructuring arrays as objects",
   "author": "Stoyan Kolev",
   "repository": {
