@@ -12,7 +12,14 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "default": "./src/index.js"
+      "default": "./src/index.js",
+      "react": "./src/react.js",
+      "react-typescript": "./src/react-typescript.js",
+      "config-files": "./src/config-files.js",
+      "redux": "./src/redux.js",
+      "tests": "./src/tests.js",
+      "typescript": "./src/typescript.js",
+      "typescript-definitions": "./src/typescript-definitions.js"
     }
   },
   "scripts": {

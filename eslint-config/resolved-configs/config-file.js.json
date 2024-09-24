@@ -1,22 +1,17 @@
 {
   "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".json"]
-      }
-    },
-    "import/extensions": [".js", ".mjs", ".jsx"],
     "import/core-modules": [],
     "import/ignore": [
       "node_modules",
       "\\.(coffee|scss|css|less|hbs|svg|json)$"
     ],
+    "propWrapperFunctions": ["forbidExtraProps", "exact", "Object.freeze"],
+    "import/internal-regex": "^(~|src)",
+    "import/extensions": [".js", ".jsx"],
     "react": {
       "pragma": "React",
       "version": "detect"
-    },
-    "propWrapperFunctions": ["forbidExtraProps", "exact", "Object.freeze"],
-    "import/internal-regex": "^(~|src)"
+    }
   },
   "linterOptions": {
     "reportUnusedDisableDirectives": 1
@@ -1222,13 +1217,13 @@
     },
     "parser": "espree@9.6.1",
     "parserOptions": {
+      "generators": true,
       "ecmaFeatures": {
-        "jsx": true,
         "globalReturn": true,
         "generators": false,
-        "objectLiteralDuplicateProperties": false
-      },
-      "generators": true
+        "objectLiteralDuplicateProperties": false,
+        "jsx": true
+      }
     }
   },
   "plugins": [
@@ -1421,11 +1416,7 @@
       "error",
       "always",
       {
-        "ignorePackages": true,
-        "pattern": {
-          "js": "never",
-          "jsx": "never"
-        }
+        "ignorePackages": true
       }
     ],
     "import/first": ["error"],
@@ -2317,7 +2308,7 @@
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [".jsx"]
+        "extensions": [".jsx", ".tsx"]
       }
     ],
     "react/jsx-first-prop-new-line": ["off"],

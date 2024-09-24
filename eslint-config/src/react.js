@@ -3,6 +3,7 @@ const requireUseeffectDependencyArray = require('@arabasta/eslint-plugin-require
 const { FlatCompat } = require('@eslint/eslintrc');
 const jsxA11y = require('eslint-plugin-jsx-a11y');
 const reactLint = require('eslint-plugin-react');
+const reactRefresh = require('eslint-plugin-react-refresh');
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -16,22 +17,21 @@ module.exports = tseslint.config(
   requireUseeffectDependencyArray.configs.recommended,
   ...compat.extends('plugin:react/recommended'),
   ...compat.extends('plugin:react-hooks/recommended'),
+  ...compat.extends('plugin:import/react'),
   {
     plugins: {
       'jsx-a11y': jsxA11y,
+      'react-refresh': reactRefresh,
       react: reactLint,
+    },
+    settings: {
+      react: {
+        pragma: 'React',
+        version: 'detect',
+      },
     },
     rules: {
       // TODO: Decide how to handle this?
-      'no-underscore-dangle': [
-        'error',
-        {
-          allow: ['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'],
-          allowAfterThis: false,
-          allowAfterSuper: false,
-          enforceInMethodNames: true,
-        },
-      ],
       'class-methods-use-this': [
         'error',
         {
@@ -240,6 +240,13 @@ module.exports = tseslint.config(
       'react/no-arrow-function-lifecycle': 'error',
       'react/no-invalid-html-attribute': 'error',
       'react/no-unused-class-component-methods': 'error',
+      'react-hooks/exhaustive-deps': 'error',
+      'react/require-default-props': 'off',
+      'react/jsx-props-no-spreading': 'off',
+      'react-refresh/only-export-components': 'warn',
+      'react/react-in-jsx-scope': 'off',
+      'react/function-component-definition': 'off',
+      'react/no-array-index-key': 'off',
       'jsx-a11y/accessible-emoji': 'off',
       'jsx-a11y/alt-text': [
         'error',

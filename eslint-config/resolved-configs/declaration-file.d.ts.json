@@ -1,5 +1,30 @@
 {
   "settings": {
+    "import/core-modules": [],
+    "import/ignore": [
+      "node_modules",
+      "\\.(coffee|scss|css|less|hbs|svg|json)$"
+    ],
+    "propWrapperFunctions": ["forbidExtraProps", "exact", "Object.freeze"],
+    "import/internal-regex": "^(~|src)",
+    "import/extensions": [
+      ".ts",
+      ".cts",
+      ".mts",
+      ".tsx",
+      ".js",
+      ".jsx",
+      ".mjs",
+      ".cjs"
+    ],
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    },
+    "import/external-module-folders": ["node_modules", "node_modules/@types"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".cts", ".mts", ".tsx"]
+    },
     "import/resolver": {
       "node": {
         "extensions": [
@@ -14,31 +39,6 @@
         ]
       },
       "typescript": true
-    },
-    "import/extensions": [
-      ".ts",
-      ".cts",
-      ".mts",
-      ".tsx",
-      ".js",
-      ".jsx",
-      ".mjs",
-      ".cjs"
-    ],
-    "import/core-modules": [],
-    "import/ignore": [
-      "node_modules",
-      "\\.(coffee|scss|css|less|hbs|svg|json)$"
-    ],
-    "react": {
-      "pragma": "React",
-      "version": "detect"
-    },
-    "propWrapperFunctions": ["forbidExtraProps", "exact", "Object.freeze"],
-    "import/internal-regex": "^(~|src)",
-    "import/external-module-folders": ["node_modules", "node_modules/@types"],
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".cts", ".mts", ".tsx"]
     }
   },
   "linterOptions": {
@@ -1245,13 +1245,13 @@
     },
     "parser": "typescript-eslint/parser@8.7.0",
     "parserOptions": {
+      "generators": true,
       "ecmaFeatures": {
-        "jsx": true,
         "globalReturn": true,
         "generators": false,
-        "objectLiteralDuplicateProperties": false
+        "objectLiteralDuplicateProperties": false,
+        "jsx": true
       },
-      "generators": true,
       "project": ["tsconfig.json"]
     }
   },
