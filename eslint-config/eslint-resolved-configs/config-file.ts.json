@@ -2,11 +2,29 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".ts", ".cts", ".mts", ".tsx", ".js", ".jsx"]
+        "extensions": [
+          ".ts",
+          ".cts",
+          ".mts",
+          ".tsx",
+          ".js",
+          ".jsx",
+          ".mjs",
+          ".cjs"
+        ]
       },
       "typescript": true
     },
-    "import/extensions": [".ts", ".cts", ".mts", ".tsx", ".js", ".jsx"],
+    "import/extensions": [
+      ".ts",
+      ".cts",
+      ".mts",
+      ".tsx",
+      ".js",
+      ".jsx",
+      ".mjs",
+      ".cjs"
+    ],
     "import/core-modules": [],
     "import/ignore": [
       "node_modules",
@@ -38,6 +56,8 @@
       "AbstractRange": false,
       "Accelerometer": false,
       "addEventListener": false,
+      "afterAll": false,
+      "afterEach": false,
       "ai": false,
       "AI": false,
       "AITextSession": false,
@@ -80,6 +100,8 @@
       "BarProp": false,
       "BaseAudioContext": false,
       "BatteryManager": false,
+      "beforeAll": false,
+      "beforeEach": false,
       "BeforeUnloadEvent": false,
       "BiquadFilterNode": false,
       "Blob": false,
@@ -225,6 +247,7 @@
       "DecompressionStream": false,
       "DelayNode": false,
       "DelegatedInkTrailPresenter": false,
+      "describe": false,
       "DeviceMotionEvent": false,
       "DeviceMotionEventAcceleration": false,
       "DeviceMotionEventRotationRate": false,
@@ -273,6 +296,7 @@
       "EventCounts": false,
       "EventSource": false,
       "EventTarget": false,
+      "expect": false,
       "exports": true,
       "external": false,
       "External": false,
@@ -298,6 +322,7 @@
       "FileSystemHandle": false,
       "FileSystemWritableFileStream": false,
       "find": false,
+      "fit": false,
       "Float16Array": false,
       "Float32Array": false,
       "Float64Array": false,
@@ -500,7 +525,9 @@
       "isFinite": false,
       "isNaN": false,
       "isSecureContext": false,
+      "it": false,
       "Iterator": false,
+      "jest": false,
       "JSON": false,
       "Keyboard": false,
       "KeyboardEvent": false,
@@ -1047,6 +1074,7 @@
       "TaskPriorityChangeEvent": false,
       "TaskSignal": false,
       "TEMPORARY": false,
+      "test": false,
       "Text": false,
       "TextDecoder": false,
       "TextDecoderStream": false,
@@ -1167,6 +1195,8 @@
       "WritableStream": false,
       "WritableStreamDefaultController": false,
       "WritableStreamDefaultWriter": false,
+      "xdescribe": false,
+      "xit": false,
       "XMLDocument": false,
       "XMLHttpRequest": false,
       "XMLHttpRequestEventTarget": false,
@@ -1210,9 +1240,10 @@
       "XRWebGLBinding": false,
       "XRWebGLDepthInformation": false,
       "XRWebGLLayer": false,
-      "XSLTProcessor": false
+      "XSLTProcessor": false,
+      "xtest": false
     },
-    "parser": "typescript-eslint/parser@8.3.0",
+    "parser": "typescript-eslint/parser@8.7.0",
     "parserOptions": {
       "ecmaFeatures": {
         "jsx": true,
@@ -1221,21 +1252,21 @@
         "objectLiteralDuplicateProperties": false
       },
       "generators": true,
-      "project": ["tsconfig.node.json"]
+      "project": ["tsconfig.json"]
     }
   },
   "plugins": [
     "@",
     "@arabasta/no-destructuring-arrays-as-objects:@arabasta/eslint-plugin-no-testing-library-without-cleanup@1.0.5",
-    "@arabasta/no-testing-library-without-cleanup:@arabasta/eslint-plugin-no-testing-library-without-cleanup@1.0.5",
+    "@arabasta/redux-use-app-functions:@arabasta/eslint-plugin-redux-use-app-functions@1.0.5",
     "@arabasta/report-caught-error:@arabasta/eslint-plugin-report-caught-error@1.0.6",
     "@arabasta/require-useeffect-dependency-array:@arabasta/eslint-plugin-require-useeffect-dependency-array@1.0.9",
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.0",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.3.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.7.0",
     "deprecation:eslint-plugin-deprecation@3.0.0",
     "es",
     "import",
-    "jsx-a11y:eslint-plugin-jsx-a11y@6.9.0",
+    "jsx-a11y:eslint-plugin-jsx-a11y@6.10.0",
     "new-with-error",
     "react",
     "react-hooks",
@@ -1246,9 +1277,9 @@
     "@arabasta/no-destructuring-arrays-as-objects/no-destructuring-arrays-as-objects": [
       "error"
     ],
-    "@arabasta/no-testing-library-without-cleanup/no-testing-library-without-cleanup": [
-      "error"
-    ],
+    "@arabasta/redux-use-app-functions/use-app-dispatch": ["error"],
+    "@arabasta/redux-use-app-functions/use-app-selector": ["error"],
+    "@arabasta/redux-use-app-functions/use-create-app-async-thunk": ["error"],
     "@arabasta/report-caught-error/report-caught-error": [
       "error",
       "reportUnknownError"
@@ -1589,7 +1620,8 @@
       {
         "maxDepth": "∞",
         "ignoreExternal": false,
-        "allowUnsafeDynamicCyclicDependency": false
+        "allowUnsafeDynamicCyclicDependency": false,
+        "disableScc": false
       }
     ],
     "import/no-default-export": ["off"],

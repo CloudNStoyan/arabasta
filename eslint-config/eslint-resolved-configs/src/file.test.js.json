@@ -1239,11 +1239,13 @@
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.0",
     "es",
     "import",
+    "jest:eslint-plugin-jest@28.8.3",
     "jsx-a11y:eslint-plugin-jsx-a11y@6.10.0",
     "new-with-error",
     "react",
     "react-hooks",
     "react-refresh",
+    "testing-library:eslint-plugin-testing-library@6.3.0",
     "unused-imports"
   ],
   "rules": {
@@ -1461,31 +1463,9 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "test/**",
-          "tests/**",
-          "spec/**",
-          "**/__tests__/**",
-          "**/__mocks__/**",
-          "test.{js,jsx}",
-          "test-*.{js,jsx}",
-          "**/*{.,_}{test,spec}.{js,jsx}",
-          "**/jest.config.js",
-          "**/jest.setup.js",
-          "**/vue.config.js",
-          "**/webpack.config.js",
-          "**/webpack.config.*.js",
-          "**/rollup.config.js",
-          "**/rollup.config.*.js",
-          "**/gulpfile.js",
-          "**/gulpfile.*.js",
-          "**/Gruntfile{,.js}",
-          "**/protractor.conf.js",
-          "**/protractor.conf.*.js",
-          "**/karma.conf.js",
-          "**/.eslintrc.js"
-        ],
-        "optionalDependencies": false
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
       }
     ],
     "import/no-import-module-exports": [
@@ -1505,20 +1485,9 @@
     "import/no-relative-packages": ["error"],
     "import/no-relative-parent-imports": ["off"],
     "import/no-restricted-paths": [
-      "error",
+      "off",
       {
-        "zones": [
-          {
-            "target": "./",
-            "from": "./src/**/+(*.)+(spec|test).+(ts|js)?(x)",
-            "message": "Importing test files in non-test files is not allowed."
-          },
-          {
-            "target": "./",
-            "from": "./src/testing",
-            "message": "Importing testing utilities in non-test files is not allowed."
-          }
-        ]
+        "zones": []
       }
     ],
     "import/no-self-import": ["error"],
@@ -1594,6 +1563,25 @@
     "indent": ["off"],
     "indent-legacy": ["off"],
     "init-declarations": ["off"],
+    "jest/expect-expect": ["off"],
+    "jest/no-alias-methods": ["error"],
+    "jest/no-commented-out-tests": ["warn"],
+    "jest/no-conditional-expect": ["error"],
+    "jest/no-deprecated-functions": ["error"],
+    "jest/no-disabled-tests": ["warn"],
+    "jest/no-done-callback": ["error"],
+    "jest/no-export": ["error"],
+    "jest/no-focused-tests": ["error"],
+    "jest/no-identical-title": ["error"],
+    "jest/no-interpolation-in-snapshots": ["error"],
+    "jest/no-jasmine-globals": ["error"],
+    "jest/no-mocks-import": ["error"],
+    "jest/no-standalone-expect": ["error"],
+    "jest/no-test-prefixes": ["error"],
+    "jest/valid-describe-callback": ["error"],
+    "jest/valid-expect": ["error"],
+    "jest/valid-expect-in-promise": ["error"],
+    "jest/valid-title": ["error"],
     "jsx-a11y/accessible-emoji": ["off"],
     "jsx-a11y/alt-text": [
       "error",
@@ -2574,6 +2562,38 @@
     "symbol-description": ["error"],
     "template-curly-spacing": ["off"],
     "template-tag-spacing": ["off"],
+    "testing-library/await-async-events": [
+      "error",
+      {
+        "eventModule": "userEvent"
+      }
+    ],
+    "testing-library/await-async-queries": ["error"],
+    "testing-library/await-async-utils": ["error"],
+    "testing-library/no-await-sync-events": [
+      "error",
+      {
+        "eventModules": ["fire-event"]
+      }
+    ],
+    "testing-library/no-await-sync-queries": ["error"],
+    "testing-library/no-container": ["error"],
+    "testing-library/no-debugging-utils": ["warn"],
+    "testing-library/no-dom-import": ["error", "react"],
+    "testing-library/no-global-regexp-flag-in-query": ["error"],
+    "testing-library/no-manual-cleanup": ["off"],
+    "testing-library/no-node-access": ["error"],
+    "testing-library/no-promise-in-fire-event": ["error"],
+    "testing-library/no-render-in-lifecycle": ["error"],
+    "testing-library/no-unnecessary-act": ["error"],
+    "testing-library/no-wait-for-multiple-assertions": ["off"],
+    "testing-library/no-wait-for-side-effects": ["error"],
+    "testing-library/no-wait-for-snapshot": ["error"],
+    "testing-library/prefer-find-by": ["error"],
+    "testing-library/prefer-presence-queries": ["error"],
+    "testing-library/prefer-query-by-disappearance": ["error"],
+    "testing-library/prefer-screen-queries": ["error"],
+    "testing-library/render-result-naming-convention": ["error"],
     "unicode-bom": ["error", "never"],
     "unicorn/empty-brace-spaces": ["off"],
     "unicorn/no-nested-ternary": ["off"],

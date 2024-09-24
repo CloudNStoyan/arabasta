@@ -75,8 +75,10 @@ const ESLINT_RESOLVED_CONFIGS_FOLDER = 'eslint-resolved-configs';
 const eslintPaths = [
   'config-file.js',
   'src/file.js',
+  'src/file.test.js',
   'config-file.ts',
   'src/file.ts',
+  'src/file.test.ts',
   'declaration-file.d.ts',
 ];
 
