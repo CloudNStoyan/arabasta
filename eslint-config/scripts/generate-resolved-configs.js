@@ -6,7 +6,7 @@ function sortObjectKeysRecursively(inputObject) {
   if (Array.isArray(inputObject)) {
     const newArray = [];
 
-    for (let i = 0, l = inputObject.length; i < l; i++) {
+    for (let i = 0; i < inputObject.length; i++) {
       newArray[i] = sortObjectKeysRecursively(inputObject[i]);
     }
 
@@ -21,7 +21,7 @@ function sortObjectKeysRecursively(inputObject) {
 
   const sortedKeys = Object.keys(inputObject).sort();
 
-  for (let i = 0, l = sortedKeys.length; i < l; i++) {
+  for (let i = 0; i < sortedKeys.length; i++) {
     newObject[sortedKeys[i]] = sortObjectKeysRecursively(
       inputObject[sortedKeys[i]]
     );
