@@ -16,7 +16,7 @@ function sortArrayAlphabetically(array) {
 
 const NUMBER_TO_SEVERITY_MAP = { 0: 'off', 1: 'warn', 2: 'error' };
 
-function preprocessConfig(configContent) {
+function postProcessConfig(configContent) {
   const config = JSON.parse(configContent);
 
   config.languageOptions.globals = sortObjectKeysAlphabetically(
@@ -49,30 +49,30 @@ function preprocessConfig(configContent) {
   return JSON.stringify(config, null, 2);
 }
 
-async function getResolvedConfig(filepath) {
+async function getResolvedConfig(configFilePath, filePath) {
   return new Promise((resolve, reject) => {
     exec(
-      `npx eslint -c test-eslint-config.js --print-config ${filepath}`,
-      (err, stdout, stderr) => {
-        if (err) {
-          reject(err);
+      `npx eslint -c ${configFilePath} --print-config ${filePath}`,
+      (error, stdOut, stdErr) => {
+        if (error) {
+          reject(error);
           return;
         }
 
-        if (stderr) {
-          reject(stderr);
+        if (stdErr) {
+          reject(stdErr);
           return;
         }
 
-        resolve(stdout);
+        resolve(stdOut);
       }
     );
   });
 }
 
-const ESLINT_RESOLVED_CONFIGS_FOLDER = 'eslint-resolved-configs';
+const ESLINT_RESOLVED_CONFIGS_FOLDER = 'resolved-configs';
 
-const eslintPaths = [
+const filePaths = [
   'config-file.js',
   'src/file.js',
   'src/file.test.js',
@@ -83,20 +83,22 @@ const eslintPaths = [
 ];
 
 (async () => {
-  const resolvedConfigs = await Promise.all(
-    eslintPaths.map((lintPath) => getResolvedConfig(lintPath))
-  );
+  const resolvedConfigs = await Promise.all([
+    ...filePaths.map((filePath) =>
+      getResolvedConfig('test-eslint-config.js', filePath)
+    ),
+  ]);
 
   for (let i = 0; i < resolvedConfigs.length; i += 1) {
-    const lintPath = eslintPaths[i];
-    const resolvedProcessedConfig = preprocessConfig(resolvedConfigs[i]);
+    const filePath = filePaths[i];
+    const resolvedProcessedConfig = postProcessConfig(resolvedConfigs[i]);
 
-    const filename = path.join(
+    const fullFilePath = path.join(
       ESLINT_RESOLVED_CONFIGS_FOLDER,
-      `${lintPath}.json`
+      `${filePath}.json`
     );
 
-    await fs.mkdir(path.dirname(filename), { recursive: true });
-    await fs.writeFile(filename, resolvedProcessedConfig);
+    await fs.mkdir(path.dirname(fullFilePath), { recursive: true });
+    await fs.writeFile(fullFilePath, resolvedProcessedConfig);
   }
 })();
