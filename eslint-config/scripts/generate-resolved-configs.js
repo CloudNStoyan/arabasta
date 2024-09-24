@@ -2,40 +2,48 @@ const { exec } = require('node:child_process');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
-function sortObjectKeysAlphabetically(obj) {
-  const entries = Object.entries(obj);
+function sortObjectKeysRecursively(inputObject) {
+  if (Array.isArray(inputObject)) {
+    const newArray = [];
 
-  entries.sort((a, b) => a[0].localeCompare(b[0]));
+    for (let i = 0, l = inputObject.length; i < l; i++) {
+      newArray[i] = sortObjectKeysRecursively(inputObject[i]);
+    }
 
-  return Object.fromEntries(entries);
+    return newArray;
+  }
+
+  if (typeof inputObject !== 'object' || inputObject === null) {
+    return inputObject;
+  }
+
+  const newObject = {};
+
+  const sortedKeys = Object.keys(inputObject).sort();
+
+  for (let i = 0, l = sortedKeys.length; i < l; i++) {
+    newObject[sortedKeys[i]] = sortObjectKeysRecursively(
+      inputObject[sortedKeys[i]]
+    );
+  }
+
+  return newObject;
 }
-
-function sortArrayAlphabetically(array) {
-  return array.toSorted((a, b) => a.localeCompare(b));
-}
-
-const NUMBER_TO_SEVERITY_MAP = { 0: 'off', 1: 'warn', 2: 'error' };
 
 function postProcessConfig(configContent) {
-  const config = JSON.parse(configContent);
+  let config = JSON.parse(configContent);
 
-  config.languageOptions.globals = sortObjectKeysAlphabetically(
-    config.languageOptions.globals
-  );
+  // Sort the plugins array.
+  config.plugins = config.plugins.toSorted((a, b) => a.localeCompare(b));
 
-  config.plugins = sortArrayAlphabetically(config.plugins);
+  // Normalize the severity values.
+  const NUMBER_TO_SEVERITY_MAP = { 0: 'off', 1: 'warn', 2: 'error' };
 
-  const rulesEntries = Object.entries(config.rules);
-
-  rulesEntries.sort((a, b) => a[0].localeCompare(b[0]));
-
-  for (const rule of rulesEntries) {
-    const [ruleName, ruleOptions] = rule;
+  for (const ruleName of Object.keys(config.rules)) {
+    const ruleOptions = config.rules[ruleName];
 
     if (Array.isArray(ruleOptions)) {
-      const severity = ruleOptions[0];
-
-      ruleOptions[0] = NUMBER_TO_SEVERITY_MAP[severity];
+      ruleOptions[0] = NUMBER_TO_SEVERITY_MAP[ruleOptions[0]];
     } else {
       // This isn't supposed to happen
       throw new Error(
@@ -44,7 +52,8 @@ function postProcessConfig(configContent) {
     }
   }
 
-  config.rules = Object.fromEntries(rulesEntries);
+  // Sort all the object keys.
+  config = sortObjectKeysRecursively(config);
 
   return JSON.stringify(config, null, 2);
 }
