@@ -1402,11 +1402,7 @@
       "error",
       "always",
       {
-        "ignorePackages": true,
-        "pattern": {
-          "js": "never",
-          "jsx": "never"
-        }
+        "ignorePackages": true
       }
     ],
     "import/first": ["error"],
@@ -2298,7 +2294,7 @@
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [".jsx"]
+        "extensions": [".jsx", ".tsx"]
       }
     ],
     "react/jsx-first-prop-new-line": ["off"],
@@ -2594,17 +2590,12 @@
   },
   "settings": {
     "import/core-modules": [],
-    "import/extensions": [".js", ".mjs", ".jsx"],
+    "import/extensions": [".js", ".jsx"],
     "import/ignore": [
       "node_modules",
       "\\.(coffee|scss|css|less|hbs|svg|json)$"
     ],
     "import/internal-regex": "^(~|src)",
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".json"]
-      }
-    },
     "propWrapperFunctions": ["forbidExtraProps", "exact", "Object.freeze"],
     "react": {
       "pragma": "React",
