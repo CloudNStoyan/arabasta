@@ -1,6 +1,3 @@
+const arabastaConfig = require('.');
 
-const arabastaConfig = require("./");
-
-module.exports = {
-  ...
-};
+module.exports = [...arabastaConfig];

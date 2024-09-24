@@ -30,7 +30,7 @@ import arabastaConfig from '@arabasta/eslint-config';
 
 export default [
   // ...
-  arabastaConfig
+  ...arabastaConfig,
 ];
 ```
 
