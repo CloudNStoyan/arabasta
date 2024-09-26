@@ -13,6 +13,12 @@ const tseslint = require('typescript-eslint');
 
 const compat = new FlatCompat();
 
+// TODO: Create multiple test files and automatic config resolution for all of their combinations - react, typescript, (jest or vitest)
+// TODO: Test how internal imports are resolved in .js files.
+// TODO: Add vitest setup
+// TODO: Test in both workshops with `npm link`.
+// TODO: Add a way to track new and disabled rules.
+
 module.exports = tseslint.config(
   eslint.configs.recommended,
   reportCaughtError.configs.recommended,

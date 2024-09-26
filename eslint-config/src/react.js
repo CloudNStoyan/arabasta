@@ -247,7 +247,7 @@ module.exports = tseslint.config(
       'react-hooks/exhaustive-deps': 'error',
       'react/require-default-props': 'off',
       'react/jsx-props-no-spreading': 'off',
-      'react-refresh/only-export-components': 'warn',
+      'react-refresh/only-export-components': 'error',
       'react/function-component-definition': 'off',
       'react/no-array-index-key': 'off',
       'jsx-a11y/accessible-emoji': 'off',

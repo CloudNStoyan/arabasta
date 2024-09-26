@@ -6,20 +6,21 @@
   "author": "Hristo Kolev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CloudNStoyan/arabasta"
+    "url": "https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config"
   },
-  "main": "./src/index.js",
+  "main": "./src/base.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "default": "./src/index.js",
-      "react": "./src/react.js",
-      "react-typescript": "./src/react-typescript.js",
+      "default": "./src/base.js",
       "config-files": "./src/config-files.js",
+      "jest": "./src/jest.js",
+      "react-typescript": "./src/react-typescript.js",
+      "react": "./src/react.js",
       "redux": "./src/redux.js",
-      "tests": "./src/tests.js",
-      "typescript": "./src/typescript.js",
-      "typescript-definitions": "./src/typescript-definitions.js"
+      "rtl-jest": "./src/rtl-jest.js",
+      "typescript-definitions": "./src/typescript-definitions.js",
+      "typescript": "./src/typescript.js"
     }
   },
   "scripts": {

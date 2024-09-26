@@ -7,8 +7,6 @@ const reactTypescriptConfig = require('../src/react-typescript');
 const jestConfig = require('../src/jest');
 const rtlJestConfig = require('../src/rtl-jest');
 
-// TODO: Create multiple test files - no react, no typescript, with jest, with vitest
-
 // TODO: Add a comment about tseslint usage - https://typescript-eslint.io/packages/typescript-eslint#flat-config-extends
 const tseslint = require('typescript-eslint');
 
