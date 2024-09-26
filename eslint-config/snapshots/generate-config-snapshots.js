@@ -30,6 +30,32 @@ function sortObjectKeysRecursively(inputObject) {
   return newObject;
 }
 
+async function getResolvedConfig(testInputFile) {
+  return new Promise((resolve, reject) => {
+    exec(
+      `npx eslint -c test-eslint-config.js --print-config ${testInputFile}`,
+      { cwd: __dirname },
+      (error, stdOut, stdErr) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+
+        if (stdErr) {
+          reject(stdErr);
+          return;
+        }
+
+        if (stdOut.toString().trim() === 'undefined') {
+          resolve(undefined);
+        } else {
+          resolve(stdOut);
+        }
+      }
+    );
+  });
+}
+
 function postProcessConfig(configContent) {
   let config = JSON.parse(configContent);
 
@@ -58,56 +84,38 @@ function postProcessConfig(configContent) {
   return JSON.stringify(config, null, 2);
 }
 
-async function getResolvedConfig(configFilePath, filePath) {
-  return new Promise((resolve, reject) => {
-    exec(
-      `npx eslint -c ${configFilePath} --print-config ${filePath}`,
-      (error, stdOut, stdErr) => {
-        if (error) {
-          reject(error);
-          return;
-        }
-
-        if (stdErr) {
-          reject(stdErr);
-          return;
-        }
-
-        resolve(stdOut);
-      }
-    );
-  });
-}
-
-const ESLINT_RESOLVED_CONFIGS_FOLDER = 'resolved-configs';
-
-const filePaths = [
-  'config-file.js',
-  'src/file.js',
-  'src/file.test.js',
-  'config-file.ts',
-  'src/file.ts',
-  'src/file.test.ts',
-  'declaration-file.d.ts',
-];
-
 (async () => {
-  const resolvedConfigs = await Promise.all([
-    ...filePaths.map((filePath) =>
-      getResolvedConfig('test-eslint-config.js', filePath)
-    ),
-  ]);
+  const testInputFiles = [
+    'config-file.js',
+    'src/file.js',
+    'src/file.test.js',
+    'config-file.ts',
+    'src/file.ts',
+    'src/file.test.ts',
+    'declaration-file.d.ts',
+  ];
+
+  const resolvedConfigs = await Promise.all(
+    testInputFiles.map(getResolvedConfig)
+  );
 
   for (let i = 0; i < resolvedConfigs.length; i += 1) {
-    const filePath = filePaths[i];
-    const resolvedProcessedConfig = postProcessConfig(resolvedConfigs[i]);
+    const testInputFile = testInputFiles[i];
 
-    const fullFilePath = path.join(
-      ESLINT_RESOLVED_CONFIGS_FOLDER,
-      `${filePath}.json`
-    );
+    let resolvedConfig = resolvedConfigs[i];
 
-    await fs.mkdir(path.dirname(fullFilePath), { recursive: true });
-    await fs.writeFile(fullFilePath, resolvedProcessedConfig);
+    if (resolvedConfig) {
+      resolvedConfig = postProcessConfig(resolvedConfig);
+
+      const fullFilePath =
+        path.join(__dirname, 'configs-snapshots', testInputFile) + '.json';
+
+      await fs.mkdir(path.dirname(fullFilePath), { recursive: true });
+      await fs.writeFile(fullFilePath, resolvedConfig);
+    } else {
+      console.warn(
+        `\x1b[33m[WARNING] eslint could not resolve config for file "${testInputFile}"\x1b[0m`
+      );
+    }
   }
 })();

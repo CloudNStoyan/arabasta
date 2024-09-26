@@ -1,9 +1,8 @@
-const tseslint = require('typescript-eslint');
-
-module.exports = tseslint.config({
-  name: 'Type definition files',
-  files: ['**/*.d.ts'],
+/**
+ * @type {import("eslint").Linter.FlatConfig}
+ */
+module.exports = {
   rules: {
     'import/no-default-export': 'off',
   },
-});
+};

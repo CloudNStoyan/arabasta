@@ -4,36 +4,21 @@ const deprecation = require('eslint-plugin-deprecation');
 const { FlatCompat } = require('@eslint/eslintrc');
 const prettier = require('eslint-config-prettier');
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+const compat = new FlatCompat();
 
 module.exports = tseslint.config({
-  name: 'All TypeScript files',
-  files: ['**/*.+(ts|tsx)'],
-  // This syntactic sugar comes from typescript-eslint's Flat config helper,
-  // it allows you to more easily extend shared configs for specific file
-  // patterns whilst also overriding rules/options provided by those configs.
-  // IT HAS NOTHING TO DO WITH .ESLINTRC's EXTENDS KEY!
-  // https://typescript-eslint.io/packages/typescript-eslint#flat-config-extends
   extends: [
     noDestructuringArraysAsObjects.configs.recommended,
     ...tseslint.configs.strictTypeChecked,
     ...compat.extends('plugin:import/typescript'),
     prettier,
   ],
-  plugins: {
-    '@typescript-eslint': tseslint.plugin,
-    deprecation,
-  },
+  plugins: { deprecation },
   languageOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
     parser: tseslint.parser,
     parserOptions: {
-      ecmaFeatures: {
-        jsx: true,
-      },
       project: ['tsconfig.json'],
     },
   },
@@ -115,22 +100,7 @@ module.exports = tseslint.config({
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
-    'import/no-empty-named-blocks': 'error',
-    'import/no-named-as-default-member': 'error',
-    'import/no-unresolved': 'error',
-    'import/extensions': [
-      'error',
-      'always',
-      {
-        ignorePackages: true,
-        pattern: {
-          js: 'never',
-          jsx: 'never',
-          ts: 'never',
-          tsx: 'never',
-        },
-      },
-    ],
+
     'linebreak-style': ['error', 'unix'],
     'no-func-assign': 'error',
     'constructor-super': 'error',

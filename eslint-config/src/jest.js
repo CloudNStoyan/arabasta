@@ -1,16 +1,10 @@
 const tseslint = require('typescript-eslint');
-const globals = require('globals');
+const jest = require('eslint-plugin-jest');
 
 module.exports = tseslint.config({
-  languageOptions: {
-    globals: {
-      ...globals.node,
-    },
-  },
+  extends: [jest.configs['flat/recommended']],
   rules: {
-    'import/no-default-export': 'off',
-    'import/no-commonjs': 'off',
-    'import/no-nodejs-modules': 'off',
+    'jest/expect-expect': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -19,5 +13,6 @@ module.exports = tseslint.config({
         peerDependencies: false,
       },
     ],
+    'import/no-restricted-paths': ['off', { zones: [] }],
   },
 });

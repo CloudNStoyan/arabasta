@@ -2,12 +2,10 @@ const tseslint = require('typescript-eslint');
 const requireUseeffectDependencyArray = require('@arabasta/eslint-plugin-require-useeffect-dependency-array');
 const { FlatCompat } = require('@eslint/eslintrc');
 const jsxA11y = require('eslint-plugin-jsx-a11y');
-const reactLint = require('eslint-plugin-react');
+const reactESLint = require('eslint-plugin-react');
 const reactRefresh = require('eslint-plugin-react-refresh');
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+const compat = new FlatCompat();
 
 // The tseslint.config function is a variadic identity function which is a fancy way of saying
 // that it's a function with a spread argument that accepts any number flat config objects
@@ -15,20 +13,27 @@ const compat = new FlatCompat({
 // types for your flat config file without the need for JSDoc type comments.
 module.exports = tseslint.config(
   requireUseeffectDependencyArray.configs.recommended,
-  ...compat.extends('plugin:react/recommended'),
+  reactESLint.configs.flat.recommended,
+  reactESLint.configs.flat['jsx-runtime'],
+  jsxA11y.flatConfigs.recommended,
   ...compat.extends('plugin:react-hooks/recommended'),
-  ...compat.extends('plugin:import/react'),
   {
     plugins: {
-      'jsx-a11y': jsxA11y,
       'react-refresh': reactRefresh,
-      react: reactLint,
+    },
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
     settings: {
       react: {
         pragma: 'React',
         version: 'detect',
       },
+      propWrapperFunctions: ['forbidExtraProps', 'exact', 'Object.freeze'],
     },
     rules: {
       // TODO: Decide how to handle this?
@@ -92,7 +97,6 @@ module.exports = tseslint.config(
       'react/jsx-sort-prop-types': 'off',
       'react/jsx-sort-props': 'off',
       'react/jsx-sort-default-props': 'off',
-      'react/jsx-uses-react': ['error'],
       'react/jsx-uses-vars': 'error',
       'react/no-danger': 'warn',
       'react/no-deprecated': ['error'],
@@ -244,7 +248,6 @@ module.exports = tseslint.config(
       'react/require-default-props': 'off',
       'react/jsx-props-no-spreading': 'off',
       'react-refresh/only-export-components': 'warn',
-      'react/react-in-jsx-scope': 'off',
       'react/function-component-definition': 'off',
       'react/no-array-index-key': 'off',
       'jsx-a11y/accessible-emoji': 'off',
@@ -408,6 +411,7 @@ module.exports = tseslint.config(
       'jsx-a11y/scope': 'error',
       'jsx-a11y/tabindex-no-positive': 'error',
       'jsx-a11y/label-has-for': 'off',
+      'jsx-a11y/anchor-ambiguous-text': ['error'],
     },
   }
 );

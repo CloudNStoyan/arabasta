@@ -6,22 +6,13 @@ const eslintComments = require('@eslint-community/eslint-plugin-eslint-comments/
 const confusingBrowserGlobals = require('confusing-browser-globals');
 const prettier = require('eslint-config-prettier');
 const es = require('eslint-plugin-es');
-const eslintPluginImport = require('eslint-plugin-import');
 const newWithError = require('eslint-plugin-new-with-error');
 const unusedImports = require('eslint-plugin-unused-imports');
 const globals = require('globals');
 const tseslint = require('typescript-eslint');
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+const compat = new FlatCompat();
 
-// TODO: Replace this comment.
-
-// The tseslint.config function is a variadic identity function which is a fancy way of saying
-// that it's a function with a spread argument that accepts any number flat config objects
-// and returns the objects unchanged. It exists as a way to quickly and easily provide
-// types for your flat config file without the need for JSDoc type comments.
 module.exports = tseslint.config(
   eslint.configs.recommended,
   reportCaughtError.configs.recommended,
@@ -29,11 +20,35 @@ module.exports = tseslint.config(
   eslintComments.recommended,
   ...compat.extends('plugin:import/recommended'),
   prettier,
-  // This was copied from the airbnb config
   {
-    plugins: {
-      import: eslintPluginImport,
+    languageOptions: {
+      globals: {
+        ...globals.es2015,
+        ...globals.browser,
+        ...globals.node,
+        ...globals.jest,
+      },
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parserOptions: {
+        generators: true,
+        ecmaFeatures: {
+          globalReturn: true,
+          generators: false,
+          objectLiteralDuplicateProperties: false,
+        },
+      },
     },
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
+    },
+    plugins: {
+      'unused-imports': unusedImports,
+      'new-with-error': newWithError,
+      es,
+    },
+
+    // This section was copied from the airbnb config
     rules: {
       'accessor-pairs': 'off',
       'array-callback-return': ['error', { allowImplicit: true }],
@@ -132,11 +147,6 @@ module.exports = tseslint.config(
         {
           property: '__defineSetter__',
           message: 'Please use Object.defineProperty instead.',
-        },
-        {
-          object: 'Math',
-          property: 'pow',
-          message: 'Use the exponentiation operator (**) instead.',
         },
       ],
       'no-return-assign': ['error', 'always'],
@@ -330,8 +340,6 @@ module.exports = tseslint.config(
       'no-catch-shadow': 'off',
       'no-delete-var': 'error',
       'no-label-var': 'error',
-      // TODO: Update this
-      // https://github.com/airbnb/javascript/commit/11ab37144b7f846f04f64a29b5beb6e00d74e84b
       'no-restricted-globals': [
         'error',
         {
@@ -344,7 +352,12 @@ module.exports = tseslint.config(
           message:
             'Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan',
         },
-      ].concat(confusingBrowserGlobals),
+      ].concat(
+        confusingBrowserGlobals.map((g) => ({
+          name: g,
+          message: `Use window.${g} instead. https://github.com/facebook/create-react-app/blob/HEAD/packages/confusing-browser-globals/README.md`,
+        }))
+      ),
       'no-shadow': 'error',
       'no-shadow-restricted-names': 'error',
       'no-undef': 'error',
@@ -457,7 +470,6 @@ module.exports = tseslint.config(
       'import/no-dynamic-require': 'error',
       'import/no-internal-modules': 'off',
       'import/unambiguous': 'off',
-      // TODO: Webpack specific rule
       'import/no-webpack-loader-syntax': 'error',
       'import/no-unassigned-import': 'off',
       'import/no-named-default': 'error',
@@ -478,6 +490,40 @@ module.exports = tseslint.config(
         },
       ],
       'import/no-relative-packages': 'error',
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            ['external'],
+            'internal',
+            ['sibling', 'parent', 'index'],
+            'unknown',
+            'object',
+          ],
+          'newlines-between': 'always',
+          pathGroups: [
+            {
+              pattern: '**/*.+(css|scss)',
+              patternOptions: { dot: true, nocomment: true },
+              group: 'unknown',
+              position: 'after',
+            },
+            {
+              pattern: '{.,..}/**/*.+(css|scss)',
+              patternOptions: { dot: true, nocomment: true },
+              group: 'unknown',
+              position: 'after',
+            },
+          ],
+          warnOnUnassignedImports: true,
+          pathGroupsExcludedImportTypes: ['builtin', 'external'],
+          alphabetize: {
+            order: 'asc',
+            orderImportKind: 'asc',
+          },
+        },
+      ],
       strict: ['error', 'never'],
       'no-underscore-dangle': [
         'error',
@@ -491,50 +537,10 @@ module.exports = tseslint.config(
     },
   },
   {
-    // This configuration object matches all files that other configuration objects
-    // match, because config objects that don’t specify files or ignores apply to
-    // all files that have been matched by any other configuration object.
-    // https://eslint.org/docs/latest/use/configure/configuration-files#:~:text=You%20can%20use,default.%20For%20example%3A
-    name: 'All files',
-    settings: {
-      'import/core-modules': [],
-      'import/ignore': [
-        'node_modules',
-        '\\.(coffee|scss|css|less|hbs|svg|json)$',
-      ],
-      propWrapperFunctions: ['forbidExtraProps', 'exact', 'Object.freeze'],
-      'import/internal-regex': '^(~|src)',
-    },
-    languageOptions: {
-      globals: {
-        ...globals.es2015,
-        ...globals.browser,
-        ...globals.node,
-        ...globals.jest,
-      },
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      parserOptions: {
-        generators: true,
-        ecmaFeatures: {
-          globalReturn: true,
-          generators: false,
-          objectLiteralDuplicateProperties: false,
-        },
-      },
-    },
-    linterOptions: {
-      reportUnusedDisableDirectives: true,
-    },
-    plugins: {
-      'unused-imports': unusedImports,
-      'new-with-error': newWithError,
-      es,
-    },
+    // This section is custom configuration copied from the workshop repo.
     rules: {
       'no-void': 'off',
       'no-undefined': 'off',
-      // TODO: Formatting rule
       'linebreak-style': ['error', 'unix'],
       'no-console': 'error',
       'no-func-assign': 'error',
@@ -574,55 +580,7 @@ module.exports = tseslint.config(
       ],
       'import/prefer-default-export': 'off',
       'import/no-duplicates': ['error', { 'prefer-inline': true }],
-      'import/extensions': [
-        'error',
-        'always',
-        {
-          ignorePackages: true,
-        },
-      ],
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            ['external'],
-            'internal',
-            ['sibling', 'parent', 'index'],
-            'unknown',
-            'object',
-          ],
-          'newlines-between': 'always',
-          pathGroups: [
-            {
-              pattern: '~/**',
-              group: 'internal',
-            },
-            {
-              pattern: 'src/**',
-              group: 'internal',
-            },
-            {
-              pattern: '**/*.+(css|scss)',
-              patternOptions: { dot: true, nocomment: true },
-              group: 'unknown',
-              position: 'after',
-            },
-            {
-              pattern: '{.,..}/**/*.+(css|scss)',
-              patternOptions: { dot: true, nocomment: true },
-              group: 'unknown',
-              position: 'after',
-            },
-          ],
-          warnOnUnassignedImports: true,
-          pathGroupsExcludedImportTypes: ['builtin', 'external'],
-          alphabetize: {
-            order: 'asc',
-            orderImportKind: 'asc',
-          },
-        },
-      ],
+      'import/extensions': ['error'],
       'import/no-default-export': 'error',
       'import/no-deprecated': 'error',
       'import/no-commonjs': 'error',
@@ -634,32 +592,8 @@ module.exports = tseslint.config(
         { commonjs: true, caseSensitive: true },
       ],
       'sort-imports': ['error', { ignoreDeclarationSort: true }],
-      'import/no-restricted-paths': [
-        'error',
-        {
-          zones: [
-            {
-              target: './',
-              from: './src/**/+(*.)+(spec|test).+(ts|js)?(x)',
-              message: 'Importing test files in non-test files is not allowed.',
-            },
-            {
-              target: './',
-              from: './src/testing',
-              message:
-                'Importing testing utilities in non-test files is not allowed.',
-            },
-          ],
-        },
-      ],
-      '@arabasta/report-caught-error/report-caught-error': [
-        'error',
-        'reportUnknownError',
-      ],
+      '@arabasta/report-caught-error/report-caught-error': ['error'],
       'es/no-optional-catch-binding': 'error',
-      // This rule can be used just fine with Prettier as long as
-      // you don’t use the "multi-line" or "multi-or-nest" option.
-      // https://github.com/prettier/eslint-config-prettier/?tab=readme-ov-file#curly
       curly: ['error', 'all'],
     },
   }
