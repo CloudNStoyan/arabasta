@@ -26,16 +26,18 @@
   "scripts": {
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
-    "generate-resolved-configs": "rimraf snapshots/configs-snapshots && node snapshots/generate-config-snapshots.js && npm run format"
+    "generate-config-snapshots": "rimraf snapshots/configs-snapshots && node snapshots/generate-config-snapshots.js && npm run format"
   },
   "dependencies": {
     "@arabasta/eslint-plugin-no-destructuring-arrays-as-objects": "^1.0.5",
+    "@arabasta/eslint-plugin-no-testing-library-without-cleanup": "^1.0.5",
     "@arabasta/eslint-plugin-redux-use-app-functions": "^1.0.5",
     "@arabasta/eslint-plugin-report-caught-error": "^1.0.6",
     "@arabasta/eslint-plugin-require-useeffect-dependency-array": "^1.0.9",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.11.1",
+    "@vitest/eslint-plugin": "^1.1.4",
     "confusing-browser-globals": "^1.0.11",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -61,6 +63,9 @@
   },
   "peerDependencies": {
     "eslint": ">=8.0.0"
+  },
+  "overrides": {
+    "@typescript-eslint/utils": ">=8.0.0"
   },
   "license": "MIT",
   "keywords": [

@@ -1,6 +1,4 @@
-const reduxUseAppFunctions = require('@arabasta/eslint-plugin-redux-use-app-functions');
 const reportCaughtError = require('@arabasta/eslint-plugin-report-caught-error');
-const { FlatCompat } = require('@eslint/eslintrc');
 const eslint = require('@eslint/js');
 const eslintComments = require('@eslint-community/eslint-plugin-eslint-comments/configs');
 const confusingBrowserGlobals = require('confusing-browser-globals');
@@ -9,20 +7,18 @@ const es = require('eslint-plugin-es');
 const newWithError = require('eslint-plugin-new-with-error');
 const unusedImports = require('eslint-plugin-unused-imports');
 const globals = require('globals');
+
+const { FlatCompat } = require('@eslint/eslintrc');
 const tseslint = require('typescript-eslint');
 
 const compat = new FlatCompat();
 
 // TODO: Create multiple test files and automatic config resolution for all of their combinations - react, typescript, (jest or vitest)
-// TODO: Test how internal imports are resolved in .js files.
-// TODO: Add vitest setup
-// TODO: Test in both workshops with `npm link`.
 // TODO: Add a way to track new and disabled rules.
 
 module.exports = tseslint.config(
   eslint.configs.recommended,
   reportCaughtError.configs.recommended,
-  reduxUseAppFunctions.configs.recommended,
   eslintComments.recommended,
   ...compat.extends('plugin:import/recommended'),
   prettier,
@@ -31,8 +27,6 @@ module.exports = tseslint.config(
       globals: {
         ...globals.es2015,
         ...globals.browser,
-        ...globals.node,
-        ...globals.jest,
       },
       ecmaVersion: 'latest',
       sourceType: 'module',

@@ -1,16 +1,10 @@
 const tseslint = require('typescript-eslint');
-const jest = require('eslint-plugin-jest');
-const globals = require('globals');
+const vitest = require('@vitest/eslint-plugin');
 
 module.exports = tseslint.config({
-  extends: [jest.configs['flat/recommended']],
-  languageOptions: {
-    globals: {
-      ...globals.jest,
-    },
-  },
+  extends: [vitest.configs.all],
   rules: {
-    'jest/expect-expect': 'off',
+    'vitest/expect-expect': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {

@@ -7,10 +7,6 @@ const reactRefresh = require('eslint-plugin-react-refresh');
 
 const compat = new FlatCompat();
 
-// The tseslint.config function is a variadic identity function which is a fancy way of saying
-// that it's a function with a spread argument that accepts any number flat config objects
-// and returns the objects unchanged. It exists as a way to quickly and easily provide
-// types for your flat config file without the need for JSDoc type comments.
 module.exports = tseslint.config(
   requireUseeffectDependencyArray.configs.recommended,
   reactESLint.configs.flat.recommended,
@@ -36,7 +32,6 @@ module.exports = tseslint.config(
       propWrapperFunctions: ['forbidExtraProps', 'exact', 'Object.freeze'],
     },
     rules: {
-      // TODO: Decide how to handle this?
       'class-methods-use-this': [
         'error',
         {

@@ -1,4 +1,4 @@
-const baseConfig = require('../src');
+const baseConfig = require('../src/base');
 const reactConfig = require('../src/react');
 const configFilesConfig = require('../src/config-files');
 const typescriptConfig = require('../src/typescript');
@@ -6,6 +6,7 @@ const typescriptDefinitionsConfig = require('../src/typescript-definitions');
 const reactTypescriptConfig = require('../src/react-typescript');
 const jestConfig = require('../src/jest');
 const rtlJestConfig = require('../src/rtl-jest');
+const reduxConfig = require('../src/redux');
 
 // TODO: Add a comment about tseslint usage - https://typescript-eslint.io/packages/typescript-eslint#flat-config-extends
 const tseslint = require('typescript-eslint');
@@ -71,7 +72,7 @@ module.exports = [
   ...tseslint.config({
     name: 'React files',
     files: [`src/**/*.+(${allExtensions.join('|')})`],
-    extends: [...reactConfig, reactTypescriptConfig],
+    extends: [...reactConfig, reactTypescriptConfig, ...reduxConfig],
     rules: {
       // Put your rules here.
     },
