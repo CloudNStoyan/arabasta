@@ -103,4 +103,8 @@ module.exports = [
       // Put your rules here.
     },
   }),
+
+  {
+    ignores: ['eslint.config.js'],
+  },
 ];

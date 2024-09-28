@@ -1,13 +1,13 @@
 const { exec } = require('node:child_process');
 const fs = require('node:fs/promises');
-const path = require('node:path');
 const os = require('node:os');
+const path = require('node:path');
 
 function sortObjectKeysRecursively(inputObject) {
   if (Array.isArray(inputObject)) {
     const newArray = [];
 
-    for (let i = 0; i < inputObject.length; i++) {
+    for (let i = 0; i < inputObject.length; i += 1) {
       newArray[i] = sortObjectKeysRecursively(inputObject[i]);
     }
 
@@ -22,7 +22,7 @@ function sortObjectKeysRecursively(inputObject) {
 
   const sortedKeys = Object.keys(inputObject).sort();
 
-  for (let i = 0; i < sortedKeys.length; i++) {
+  for (let i = 0; i < sortedKeys.length; i += 1) {
     newObject[sortedKeys[i]] = sortObjectKeysRecursively(
       inputObject[sortedKeys[i]]
     );
@@ -34,7 +34,7 @@ function sortObjectKeysRecursively(inputObject) {
 async function addResolvedConfig(input) {
   const resolvedConfigJSON = await new Promise((resolve, reject) => {
     exec(
-      `npx eslint -c eslint-config.js --print-config ${input.testInputFile}`,
+      `npx eslint --print-config ${input.testInputFile}`,
       {
         cwd: __dirname,
         env: {
@@ -100,7 +100,7 @@ function addTag(original, tag) {
 }
 
 function addVariations(original, ...tags) {
-  let result = [...original];
+  const result = [...original];
 
   for (const tag of tags) {
     result.push(...addTag(original, tag));
@@ -184,21 +184,27 @@ function getInputConfigs() {
 }
 
 (async () => {
-  const groups = groupBy(getInputConfigs(), (x) => x.variation);
+  const groups = groupBy(getInputConfigs(), (config) => config.variation);
 
   for (const group of groups) {
-    for (const chunk of chunkArray(group.items, os.cpus().length / 2)) {
+    const chunks = [...chunkArray(group.items, os.cpus().length / 2)];
+    for (let chunkIndex = 0; chunkIndex < chunks.length; chunkIndex += 1) {
+      const chunk = chunks[chunkIndex];
       const configs = await Promise.all(chunk.map(addResolvedConfig));
+
+      // eslint-disable-next-line no-console
+      console.info(
+        `Resolving ESLint configs for config variation "${group.key}"${chunks.length > 1 ? ` (Chunk ${chunkIndex + 1} of ${chunks.length})` : ''}`
+      );
 
       for (const config of configs) {
         if (config.resolved) {
-          const fullFilePath =
-            path.join(
-              __dirname,
-              'generated',
-              config.variation,
-              config.testInputFile
-            ) + '.json';
+          const fullFilePath = `${path.join(
+            __dirname,
+            'generated',
+            config.variation,
+            config.testInputFile
+          )}.json`;
 
           await fs.mkdir(path.dirname(fullFilePath), { recursive: true });
 
@@ -207,6 +213,7 @@ function getInputConfigs() {
 
           await fs.writeFile(fullFilePath, processedConfigJSON);
         } else {
+          // eslint-disable-next-line no-console
           console.warn(
             `\x1b[33m[WARNING] eslint could not resolve config for file "${config.testInputFile}"\x1b[0m`
           );
