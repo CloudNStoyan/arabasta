@@ -156,6 +156,8 @@ function groupBy(items, getGroupKey) {
 }
 
 function* chunkArray(items, size) {
+  size = size <= 0 ? 1 : size;
+
   for (let i = 0; i < items.length; i += size) {
     yield items.slice(i, i + size);
   }
@@ -187,14 +189,20 @@ function getInputConfigs() {
   const groups = groupBy(getInputConfigs(), (config) => config.variation);
 
   for (const group of groups) {
-    const chunks = [...chunkArray(group.items, os.cpus().length / 2)];
+    const chunks = [
+      ...chunkArray(
+        group.items,
+        Math.min(1, Math.floor(os.availableParallelism() / 2))
+      ),
+    ];
+
     for (let chunkIndex = 0; chunkIndex < chunks.length; chunkIndex += 1) {
       const chunk = chunks[chunkIndex];
       const configs = await Promise.all(chunk.map(addResolvedConfig));
 
       // eslint-disable-next-line no-console
       console.info(
-        `Resolving ESLint configs for config variation "${group.key}"${chunks.length > 1 ? ` (Chunk ${chunkIndex + 1} of ${chunks.length})` : ''}`
+        `Resolving ESLint configs for config variation "${group.key}"${chunks.length > 1 ? ` [chunk ${chunkIndex + 1} of ${chunks.length}]` : ''}`
       );
 
       for (const config of configs) {
