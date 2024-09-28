@@ -10,13 +10,15 @@ const jestConfig = require('../src/jest');
 const rtlJestConfig = require('../src/rtl-jest');
 const reduxConfig = require('../src/redux');
 
-// TODO: Add a comment about tseslint usage - https://typescript-eslint.io/packages/typescript-eslint#flat-config-extends
-const tseslint = require('typescript-eslint');
-
 const typeScriptExtensions = ['ts', 'cts', 'mts', 'tsx'];
 const allExtensions = ['js', 'cjs', 'mjs', 'jsx', ...typeScriptExtensions];
 
 module.exports = [
+  // We use a tseslint helper function here so that we get easy "extends"
+  // functionality that eslint flat config makes hard to achieve.
+  // You can use this for the convenience, without using TypeScript.
+  // Ideally this helper function should be provided by eslint.
+  // For more information: https://typescript-eslint.io/packages/typescript-eslint/#flat-config-extends
   ...tseslint.config({
     name: 'All files',
     files: [`**/*.+(${allExtensions.join('|')})`],
