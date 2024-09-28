@@ -1,3 +1,5 @@
+const tseslint = require('typescript-eslint');
+
 const baseConfig = require('../src/base');
 const reactConfig = require('../src/react');
 const configFilesConfig = require('../src/config-files');
