@@ -95,40 +95,40 @@ function postProcessConfig(config) {
 
 const TAG_DELIMITER = '_';
 
-function addTag(original, tag) {
-  return original.map((variation) => variation + TAG_DELIMITER + tag);
-}
-
-function addVariations(original, ...tags) {
-  const result = [...original];
-
-  for (const tag of tags) {
-    result.push(...addTag(original, tag));
-  }
-
-  return result;
-}
-
-function addReactTestingLibrary(original) {
-  const reactVariations = original.filter((x) => {
-    const tags = x.split(TAG_DELIMITER);
-    return (
-      tags.includes('react') &&
-      (tags.includes('jest') || tags.includes('vitest'))
-    );
-  });
-
-  return [...original, ...addTag(reactVariations, 'rtl')];
-}
-
 function getConfigVariations() {
   let current = ['base'];
 
-  current = addVariations(current, 'typescript');
-  current = addVariations(current, 'react', 'react-redux');
-  current = addVariations(current, 'jest', 'vitest');
+  current = [
+    ...current,
+    ...current.map((x) => x + TAG_DELIMITER + 'typescript'),
+  ];
 
-  current = addReactTestingLibrary(current);
+  current = [
+    ...current,
+    ...current.map((x) => x + TAG_DELIMITER + 'react'),
+    ...current.map(
+      (x) => x + TAG_DELIMITER + 'react' + TAG_DELIMITER + 'react-redux'
+    ),
+  ];
+
+  current = [
+    ...current,
+    ...current.map((x) => x + TAG_DELIMITER + 'jest'),
+    ...current.map((x) => x + TAG_DELIMITER + 'vitest'),
+  ];
+
+  current = [
+    ...current,
+    ...current
+      .filter((x) => {
+        const tags = x.split(TAG_DELIMITER);
+        return (
+          tags.includes('react') &&
+          (tags.includes('jest') || tags.includes('vitest'))
+        );
+      })
+      .map((x) => x + TAG_DELIMITER + 'rtl'),
+  ];
 
   current.sort();
 
@@ -163,11 +163,14 @@ function* chunkArray(items, size) {
   }
 }
 
-function getInputConfigs() {
-  const testInputFiles = [
+function getInputConfigs(includeTypeScript) {
+  const jsTestInputFiles = [
     'config-file.js',
     'src/file.js',
     'src/file.test.js',
+  ];
+
+  const tsTestInputFiles = [
     'config-file.ts',
     'src/file.ts',
     'src/file.test.ts',
@@ -177,8 +180,14 @@ function getInputConfigs() {
   const configs = [];
 
   for (const variation of getConfigVariations()) {
-    for (const testInputFile of testInputFiles) {
+    for (const testInputFile of jsTestInputFiles) {
       configs.push({ variation, testInputFile });
+    }
+
+    if (variation.split(TAG_DELIMITER).includes('typescript')) {
+      for (const testInputFile of tsTestInputFiles) {
+        configs.push({ variation, testInputFile });
+      }
     }
   }
 
@@ -192,7 +201,7 @@ function getInputConfigs() {
     const chunks = [
       ...chunkArray(
         group.items,
-        Math.min(1, Math.floor(os.availableParallelism() / 2))
+        Math.max(1, Math.floor(os.availableParallelism() / 2))
       ),
     ];
 

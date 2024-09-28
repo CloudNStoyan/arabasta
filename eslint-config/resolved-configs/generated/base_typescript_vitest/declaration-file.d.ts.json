@@ -1556,7 +1556,7 @@
       {
         "zones": [
           {
-            "from": "./src/**/*.+(spec|test).+(js|cjs|mjs|jsx|ts|cts|mts|tsx)",
+            "from": "./src/**/*.+(spec|test).+(js|cjs|mjs|ts|cts|mts)",
             "message": "Importing test files in non-test files is not allowed.",
             "target": "./"
           },

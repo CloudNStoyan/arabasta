@@ -1192,7 +1192,6 @@
   },
   "plugins": [
     "@",
-    "@arabasta/redux-use-app-functions:@arabasta/eslint-plugin-redux-use-app-functions@1.0.5",
     "@arabasta/report-caught-error:@arabasta/eslint-plugin-report-caught-error@1.0.6",
     "@arabasta/require-useeffect-dependency-array:@arabasta/eslint-plugin-require-useeffect-dependency-array@1.0.9",
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.0",
@@ -1206,9 +1205,6 @@
     "unused-imports"
   ],
   "rules": {
-    "@arabasta/redux-use-app-functions/use-app-dispatch": ["error"],
-    "@arabasta/redux-use-app-functions/use-app-selector": ["error"],
-    "@arabasta/redux-use-app-functions/use-create-app-async-thunk": ["error"],
     "@arabasta/report-caught-error/report-caught-error": ["error"],
     "@arabasta/require-useeffect-dependency-array/require-useeffect-dependency-array": [
       "error"
@@ -1432,7 +1428,7 @@
       {
         "zones": [
           {
-            "from": "./src/**/*.+(spec|test).+(js|cjs|mjs|jsx|ts|cts|mts|tsx)",
+            "from": "./src/**/*.+(spec|test).+(js|cjs|mjs|jsx)",
             "message": "Importing test files in non-test files is not allowed.",
             "target": "./"
           },
@@ -2442,7 +2438,7 @@
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [".jsx", ".tsx"]
+        "extensions": [".jsx"]
       }
     ],
     "react/jsx-first-prop-new-line": ["off"],
@@ -2737,16 +2733,7 @@
     "yoda": ["error"]
   },
   "settings": {
-    "import/extensions": [
-      ".js",
-      ".cjs",
-      ".mjs",
-      ".jsx",
-      ".ts",
-      ".cts",
-      ".mts",
-      ".tsx"
-    ],
+    "import/extensions": [".js", ".cjs", ".mjs", ".jsx"],
     "import/internal-regex": "^(~|src)",
     "propWrapperFunctions": ["forbidExtraProps", "exact", "Object.freeze"],
     "react": {

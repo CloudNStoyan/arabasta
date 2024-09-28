@@ -1405,7 +1405,7 @@
       {
         "zones": [
           {
-            "from": "./src/**/*.+(spec|test).+(js|cjs|mjs|jsx|ts|cts|mts|tsx)",
+            "from": "./src/**/*.+(spec|test).+(js|cjs|mjs)",
             "message": "Importing test files in non-test files is not allowed.",
             "target": "./"
           },
@@ -2290,16 +2290,7 @@
     "yoda": ["error"]
   },
   "settings": {
-    "import/extensions": [
-      ".js",
-      ".cjs",
-      ".mjs",
-      ".jsx",
-      ".ts",
-      ".cts",
-      ".mts",
-      ".tsx"
-    ],
+    "import/extensions": [".js", ".cjs", ".mjs"],
     "import/internal-regex": "^(~|src)"
   }
 }

@@ -1207,7 +1207,6 @@
   "plugins": [
     "@",
     "@arabasta/no-destructuring-arrays-as-objects:@arabasta/eslint-plugin-no-testing-library-without-cleanup@1.1.1",
-    "@arabasta/redux-use-app-functions:@arabasta/eslint-plugin-redux-use-app-functions@1.0.5",
     "@arabasta/report-caught-error:@arabasta/eslint-plugin-report-caught-error@1.0.6",
     "@arabasta/require-useeffect-dependency-array:@arabasta/eslint-plugin-require-useeffect-dependency-array@1.0.9",
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.0",
@@ -1221,16 +1220,12 @@
     "react",
     "react-hooks",
     "react-refresh",
-    "testing-library:eslint-plugin-testing-library@6.3.0",
     "unused-imports"
   ],
   "rules": {
     "@arabasta/no-destructuring-arrays-as-objects/no-destructuring-arrays-as-objects": [
       "error"
     ],
-    "@arabasta/redux-use-app-functions/use-app-dispatch": ["error"],
-    "@arabasta/redux-use-app-functions/use-app-selector": ["error"],
-    "@arabasta/redux-use-app-functions/use-create-app-async-thunk": ["error"],
     "@arabasta/report-caught-error/report-caught-error": ["error"],
     "@arabasta/require-useeffect-dependency-array/require-useeffect-dependency-array": [
       "error"
@@ -2846,38 +2841,6 @@
     "symbol-description": ["error"],
     "template-curly-spacing": ["off"],
     "template-tag-spacing": ["off"],
-    "testing-library/await-async-events": [
-      "error",
-      {
-        "eventModule": "userEvent"
-      }
-    ],
-    "testing-library/await-async-queries": ["error"],
-    "testing-library/await-async-utils": ["error"],
-    "testing-library/no-await-sync-events": [
-      "error",
-      {
-        "eventModules": ["fire-event"]
-      }
-    ],
-    "testing-library/no-await-sync-queries": ["error"],
-    "testing-library/no-container": ["error"],
-    "testing-library/no-debugging-utils": ["warn"],
-    "testing-library/no-dom-import": ["error", "react"],
-    "testing-library/no-global-regexp-flag-in-query": ["error"],
-    "testing-library/no-manual-cleanup": ["off"],
-    "testing-library/no-node-access": ["error"],
-    "testing-library/no-promise-in-fire-event": ["error"],
-    "testing-library/no-render-in-lifecycle": ["error"],
-    "testing-library/no-unnecessary-act": ["error"],
-    "testing-library/no-wait-for-multiple-assertions": ["off"],
-    "testing-library/no-wait-for-side-effects": ["error"],
-    "testing-library/no-wait-for-snapshot": ["error"],
-    "testing-library/prefer-find-by": ["error"],
-    "testing-library/prefer-presence-queries": ["error"],
-    "testing-library/prefer-query-by-disappearance": ["error"],
-    "testing-library/prefer-screen-queries": ["error"],
-    "testing-library/render-result-naming-convention": ["error"],
     "unicode-bom": ["error", "never"],
     "unicorn/empty-brace-spaces": ["off"],
     "unicorn/no-nested-ternary": ["off"],
