@@ -1,7 +1,21 @@
 import { ESLintUtils } from '@typescript-eslint/utils';
 import * as tsutils from 'ts-api-utils';
 
-export = ESLintUtils.RuleCreator.withoutDocs({
+const PLUGIN_DOCS_URL =
+  'https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-no-destructuring-arrays-as-objects/README.md';
+
+interface PluginDocs {
+  description: string;
+  recommended: boolean;
+  requiresTypeChecking: true;
+}
+
+const createRule = ESLintUtils.RuleCreator<PluginDocs>(
+  (name) => `${PLUGIN_DOCS_URL}#${name}`
+);
+
+export = createRule({
+  name: 'no-destructuring-arrays-as-objects',
   meta: {
     messages: {
       noDestructuringArraysAsObjects:
@@ -10,7 +24,8 @@ export = ESLintUtils.RuleCreator.withoutDocs({
     type: 'problem',
     docs: {
       description: 'Disallow destructuring arrays as objects.',
-      recommended: 'recommended',
+      recommended: true,
+      requiresTypeChecking: true,
     },
     schema: [],
   },

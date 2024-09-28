@@ -2,9 +2,10 @@ import { RuleTester } from '@typescript-eslint/rule-tester';
 import noDestructuringArraysAsObjectsRule from './no-destructuring-arrays-as-objects.js';
 
 const ruleTester = new RuleTester({
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: 'tsconfig.json',
+  languageOptions: {
+    parserOptions: {
+      project: ['tsconfig.json'],
+    },
   },
 });
 
