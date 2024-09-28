@@ -1,10 +1,9 @@
-import * as parserBase from '@typescript-eslint/parser';
 import noDestructuringArraysAsObjectsRule from './rules/no-destructuring-arrays-as-objects.js';
 
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-no-testing-library-without-cleanup',
-    version: '1.0.5',
+    version: '1.1.0',
   },
   configs: {},
   rules: {
@@ -22,10 +21,6 @@ plugin.configs = {
     rules: {
       '@arabasta/no-destructuring-arrays-as-objects/no-destructuring-arrays-as-objects':
         'error',
-    },
-    languageOptions: {
-      parser: parserBase,
-      sourceType: 'module',
     },
   },
   'recommended-legacy': {
