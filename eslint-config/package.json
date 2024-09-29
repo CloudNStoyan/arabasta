@@ -26,7 +26,7 @@
   "scripts": {
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
-    "generate-config-snapshots": "rimraf resolved-configs/generated && node resolved-configs/generate.js && npm run format"
+    "generate-resolved-configs": "rimraf resolved-configs/generated && node resolved-configs/generate.js && npm run format"
   },
   "dependencies": {
     "@arabasta/eslint-plugin-no-destructuring-arrays-as-objects": "^1.1.1",

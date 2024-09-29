@@ -3,6 +3,8 @@ const fs = require('node:fs/promises');
 const os = require('node:os');
 const path = require('node:path');
 
+const { createConfigVariation } = require('./eslint.config');
+
 function sortObjectKeysRecursively(inputObject) {
   if (Array.isArray(inputObject)) {
     const newArray = [];
@@ -29,6 +31,32 @@ function sortObjectKeysRecursively(inputObject) {
   }
 
   return newObject;
+}
+
+function postProcessConfig(config) {
+  // Sort the plugins array.
+  config.plugins = config.plugins.toSorted((a, b) => a.localeCompare(b));
+
+  // Normalize the severity values.
+  const NUMBER_TO_SEVERITY_MAP = { 0: 'off', 1: 'warn', 2: 'error' };
+
+  for (const ruleName of Object.keys(config.rules)) {
+    const ruleOptions = config.rules[ruleName];
+
+    if (Array.isArray(ruleOptions)) {
+      ruleOptions[0] = NUMBER_TO_SEVERITY_MAP[ruleOptions[0]];
+    } else {
+      // This isn't supposed to happen
+      throw new Error(
+        `Rule Options must always be an array, but this is not the case for: ${ruleName}`
+      );
+    }
+  }
+
+  // Sort all the object keys.
+  config = sortObjectKeysRecursively(config);
+
+  return config;
 }
 
 async function addResolvedConfig(input) {
@@ -61,36 +89,23 @@ async function addResolvedConfig(input) {
     );
   });
 
-  return {
-    ...input,
-    resolved: resolvedConfigJSON ? JSON.parse(resolvedConfigJSON) : undefined,
-  };
-}
+  let resolved = resolvedConfigJSON
+    ? JSON.parse(resolvedConfigJSON)
+    : undefined;
 
-function postProcessConfig(config) {
-  // Sort the plugins array.
-  config.plugins = config.plugins.toSorted((a, b) => a.localeCompare(b));
-
-  // Normalize the severity values.
-  const NUMBER_TO_SEVERITY_MAP = { 0: 'off', 1: 'warn', 2: 'error' };
-
-  for (const ruleName of Object.keys(config.rules)) {
-    const ruleOptions = config.rules[ruleName];
-
-    if (Array.isArray(ruleOptions)) {
-      ruleOptions[0] = NUMBER_TO_SEVERITY_MAP[ruleOptions[0]];
-    } else {
-      // This isn't supposed to happen
-      throw new Error(
-        `Rule Options must always be an array, but this is not the case for: ${ruleName}`
-      );
-    }
+  if (resolved) {
+    resolved = postProcessConfig(resolved);
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `\x1b[33m[WARNING] ESLint could not resolve config for file "${input.testInputFile}"\x1b[0m`
+    );
   }
 
-  // Sort all the object keys.
-  config = sortObjectKeysRecursively(config);
-
-  return config;
+  return {
+    ...input,
+    resolved,
+  };
 }
 
 const TAG_DELIMITER = '_';
@@ -163,7 +178,7 @@ function* chunkArray(items, size) {
   }
 }
 
-function getInputConfigs(includeTypeScript) {
+function getInputConfigs() {
   const jsTestInputFiles = [
     'config-file.js',
     'src/file.js',
@@ -194,10 +209,68 @@ function getInputConfigs(includeTypeScript) {
   return configs;
 }
 
+function getNonConfiguredRules(eslintConfigArray, resolvedConfigs) {
+  const allRules = new Set(
+    resolvedConfigs.flatMap((x) => Object.keys(x.rules))
+  );
+
+  const nonConfiguredRules = [];
+
+  for (const eslintConfig of eslintConfigArray) {
+    if (eslintConfig.plugins) {
+      const plugins = Object.entries(eslintConfig.plugins);
+
+      for (const [pluginName, plugin] of plugins) {
+        const rules = Object.entries(plugin.rules);
+
+        for (const [ruleName, rule] of rules) {
+          let fullRuleName = `${pluginName}/${ruleName}`;
+
+          if (
+            !rule.meta.deprecated &&
+            !allRules.has(ruleName) &&
+            !allRules.has(fullRuleName)
+          ) {
+            nonConfiguredRules.push(fullRuleName);
+          }
+        }
+      }
+    }
+  }
+
+  return nonConfiguredRules;
+}
+
+function getDisabledRules(resolvedConfigs) {
+  const disabledRules = [];
+
+  for (const config of resolvedConfigs) {
+    for (const [ruleName, ruleConfig] of Object.entries(config.rules)) {
+      const severity = ruleConfig[0].toLowerCase();
+
+      if (severity === 'off') {
+        disabledRules.push(ruleName);
+      }
+    }
+  }
+
+  return disabledRules;
+}
+
+async function writeFile(filePath, object) {
+  await fs.mkdir(path.dirname(filePath), {
+    recursive: true,
+  });
+
+  await fs.writeFile(filePath, JSON.stringify(object, null, 2));
+}
+
 (async () => {
   const groups = groupBy(getInputConfigs(), (config) => config.variation);
 
   for (const group of groups) {
+    const variation = group.key;
+
     const chunks = [
       ...chunkArray(
         group.items,
@@ -205,37 +278,44 @@ function getInputConfigs(includeTypeScript) {
       ),
     ];
 
+    const allConfigs = [];
+
     for (let chunkIndex = 0; chunkIndex < chunks.length; chunkIndex += 1) {
       const chunk = chunks[chunkIndex];
       const configs = await Promise.all(chunk.map(addResolvedConfig));
 
+      allConfigs.push(...configs);
+
       // eslint-disable-next-line no-console
       console.info(
-        `Resolving ESLint configs for config variation "${group.key}"${chunks.length > 1 ? ` [chunk ${chunkIndex + 1} of ${chunks.length}]` : ''}`
+        `Resolving ESLint configs for config variation "${variation}"${chunks.length > 1 ? ` [chunk ${chunkIndex + 1} of ${chunks.length}]` : ''}`
       );
 
       for (const config of configs) {
         if (config.resolved) {
-          const fullFilePath = `${path.join(
-            __dirname,
-            'generated',
-            config.variation,
-            config.testInputFile
-          )}.json`;
-
-          await fs.mkdir(path.dirname(fullFilePath), { recursive: true });
-
-          const processedConfig = postProcessConfig(config.resolved);
-          const processedConfigJSON = JSON.stringify(processedConfig, null, 2);
-
-          await fs.writeFile(fullFilePath, processedConfigJSON);
-        } else {
-          // eslint-disable-next-line no-console
-          console.warn(
-            `\x1b[33m[WARNING] eslint could not resolve config for file "${config.testInputFile}"\x1b[0m`
+          await writeFile(
+            `${path.join(
+              __dirname,
+              'generated',
+              config.variation,
+              config.testInputFile
+            )}.json`,
+            config.resolved
           );
         }
       }
     }
+
+    const resolvedConfigs = allConfigs.map((x) => x.resolved);
+
+    await writeFile(
+      path.join(__dirname, 'generated', variation, 'non-configured-rules.json'),
+      getNonConfiguredRules(createConfigVariation(variation), resolvedConfigs)
+    );
+
+    await writeFile(
+      path.join(__dirname, 'generated', variation, 'disabled-rules.json'),
+      getDisabledRules(resolvedConfigs)
+    );
   }
 })();
