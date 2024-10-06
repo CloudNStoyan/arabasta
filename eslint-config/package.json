@@ -9,6 +9,10 @@
     "url": "https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config"
   },
   "main": "./src/index.js",
+  "exports": {
+    "import": "./src/index.mjs",
+    "require": "./src/index.js"
+  },
   "scripts": {
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",

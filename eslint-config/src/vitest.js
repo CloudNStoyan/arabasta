@@ -2,7 +2,7 @@ const tseslint = require('typescript-eslint');
 const vitest = require('@vitest/eslint-plugin');
 
 module.exports = tseslint.config({
-  extends: [vitest.configs.all],
+  extends: [vitest.configs.recommended],
   rules: {
     'vitest/expect-expect': 'off',
     'import/no-extraneous-dependencies': [
