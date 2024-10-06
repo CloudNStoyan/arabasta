@@ -94,7 +94,7 @@ function createConfigVariation(variation) {
       ...tseslint.config({
         name: 'TypeScript definition files',
         files: ['**/*.d.ts'],
-        extends: [typescriptDefinitionsConfig],
+        extends: [...typescriptDefinitionsConfig],
         rules: {
           // Put your rules here.
         },
@@ -111,7 +111,7 @@ function createConfigVariation(variation) {
           ...reactConfig,
 
           ...(variationTags.includes('typescript')
-            ? [reactTypescriptConfig]
+            ? [...reactTypescriptConfig]
             : []),
 
           ...(variationTags.includes('react-redux') ? [...reduxConfig] : []),

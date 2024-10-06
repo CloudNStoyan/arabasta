@@ -1,7 +1,6 @@
-/**
- * @type {import("eslint").Linter.FlatConfig}
- */
-module.exports = {
+const tseslint = require('typescript-eslint');
+
+module.exports = tseslint.config({
   rules: {
     'react/jsx-filename-extension': [
       'error',
@@ -10,4 +9,4 @@ module.exports = {
       },
     ],
   },
-};
+});
