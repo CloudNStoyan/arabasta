@@ -8,10 +8,19 @@
     "type": "git",
     "url": "https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config"
   },
+  "types": "./src/index.d.ts",
   "main": "./src/index.js",
   "exports": {
-    "import": "./src/index.mjs",
-    "require": "./src/index.js"
+    ".": {
+      "import": {
+        "types": "./src/index.d.mts",
+        "default": "./src/index.mjs"
+      },
+      "require": {
+        "types": "./src/index.d.ts",
+        "default": "./src/index.js"
+      }
+    }
   },
   "scripts": {
     "format": "prettier --cache --write .",
