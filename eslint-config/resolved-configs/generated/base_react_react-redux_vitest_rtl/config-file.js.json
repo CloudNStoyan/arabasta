@@ -2291,6 +2291,11 @@
   },
   "settings": {
     "import/extensions": [".js", ".cjs", ".mjs", ".jsx"],
-    "import/internal-regex": "^(~|src)"
+    "import/internal-regex": "^(~|src)",
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".cjs", ".mjs", ".jsx"]
+      }
+    }
   }
 }

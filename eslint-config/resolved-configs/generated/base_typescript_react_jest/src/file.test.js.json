@@ -2762,6 +2762,20 @@
       ".tsx"
     ],
     "import/internal-regex": "^(~|src)",
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".cjs",
+          ".mjs",
+          ".jsx",
+          ".ts",
+          ".cts",
+          ".mts",
+          ".tsx"
+        ]
+      }
+    },
     "propWrapperFunctions": ["forbidExtraProps", "exact", "Object.freeze"],
     "react": {
       "pragma": "React",

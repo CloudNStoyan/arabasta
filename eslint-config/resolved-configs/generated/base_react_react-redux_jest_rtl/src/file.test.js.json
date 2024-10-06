@@ -2790,6 +2790,11 @@
   "settings": {
     "import/extensions": [".js", ".cjs", ".mjs", ".jsx"],
     "import/internal-regex": "^(~|src)",
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".cjs", ".mjs", ".jsx"]
+      }
+    },
     "propWrapperFunctions": ["forbidExtraProps", "exact", "Object.freeze"],
     "react": {
       "pragma": "React",

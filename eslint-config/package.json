@@ -8,21 +8,7 @@
     "type": "git",
     "url": "https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config"
   },
-  "main": "./src/base.js",
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "default": "./src/base.js",
-      "config-files": "./src/config-files.js",
-      "jest": "./src/jest.js",
-      "react-typescript": "./src/react-typescript.js",
-      "react": "./src/react.js",
-      "redux": "./src/redux.js",
-      "rtl-jest": "./src/rtl-jest.js",
-      "typescript-definitions": "./src/typescript-definitions.js",
-      "typescript": "./src/typescript.js"
-    }
-  },
+  "main": "./src/index.js",
   "scripts": {
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
@@ -59,7 +45,8 @@
   "devDependencies": {
     "eslint": "^8.57.1",
     "prettier": "^3.3.3",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "typescript": "~5.5.4"
   },
   "peerDependencies": {
     "eslint": ">=8.0.0"

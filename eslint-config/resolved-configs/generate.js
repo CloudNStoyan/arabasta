@@ -115,21 +115,21 @@ function getConfigVariations() {
 
   current = [
     ...current,
-    ...current.map((x) => x + TAG_DELIMITER + 'typescript'),
+    ...current.map((x) => `${x}${TAG_DELIMITER}typescript`),
   ];
 
   current = [
     ...current,
-    ...current.map((x) => x + TAG_DELIMITER + 'react'),
+    ...current.map((x) => `${x}${TAG_DELIMITER}react`),
     ...current.map(
-      (x) => x + TAG_DELIMITER + 'react' + TAG_DELIMITER + 'react-redux'
+      (x) => `${x}${TAG_DELIMITER}react${TAG_DELIMITER}react-redux`
     ),
   ];
 
   current = [
     ...current,
-    ...current.map((x) => x + TAG_DELIMITER + 'jest'),
-    ...current.map((x) => x + TAG_DELIMITER + 'vitest'),
+    ...current.map((x) => `${x}${TAG_DELIMITER}jest`),
+    ...current.map((x) => `${x}${TAG_DELIMITER}vitest`),
   ];
 
   current = [
@@ -142,7 +142,7 @@ function getConfigVariations() {
           (tags.includes('jest') || tags.includes('vitest'))
         );
       })
-      .map((x) => x + TAG_DELIMITER + 'rtl'),
+      .map((x) => `${x}${TAG_DELIMITER}rtl`),
   ];
 
   current.sort();
@@ -224,7 +224,7 @@ function getNonConfiguredRules(eslintConfigArray, resolvedConfigs) {
         const rules = Object.entries(plugin.rules);
 
         for (const [ruleName, rule] of rules) {
-          let fullRuleName = `${pluginName}/${ruleName}`;
+          const fullRuleName = `${pluginName}/${ruleName}`;
 
           if (
             !rule.meta.deprecated &&
@@ -318,4 +318,8 @@ async function writeFile(filePath, object) {
       getDisabledRules(resolvedConfigs)
     );
   }
-})();
+})().catch((error) => {
+  // eslint-disable-next-line no-console
+  console.error(error);
+  process.exit(1);
+});

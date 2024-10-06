@@ -1,21 +1,20 @@
-// We use a tseslint helper function here so that we get easy "extends"
-// functionality that eslint flat config makes hard to achieve.
-// You can use this for the convenience, without using TypeScript.
-// Ideally this helper function should be provided by eslint.
-// For more information: https://typescript-eslint.io/packages/typescript-eslint/#flat-config-extends
+// import/no-unresolved doesn't support node "exports" field. https://github.com/import-js/eslint-plugin-import/issues/1810
+// eslint-disable-next-line import/no-unresolved
 const tseslint = require('typescript-eslint');
 
-const baseConfig = require('../src/base');
-const reactConfig = require('../src/react');
-const configFilesConfig = require('../src/config-files');
-const typescriptConfig = require('../src/typescript');
-const typescriptDefinitionsConfig = require('../src/typescript-definitions');
-const reactTypescriptConfig = require('../src/react-typescript');
-const jestConfig = require('../src/jest');
-const rtlJestConfig = require('../src/rtl-jest');
-const vitestConfig = require('../src/vitest');
-const rtlVitestConfig = require('../src/rtl-vitest');
-const reduxConfig = require('../src/redux');
+const {
+  baseConfig,
+  configFilesConfig,
+  jestConfig,
+  reactConfig,
+  reactTypescriptConfig,
+  reduxConfig,
+  rtlJestConfig,
+  typescriptConfig,
+  typescriptDefinitionsConfig,
+  rtlVitestConfig,
+  vitestConfig,
+} = require('..');
 
 function createConfigVariation(variation) {
   const variationTags = variation.split('_');
@@ -42,6 +41,11 @@ function createConfigVariation(variation) {
       extends: [...baseConfig],
       settings: {
         'import/extensions': allExtensions.map((ext) => `.${ext}`),
+        'import/resolver': {
+          node: {
+            extensions: allExtensions.map((ext) => `.${ext}`),
+          },
+        },
         'import/internal-regex': '^(~|src)',
       },
       rules: {
@@ -162,7 +166,10 @@ function createConfigVariation(variation) {
   configs.push(
     ...tseslint.config({
       name: 'Root level configuration files',
-      files: [`*.+(${allExtensions.join('|')})`],
+      files: [
+        `*.+(${allExtensions.join('|')})`,
+        `__mocks__/**/*.+(${allExtensions.join('|')})`,
+      ],
       extends: [...configFilesConfig],
       rules: {
         // Put your rules here.
@@ -171,7 +178,7 @@ function createConfigVariation(variation) {
   );
 
   configs.push({
-    ignores: ['eslint.config.js', 'generate.js'],
+    ignores: ['eslint.config.js'],
   });
 
   return configs;
