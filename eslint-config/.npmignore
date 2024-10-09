@@ -1,0 +1,3 @@
+resolved-configs
+*.md
+!README.md
