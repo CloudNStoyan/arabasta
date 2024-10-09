@@ -46,7 +46,6 @@ function createConfigVariation(variation) {
             extensions: allExtensions.map((ext) => `.${ext}`),
           },
         },
-        'import/internal-regex': '^(~|src)',
       },
       rules: {
         'import/no-restricted-paths': [

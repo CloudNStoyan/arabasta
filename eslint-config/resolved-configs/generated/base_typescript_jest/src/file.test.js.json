@@ -2298,7 +2298,6 @@
   },
   "settings": {
     "import/extensions": [".js", ".cjs", ".mjs", ".ts", ".cts", ".mts"],
-    "import/internal-regex": "^(~|src)",
     "import/resolver": {
       "node": {
         "extensions": [".js", ".cjs", ".mjs", ".ts", ".cts", ".mts"]

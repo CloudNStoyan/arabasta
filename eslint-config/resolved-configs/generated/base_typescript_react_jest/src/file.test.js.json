@@ -2761,7 +2761,6 @@
       ".mts",
       ".tsx"
     ],
-    "import/internal-regex": "^(~|src)",
     "import/resolver": {
       "node": {
         "extensions": [

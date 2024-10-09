@@ -2291,7 +2291,6 @@
   },
   "settings": {
     "import/extensions": [".js", ".cjs", ".mjs"],
-    "import/internal-regex": "^(~|src)",
     "import/resolver": {
       "node": {
         "extensions": [".js", ".cjs", ".mjs"]
