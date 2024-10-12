@@ -25,7 +25,9 @@
   "scripts": {
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
-    "generate-resolved-configs": "rimraf resolved-configs/generated && node resolved-configs/generate.js && npm run format"
+    "generate-resolved-configs": "rimraf resolved-configs/generated && node resolved-configs/generate.js && npm run format",
+    "fail-on-uncommitted-changes": "git add . && git diff --quiet && git diff --cached --quiet",
+    "test": "npm run generate-resolved-configs && npm run fail-on-uncommitted-changes"
   },
   "dependencies": {
     "@arabasta/eslint-plugin-no-destructuring-arrays-as-objects": "^1.1.1",
