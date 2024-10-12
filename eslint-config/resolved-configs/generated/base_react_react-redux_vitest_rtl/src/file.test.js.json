@@ -44,6 +44,7 @@
       "BackgroundFetchRecord": false,
       "BackgroundFetchRegistration": false,
       "BarProp": false,
+      "BarcodeDetector": false,
       "BaseAudioContext": false,
       "BatteryManager": false,
       "BeforeUnloadEvent": false,
@@ -740,6 +741,7 @@
       "SharedStorage": false,
       "SharedStorageWorklet": false,
       "SharedWorker": false,
+      "SnapEvent": false,
       "SourceBuffer": false,
       "SourceBufferList": false,
       "SpeechSynthesis": false,
@@ -1091,6 +1093,8 @@
       "onresize": true,
       "onscroll": true,
       "onscrollend": true,
+      "onscrollsnapchange": true,
+      "onscrollsnapchanging": true,
       "onsearch": true,
       "onsecuritypolicyviolation": true,
       "onseeked": true,
@@ -1206,7 +1210,7 @@
     "react-refresh",
     "testing-library:eslint-plugin-testing-library@6.3.0",
     "unused-imports",
-    "vitest:vitest@1.1.3"
+    "vitest:vitest@1.1.6"
   ],
   "rules": {
     "@arabasta/no-testing-library-without-cleanup/no-testing-library-without-cleanup": [
@@ -1475,6 +1479,7 @@
           "unknown",
           "object"
         ],
+        "named": false,
         "newlines-between": "always",
         "pathGroups": [
           {
@@ -2719,6 +2724,7 @@
     "vitest/no-commented-out-tests": ["error"],
     "vitest/no-identical-title": ["error"],
     "vitest/no-import-node-test": ["error"],
+    "vitest/prefer-vi-mocked": ["error"],
     "vitest/require-local-test-context-for-concurrent-snapshots": ["error"],
     "vitest/valid-describe-callback": ["error"],
     "vitest/valid-expect": ["error"],

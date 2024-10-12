@@ -4,6 +4,7 @@ const os = require('node:os');
 const path = require('node:path');
 
 const { createConfigVariation } = require('./eslint.config');
+const { extractSupportedTsVersion } = require('./extract-supported-ts-version');
 const { createPluginsFile } = require('./list-plugins');
 
 function sortObjectKeysRecursively(inputObject) {
@@ -321,6 +322,7 @@ async function writeFile(filePath, object) {
   }
 
   await createPluginsFile();
+  await extractSupportedTsVersion();
 })().catch((error) => {
   // eslint-disable-next-line no-console
   console.error(error);

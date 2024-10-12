@@ -44,6 +44,7 @@
       "BackgroundFetchRecord": false,
       "BackgroundFetchRegistration": false,
       "BarProp": false,
+      "BarcodeDetector": false,
       "BaseAudioContext": false,
       "BatteryManager": false,
       "BeforeUnloadEvent": false,
@@ -741,6 +742,7 @@
       "SharedStorage": false,
       "SharedStorageWorklet": false,
       "SharedWorker": false,
+      "SnapEvent": false,
       "SourceBuffer": false,
       "SourceBufferList": false,
       "SpeechSynthesis": false,
@@ -1098,6 +1100,8 @@
       "onresize": true,
       "onscroll": true,
       "onscrollend": true,
+      "onscrollsnapchange": true,
+      "onscrollsnapchanging": true,
       "onsearch": true,
       "onsecuritypolicyviolation": true,
       "onseeked": true,
@@ -1457,6 +1461,7 @@
           "unknown",
           "object"
         ],
+        "named": false,
         "newlines-between": "always",
         "pathGroups": [
           {

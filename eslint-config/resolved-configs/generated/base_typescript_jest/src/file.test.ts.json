@@ -44,6 +44,7 @@
       "BackgroundFetchRecord": false,
       "BackgroundFetchRegistration": false,
       "BarProp": false,
+      "BarcodeDetector": false,
       "BaseAudioContext": false,
       "BatteryManager": false,
       "BeforeUnloadEvent": false,
@@ -740,6 +741,7 @@
       "SharedStorage": false,
       "SharedStorageWorklet": false,
       "SharedWorker": false,
+      "SnapEvent": false,
       "SourceBuffer": false,
       "SourceBufferList": false,
       "SpeechSynthesis": false,
@@ -1100,6 +1102,8 @@
       "onresize": true,
       "onscroll": true,
       "onscrollend": true,
+      "onscrollsnapchange": true,
+      "onscrollsnapchanging": true,
       "onsearch": true,
       "onsecuritypolicyviolation": true,
       "onseeked": true,
@@ -1187,7 +1191,7 @@
       "xit": false,
       "xtest": false
     },
-    "parser": "typescript-eslint/parser@8.7.0",
+    "parser": "typescript-eslint/parser@8.8.1",
     "parserOptions": {
       "ecmaFeatures": {
         "generators": false,
@@ -1207,7 +1211,7 @@
     "@arabasta/no-destructuring-arrays-as-objects:@arabasta/eslint-plugin-no-testing-library-without-cleanup@1.1.1",
     "@arabasta/report-caught-error:@arabasta/eslint-plugin-report-caught-error@1.0.6",
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.0",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.7.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.8.1",
     "deprecation:eslint-plugin-deprecation@3.0.0",
     "es",
     "import",
@@ -1596,6 +1600,7 @@
           "unknown",
           "object"
         ],
+        "named": false,
         "newlines-between": "always",
         "pathGroups": [
           {
