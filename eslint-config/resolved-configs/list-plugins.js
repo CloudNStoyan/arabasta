@@ -100,7 +100,7 @@ async function createPluginsFile() {
       (x) => x.endsWith('.json') && !excludedFiles.includes(path.basename(x))
     )
     // eslint-disable-next-line global-require,import/no-dynamic-require
-    .flatMap((x) => require(`.\\${path.relative(__dirname, x)}`).plugins);
+    .flatMap((x) => require(`./${path.relative(__dirname, x)}`).plugins);
 
   const packageNames = rawPlugins
     .filter((x) => x !== '@')
