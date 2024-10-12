@@ -4,6 +4,7 @@ const os = require('node:os');
 const path = require('node:path');
 
 const { createConfigVariation } = require('./eslint.config');
+const { createPluginsFile } = require('./list-plugins');
 
 function sortObjectKeysRecursively(inputObject) {
   if (Array.isArray(inputObject)) {
@@ -318,6 +319,8 @@ async function writeFile(filePath, object) {
       getDisabledRules(resolvedConfigs)
     );
   }
+
+  await createPluginsFile();
 })().catch((error) => {
   // eslint-disable-next-line no-console
   console.error(error);
