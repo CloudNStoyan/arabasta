@@ -34,7 +34,7 @@ export default [
 ];
 ```
 
-A complete ESM example including React, TypeScript and Vitest can be found here: [ESM Example](./examples/eslint.config.mjs)
+A complete ESM example including React, TypeScript and Vitest can be found here: [ESM Example](https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config/examples/eslint.config.mjs)
 
 #### Usage with CommonJS
 
@@ -48,7 +48,7 @@ module.exports = [
 ];
 ```
 
-A complete CJS example including React, TypeScript and Jest can be found here: [CJS Example](./examples/eslint.config.cjs)
+A complete CJS example including React, TypeScript and Jest can be found here: [CJS Example](https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config/examples/eslint.config.cjs)
 
 #### Available configs
 
