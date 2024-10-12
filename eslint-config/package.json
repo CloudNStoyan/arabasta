@@ -2,7 +2,7 @@
   "name": "@arabasta/eslint-config",
   "version": "1.0.0",
   "type": "commonjs",
-  "description": "ESLint config with many rules extracted from vite-workshop (https://github.com/HristoKolev/vite-workshop)",
+  "description": "Custom ESLint config to share between by projects. Originally extracted from vite-workshop (https://github.com/HristoKolev/vite-workshop)",
   "author": "Hristo Kolev",
   "repository": {
     "type": "git",
