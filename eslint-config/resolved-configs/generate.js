@@ -7,9 +7,6 @@ const { createConfigVariation } = require('./eslint.config');
 const { extractSupportedTsVersion } = require('./extract-supported-ts-version');
 const { createPluginsFile } = require('./list-plugins');
 
-// eslint-disable-next-line no-console
-console.error('HRISTO: generate.js | PATH', process.env.Path, process.env.PATH);
-
 function sortObjectKeysRecursively(inputObject) {
   if (Array.isArray(inputObject)) {
     const newArray = [];
@@ -72,6 +69,7 @@ async function addResolvedConfig(input) {
         cwd: __dirname,
         env: {
           variation: input.variation,
+          ...process.env,
         },
       },
       (error, stdOut, stdErr) => {
