@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/%40arabasta%2Feslint-config)](https://www.npmjs.com/package/@arabasta/eslint-config)
 [![NPM License](https://img.shields.io/npm/l/%40arabasta%2Feslint-config)](https://github.com/CloudNStoyan/arabasta/blob/main/eslint-config/LICENSE)
 
-Custom ESLint config to share between by projects. Originally extracted from [vite-workshop](https://github.com/HristoKolev/vite-workshop).
+Custom ESLint config to share between my projects. Originally extracted from [vite-workshop](https://github.com/HristoKolev/vite-workshop).
 
 ## Installation
 
@@ -66,7 +66,7 @@ A complete CJS example including React, TypeScript and Jest can be found here: [
 
 ## Plugins
 
-A list of the plugin packages included in this ESLint config:
+Plugin packages included in this ESLint config:
 
 - @arabasta/eslint-plugin-no-testing-library-without-cleanup@1.0.5
 - @arabasta/eslint-plugin-redux-use-app-functions@1.0.5

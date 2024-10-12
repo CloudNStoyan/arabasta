@@ -125,7 +125,7 @@ async function createPluginsFile() {
 
   let pluginSectionContents = `## Plugins\n\n`;
   pluginSectionContents +=
-    'A list of the plugin packages included in this ESLint config:\n\n';
+    'Plugin packages included in this ESLint config:\n\n';
   pluginSectionContents += pluginPackageLines.map((x) => `- ${x}`).join('\n');
   pluginSectionContents += '\n';
 
