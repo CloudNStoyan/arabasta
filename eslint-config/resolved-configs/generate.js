@@ -8,7 +8,7 @@ const { extractSupportedTsVersion } = require('./extract-supported-ts-version');
 const { createPluginsFile } = require('./list-plugins');
 
 // eslint-disable-next-line no-console
-console.log('HRISTO: generate.js | PATH', process.env.Path, process.env.PATH);
+console.error('HRISTO: generate.js | PATH', process.env.Path, process.env.PATH);
 
 function sortObjectKeysRecursively(inputObject) {
   if (Array.isArray(inputObject)) {
