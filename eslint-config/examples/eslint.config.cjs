@@ -74,7 +74,7 @@ module.exports = [
   ...tseslint.config({
     name: 'TypeScript definition files',
     files: ['**/*.d.ts'],
-    extends: [typescriptDefinitionsConfig],
+    extends: [...typescriptDefinitionsConfig],
     rules: {
       // Put your rules here.
     },
@@ -83,7 +83,7 @@ module.exports = [
   ...tseslint.config({
     name: 'React files',
     files: [`src/**/*.+(${allExtensions.join('|')})`],
-    extends: [...reactConfig, reactTypescriptConfig, ...reduxConfig],
+    extends: [...reactConfig, ...reactTypescriptConfig, ...reduxConfig],
     rules: {
       // Put your rules here.
     },
