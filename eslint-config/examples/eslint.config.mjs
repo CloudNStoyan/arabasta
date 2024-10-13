@@ -14,6 +14,11 @@ import {
 import tseslint from 'typescript-eslint';
 
 const typeScriptExtensions = ['ts', 'cts', 'mts', 'tsx'];
+
+const typeScriptDefinitionExtensions = typeScriptExtensions
+  .filter((x) => x !== 'tsx')
+  .map((x) => `d.${x}`);
+
 const allExtensions = ['js', 'cjs', 'mjs', 'jsx', ...typeScriptExtensions];
 
 export default [
@@ -73,7 +78,7 @@ export default [
 
   ...tseslint.config({
     name: 'TypeScript definition files',
-    files: ['**/*.d.ts'],
+    files: [`**/*.+(${typeScriptDefinitionExtensions.join('|')})`],
     extends: [...typescriptDefinitionsConfig],
     rules: {
       // Put your rules here.

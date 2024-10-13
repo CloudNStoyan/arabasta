@@ -26,6 +26,10 @@ function createConfigVariation(variation) {
     ...(variationTags.includes('react') ? ['tsx'] : []),
   ];
 
+  const typeScriptDefinitionExtensions = typeScriptExtensions
+    .filter((x) => x !== 'tsx')
+    .map((x) => `d.${x}`);
+
   const allExtensions = [
     'js',
     'cjs',
@@ -92,7 +96,7 @@ function createConfigVariation(variation) {
     configs.push(
       ...tseslint.config({
         name: 'TypeScript definition files',
-        files: ['**/*.d.ts'],
+        files: [`**/*.+(${typeScriptDefinitionExtensions.join('|')})`],
         extends: [...typescriptDefinitionsConfig],
         rules: {
           // Put your rules here.
