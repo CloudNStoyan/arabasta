@@ -6,7 +6,7 @@
   "author": "Hristo Kolev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config"
+    "url": "git+https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config.git"
   },
   "types": "./src/index.d.ts",
   "main": "./src/index.js",
@@ -60,8 +60,7 @@
   "devDependencies": {
     "eslint": "^8.57.1",
     "prettier": "^3.3.3",
-    "rimraf": "^6.0.1",
-    "typescript": "~5.5.4"
+    "rimraf": "^6.0.1"
   },
   "peerDependencies": {
     "eslint": ">=8.0.0"
