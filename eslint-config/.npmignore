@@ -1,0 +1,4 @@
+resolved-configs
+examples
+*.md
+!README.md
