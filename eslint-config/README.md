@@ -5,6 +5,10 @@
 
 Custom ESLint config to share between my projects. Originally extracted from [vite-workshop](https://github.com/HristoKolev/vite-workshop).
 
+## Requirements
+
+- This config currently only works with ESLint v8
+
 ## Installation
 
 Assuming you already have ESLint installed, run:
