@@ -8,6 +8,7 @@ Custom ESLint config to share between my projects. Originally extracted from [vi
 ## Requirements
 
 - This config currently only works with ESLint v8
+- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.7.4 <5.6.0`
 
 ## Installation
 
