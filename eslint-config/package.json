@@ -6,7 +6,7 @@
   "author": "Hristo Kolev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CloudNStoyan/arabasta/tree/main/eslint-config.git"
+    "url": "git+https://github.com/CloudNStoyan/arabasta.git#main"
   },
   "types": "./src/index.d.ts",
   "main": "./src/index.js",
