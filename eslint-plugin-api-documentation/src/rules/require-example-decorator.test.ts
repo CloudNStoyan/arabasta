@@ -1,17 +1,8 @@
 import requireExampleDecorator from './require-example-decorator';
 import { RuleTester } from '@typescript-eslint/rule-tester';
+import { normalizeIndent } from '../test-utils';
 
 const ruleTester = new RuleTester();
-
-/**
- * A string template tag that removes padding from the left side of multi-line strings
- * @param strings array of code strings (only one expected)
- */
-function normalizeIndent(strings: TemplateStringsArray) {
-  const codeLines = strings[0].split('\n');
-  const leftPadding = codeLines[1].match(/\s+/)![0];
-  return codeLines.map((line) => line.slice(leftPadding.length)).join('\n');
-}
 
 // Throws error if the tests in ruleTester.run() do not pass
 ruleTester.run(
