@@ -1,11 +1,13 @@
+import { TSESTree } from '@typescript-eslint/utils';
 import {
   hasDecoratorWithName,
   hasResponseDecoratorWithStatus,
   getAllDecoratorsWithName,
-} from '../utils.js';
+  createRule,
+} from '../utils';
 
-/** @type {import('eslint').Rule.RuleModule} */
-export default {
+export default createRule({
+  name: 'valid-security-decorator',
   meta: {
     messages: {
       requireCorrectResponseDecorator:
@@ -19,8 +21,9 @@ export default {
     },
     schema: [],
   },
+  defaultOptions: [],
   create: (context) => {
-    let currentClassDeclarationNode;
+    let currentClassDeclarationNode: TSESTree.ClassDeclaration;
 
     return {
       ClassDeclaration(node) {
@@ -62,4 +65,4 @@ export default {
       },
     };
   },
-};
+});
