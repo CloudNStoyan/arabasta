@@ -31,7 +31,7 @@ ruleTester.run(
         code: normalizeIndent`
         class UsersController {
           /**
-           * @returns
+           * @returns Get all users
            */
           getAllUsers(): Promise<User[]> {}
         }
@@ -42,12 +42,12 @@ ruleTester.run(
         code: normalizeIndent`
         class UsersController {
           /**
-           * @returns
+           * @returns Get all users
            */
           getAllUsers(): Promise<void> {}
 
           /**
-           * @returns
+           * @returns Get all admins
            */
           getAllAdmins(): Promise<undefined> {}
         }
@@ -78,16 +78,32 @@ ruleTester.run(
         ],
       },
       {
-        name: "when the 'disallowOnVoidOrUndefined' option is set to 'true' and methods have a JSDoc's @returns declaration",
+        name: "when the method has JSDoc's @returns declaration but without description",
         code: normalizeIndent`
         class UsersController {
           /**
            * @returns
            */
+          getAllUsers(): Promise<User[]> {}
+        }
+        `,
+        errors: [
+          {
+            messageId: 'returnsDescriptionIsMissing',
+          },
+        ],
+      },
+      {
+        name: "when the 'disallowOnVoidOrUndefined' option is set to 'true' and methods have a JSDoc's @returns declaration",
+        code: normalizeIndent`
+        class UsersController {
+          /**
+           * @returns Get all users
+           */
           getAllUsers(): Promise<void> {}
 
           /**
-           * @returns
+           * @returns Get all admins
            */
           getAllAdmins(): Promise<undefined> {}
         }

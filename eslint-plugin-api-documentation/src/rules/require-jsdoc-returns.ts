@@ -12,7 +12,10 @@ type RuleOptions = [
   },
 ];
 
-type RuleMessageIds = 'returnsIsMissing' | 'returnsIsNotAllowed';
+type RuleMessageIds =
+  | 'returnsIsMissing'
+  | 'returnsIsNotAllowed'
+  | 'returnsDescriptionIsMissing';
 
 export default createRule<RuleOptions, RuleMessageIds>({
   name: 'require-jsdoc-returns',
@@ -21,6 +24,7 @@ export default createRule<RuleOptions, RuleMessageIds>({
       returnsIsMissing: 'Missing JSDoc @returns declaration.',
       returnsIsNotAllowed:
         "JSDoc @returns declaration is not allowed on methods that return 'void' or 'undefined'.",
+      returnsDescriptionIsMissing: 'Missing JSDoc @returns description.',
     },
     type: 'problem',
     docs: {
@@ -98,14 +102,28 @@ export default createRule<RuleOptions, RuleMessageIds>({
           returnType === 'void' || returnType === 'undefined';
         const hasReturnsJSDocDeclaration = propertyReturns.length > 0;
 
-        if (returnTypeIsUndefinedOrVoid) {
-          if (hasReturnsJSDocDeclaration && disallowOnVoidOrUndefined) {
-            context.report({
-              node: jsdocNode,
-              messageId: 'returnsIsNotAllowed',
-            });
-          }
+        if (
+          returnTypeIsUndefinedOrVoid &&
+          hasReturnsJSDocDeclaration &&
+          disallowOnVoidOrUndefined
+        ) {
+          context.report({
+            node: jsdocNode,
+            messageId: 'returnsIsNotAllowed',
+          });
           return;
+        }
+
+        if (hasReturnsJSDocDeclaration) {
+          const description = propertyReturns[0].description.trim();
+
+          if (description.length === 0) {
+            context.report({
+              node,
+              messageId: 'returnsDescriptionIsMissing',
+            });
+            return;
+          }
         }
 
         if (!hasReturnsJSDocDeclaration) {
