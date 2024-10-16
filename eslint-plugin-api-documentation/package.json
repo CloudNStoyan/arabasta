@@ -24,7 +24,7 @@
     "update:eslint-docs": "eslint-doc-generator",
     "prebuild": "rimraf dist",
     "build": "tsc --p tsconfig.build.json",
-    "test": "vitest run --dir ./src/rules",
+    "test": "vitest run --dir ./src/rules && npm run lint:eslint-docs && npm run format-check",
     "typecheck": "tsc --p tsconfig.json --noEmit"
   },
   "dependencies": {
