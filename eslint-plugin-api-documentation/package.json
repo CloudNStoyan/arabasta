@@ -9,6 +9,13 @@
     "url": "git+https://github.com/CloudNStoyan/arabasta.git",
     "directory": "eslint-plugin-api-documentation"
   },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "index.d.ts"
+  ],
   "types": "./index.d.ts",
   "main": "./dist/eslint-plugin-api-documentation.js",
   "exports": {
@@ -25,7 +32,9 @@
     "update:eslint-docs": "eslint-doc-generator",
     "prebuild": "rimraf dist",
     "build": "tsc --p tsconfig.build.json",
-    "test": "vitest run --dir ./src/rules && npm run lint:eslint-docs && npm run format-check",
+    "lint:types": "attw --pack .",
+    "lint:package": "npm run lint:eslint-docs && npm run format-check && publint",
+    "test": "vitest run --dir ./src/rules && npm run lint:package",
     "typecheck": "tsc --p tsconfig.json --noEmit"
   },
   "dependencies": {
@@ -34,10 +43,12 @@
   },
   "devDependencies": {
     "@types/node": "^22.7.5",
+    "@arethetypeswrong/cli": "^0.16.4",
     "@typescript-eslint/rule-tester": "^8.8.1",
     "eslint-doc-generator": "^1.7.1",
     "json-schema-to-typescript": "^15.0.2",
     "prettier": "^3.3.3",
+    "publint": "^0.2.11",
     "rimraf": "^6.0.1",
     "typescript": "~5.3.3",
     "typescript-eslint": "^8.8.1",
