@@ -47,7 +47,7 @@ ruleTester.run(
           getAllUsers(): Promise<User[]> {}
         }
         `,
-        errors: [{ messageId: 'wrongFirstTypeArg' }],
+        errors: [{ messageId: 'wrongFirstTypeArgForMethodExample' }],
       },
       {
         name: "when the example decorator is used on a property and it doesn't have any type arguments",
@@ -57,7 +57,7 @@ ruleTester.run(
           id: UUID;
         }
         `,
-        errors: [{ messageId: 'wrongFirstTypeArg' }],
+        errors: [{ messageId: 'wrongFirstTypeArgForPropertyExample' }],
       },
       {
         name: "when the example decorator doesn't have the method's return type as first type argument",
@@ -67,7 +67,7 @@ ruleTester.run(
           getAllUsers(): Promise<User[]> {}
         }
         `,
-        errors: [{ messageId: 'wrongFirstTypeArg' }],
+        errors: [{ messageId: 'wrongFirstTypeArgForMethodExample' }],
       },
       {
         name: "when the example decorator doesn't have the property type as first type argument",
@@ -77,7 +77,7 @@ ruleTester.run(
           id: UUID;
         }
         `,
-        errors: [{ messageId: 'wrongFirstTypeArg' }],
+        errors: [{ messageId: 'wrongFirstTypeArgForPropertyExample' }],
       },
     ],
   }

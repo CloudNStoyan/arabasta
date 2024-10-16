@@ -6,8 +6,10 @@ export default createRule({
   name: 'valid-example-decorator-type',
   meta: {
     messages: {
-      wrongFirstTypeArg:
+      wrongFirstTypeArgForMethodExample:
         "The first type argument of the Example decorator should be the same as method's return type '{{ correctType }}'",
+      wrongFirstTypeArgForPropertyExample:
+        "The first type argument of the Example decorator should be the same as the property type '{{ correctType }}'",
     },
     type: 'problem',
     docs: {
@@ -87,7 +89,7 @@ export default createRule({
           ) {
             context.report({
               node,
-              messageId: 'wrongFirstTypeArg',
+              messageId: 'wrongFirstTypeArgForPropertyExample',
               data: {
                 correctType: propertyTypeName,
               },
@@ -107,7 +109,7 @@ export default createRule({
             if (firstTypeArgTypeName !== propertyTypeName) {
               context.report({
                 node,
-                messageId: 'wrongFirstTypeArg',
+                messageId: 'wrongFirstTypeArgForPropertyExample',
                 data: {
                   correctType: propertyTypeName,
                 },
@@ -125,7 +127,7 @@ export default createRule({
           if (firstTypeArgCompiledTypeName !== propertyTypeName) {
             context.report({
               node,
-              messageId: 'wrongFirstTypeArg',
+              messageId: 'wrongFirstTypeArgForPropertyExample',
               data: {
                 correctType: propertyTypeName,
               },
@@ -158,7 +160,7 @@ export default createRule({
           ) {
             context.report({
               node,
-              messageId: 'wrongFirstTypeArg',
+              messageId: 'wrongFirstTypeArgForMethodExample',
               data: {
                 correctType: returnTypeName,
               },
@@ -174,7 +176,7 @@ export default createRule({
           if (firstTypeParamTypeName !== returnTypeName) {
             context.report({
               node,
-              messageId: 'wrongFirstTypeArg',
+              messageId: 'wrongFirstTypeArgForMethodExample',
               data: {
                 correctType: returnTypeName,
               },
