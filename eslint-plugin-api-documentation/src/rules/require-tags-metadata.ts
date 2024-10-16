@@ -16,7 +16,6 @@ type RuleOptions = [
 
 type RuleMessageIds = 'tagNotDefinedInConfig';
 
-/** @type {import('eslint').Rule.RuleModule} */
 export default createRule<RuleOptions, RuleMessageIds>({
   name: 'require-tags-metadata',
   meta: {
