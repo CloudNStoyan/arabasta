@@ -20,8 +20,8 @@
   "scripts": {
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
-    "lint:eslint-docs": "npm run update:eslint-docs -- --check",
-    "update:eslint-docs": "eslint-doc-generator && npm run format",
+    "lint:eslint-docs": "eslint-doc-generator --check",
+    "update:eslint-docs": "eslint-doc-generator",
     "prebuild": "rimraf dist",
     "build": "tsc --p tsconfig.build.json",
     "test": "vitest run --dir ./src/rules",
