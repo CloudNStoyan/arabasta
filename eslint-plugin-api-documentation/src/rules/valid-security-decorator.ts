@@ -10,8 +10,10 @@ export default createRule({
   name: 'valid-security-decorator',
   meta: {
     messages: {
-      requireCorrectResponseDecorator:
+      requireCorrectResponseDecoratorForMethods:
         "Methods using the Security decorator or being inside a class that uses it are required to have the '@Response(401)' decorator on them or their class",
+      requireCorrectResponseDecoratorForClasses:
+        "Classes using the Security decorator are required to have the '@Response(401)' decorator on them",
     },
     type: 'problem',
     docs: {
@@ -59,7 +61,29 @@ export default createRule({
         ) {
           context.report({
             node,
-            messageId: 'requireCorrectResponseDecorator',
+            messageId: 'requireCorrectResponseDecoratorForMethods',
+          });
+        }
+      },
+      'ClassDeclaration:exit': (node) => {
+        if (!hasDecoratorWithName({ node, decoratorName: 'Security' })) {
+          return;
+        }
+
+        const responseDecorators = getAllDecoratorsWithName({
+          node,
+          decoratorName: 'Response',
+        });
+
+        if (
+          !hasResponseDecoratorWithStatus({
+            status: 401,
+            decorators: responseDecorators,
+          })
+        ) {
+          context.report({
+            node,
+            messageId: 'requireCorrectResponseDecoratorForClasses',
           });
         }
       },

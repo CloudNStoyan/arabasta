@@ -31,16 +31,6 @@ ruleTester.run(
         `,
       },
       {
-        name: 'when a method has the correct response decorator and is inside a class that uses the security decorator',
-        code: normalizeIndent`
-        @Security('test_security')
-        class Users {
-          @Response(401)
-          getAllUsers() {}
-        }
-        `,
-      },
-      {
         name: 'when a method uses the security decorator and is inside a class that has the correct response decorator',
         code: normalizeIndent`
         @Response(401)
@@ -63,7 +53,19 @@ ruleTester.run(
         `,
         errors: [
           {
-            messageId: 'requireCorrectResponseDecorator',
+            messageId: 'requireCorrectResponseDecoratorForMethods',
+          },
+        ],
+      },
+      {
+        name: "when a class uses the security decorator but doesn't have the correct response decorator",
+        code: normalizeIndent`
+        @Security('test_security')
+        class Users {}
+        `,
+        errors: [
+          {
+            messageId: 'requireCorrectResponseDecoratorForClasses',
           },
         ],
       },
