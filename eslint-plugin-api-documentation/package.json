@@ -6,7 +6,8 @@
   "author": "Stoyan Kolev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CloudNStoyan/arabasta"
+    "url": "git+https://github.com/CloudNStoyan/arabasta.git",
+    "directory": "eslint-plugin-api-documentation"
   },
   "types": "./index.d.ts",
   "main": "./dist/eslint-plugin-api-documentation.js",
