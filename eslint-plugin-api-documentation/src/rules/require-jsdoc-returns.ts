@@ -1,5 +1,7 @@
 import { getTypeName, isPromiseLike } from '@typescript-eslint/type-utils';
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils';
+// Because of the way `@es-joy/jsdoccomment` uses `exports` in package.json,
+// Typescript can't understand that the package can be imported in CJS.
 // @ts-ignore
 import { getJSDocComment, parseComment } from '@es-joy/jsdoccomment';
 import { createRule } from '../utils';
