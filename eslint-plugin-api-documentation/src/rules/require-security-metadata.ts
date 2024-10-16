@@ -23,12 +23,12 @@ export default createRule<RuleOptions, RuleMessageIds>({
   meta: {
     messages: {
       securityDefinitionNotDefinedInConfig:
-        "The following security definitions are missing from the tsoa.json config '{{ missingSecurityDefinitions }}'",
+        "The following security definitions are missing from the TSOA config '{{ missingSecurityDefinitions }}'",
     },
     type: 'problem',
     docs: {
       description:
-        'Enforce that all security definitions used in the @Security decorator are present in the tsoa.json config.',
+        'require all security definitions in the `@Security` decorator to be present in the `TSOA` config',
       recommended: true,
     },
     schema: [

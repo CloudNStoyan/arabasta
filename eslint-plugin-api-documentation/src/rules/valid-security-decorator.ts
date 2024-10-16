@@ -11,14 +11,14 @@ export default createRule({
   meta: {
     messages: {
       requireCorrectResponseDecoratorForMethods:
-        "Methods using the Security decorator or being inside a class that uses it are required to have the '@Response(401)' decorator on them or their class",
+        "Methods using the '@Security' decorator or being inside a class that uses it are required to have the '@Response(401)' decorator on them or their class",
       requireCorrectResponseDecoratorForClasses:
-        "Classes using the Security decorator are required to have the '@Response(401)' decorator on them",
+        "Classes using the '@Security' decorator are required to have the '@Response(401)' decorator on them",
     },
     type: 'problem',
     docs: {
       description:
-        'Require Response(401) decorator on methods or classes that are affected by the Security decorator.',
+        'require `@Response(401)` decorator on methods or classes that are affected by the `@Security` decorator',
       recommended: true,
     },
     schema: [],

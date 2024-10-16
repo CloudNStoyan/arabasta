@@ -10,12 +10,12 @@ export default createRule({
   meta: {
     messages: {
       missingRequiredDecorators:
-        'The Example decorator is required when the method returns an array.',
+        "The '@Example' decorator is required when the method returns an array",
     },
     type: 'problem',
     docs: {
       description:
-        'Enforce that Example decorator is used when the method returns an array.',
+        'require `@Example` decorator when the method returns an array',
       recommended: true,
     },
     schema: [],

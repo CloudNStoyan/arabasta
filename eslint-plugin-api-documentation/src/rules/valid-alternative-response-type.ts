@@ -21,8 +21,9 @@ export default createRule<RuleOptions, RuleMessageIds>({
     fixable: 'code',
     docs: {
       description:
-        "Enforce that alternative response's first type argument is the same as its method's return type.",
+        "require alternative response's first type argument to be the same as its method's return type",
       recommended: true,
+      requiresTypeChecking: true,
     },
     schema: [
       {
@@ -34,6 +35,7 @@ export default createRule<RuleOptions, RuleMessageIds>({
             items: {
               type: 'string',
             },
+            description: 'The list of functions that are alternative response',
           },
         },
       },

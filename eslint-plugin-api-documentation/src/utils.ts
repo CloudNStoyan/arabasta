@@ -10,7 +10,7 @@ type NodeWithDecorator =
   | TSESTree.Parameter;
 
 const PLUGIN_DOCS_URL =
-  'https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-no-destructuring-arrays-as-objects/README.md';
+  'https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-api-documentation/docs/rules';
 
 export interface ApiDocumentationRuleDocs {
   description: string;
@@ -19,7 +19,7 @@ export interface ApiDocumentationRuleDocs {
 }
 
 export const createRule = ESLintUtils.RuleCreator<ApiDocumentationRuleDocs>(
-  (name) => `${PLUGIN_DOCS_URL}#${name}`
+  (name) => `${PLUGIN_DOCS_URL}/${name}.md`
 );
 
 const HTTP_METHOD_DECORATOR_NAMES = [

@@ -17,15 +17,16 @@ export default createRule<RuleOptions, RuleMessageIds>({
   meta: {
     messages: {
       requiredTypeArguments:
-        'The Response decorator is required to have type arguments.',
+        "The '@Response' decorator is required to have type arguments",
       firstTypeArgIsNotFromTheAllowedTypes:
-        "The first type argument of the Response decorator should be one of '{{ allowedTypes }}'",
+        "The first type argument of the '@Response' decorator should be one of '{{ allowedTypes }}'",
     },
     type: 'problem',
     docs: {
       description:
-        "Enforce that Response's first type argument exists and optionally is one of the allowed types.",
+        "require `@Response` decorator's first type argument to exists and optionally to be one of the allowed types",
       recommended: true,
+      requiresTypeChecking: true,
     },
     schema: [
       {
@@ -33,6 +34,8 @@ export default createRule<RuleOptions, RuleMessageIds>({
         additionalProperties: false,
         properties: {
           allowedTypes: {
+            description:
+              "Whether or not to check the types used in the `@Response` decorator\nIf this option is set to 'any' it won't check the types\nIf this option is set to a list of allowed types it will check against the list",
             oneOf: [
               {
                 items: {

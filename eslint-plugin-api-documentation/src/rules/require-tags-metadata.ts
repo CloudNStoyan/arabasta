@@ -21,12 +21,12 @@ export default createRule<RuleOptions, RuleMessageIds>({
   meta: {
     messages: {
       tagNotDefinedInConfig:
-        "The following tags are missing from the tsoa.json config '{{ missingTagNames }}'",
+        "The following tags are missing from the TSOA config '{{ missingTagNames }}'",
     },
     type: 'problem',
     docs: {
       description:
-        'Enforce that all tags used in the @Tags decorator are present in the tsoa.json config.',
+        'require all tags in the `@Tags` decorator to be present in the `TSOA` config',
       recommended: true,
     },
     schema: [

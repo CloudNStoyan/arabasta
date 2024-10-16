@@ -10,16 +10,18 @@ export default createRule({
   name: 'require-jsdoc-example-for-enum-type',
   meta: {
     messages: {
-      exampleIsMissing: 'Missing JSDoc @example declaration',
-      exampleDescriptionIsMissing: 'Missing JSDoc @example description.',
-      exampleIsForbidden: 'Using JSDoc @example on complex types is forbidden.',
-      exampleValueIsNotValid: 'JSDoc @example contains invalid enum value.',
+      exampleIsMissing: "Missing JSDoc '@example' declaration",
+      exampleDescriptionIsMissing: "Missing JSDoc '@example' description",
+      exampleIsForbidden:
+        "Using JSDoc '@example' on complex types is forbidden",
+      exampleValueIsNotValid: "JSDoc '@example' contains invalid enum value",
     },
     type: 'problem',
     docs: {
       description:
-        'Enforce correct usage of JSDoc @example declaration for enum properties and ban other complex types from having @example declaration.',
+        "require JSDoc's `@example` declaration for enum properties and ban other complex types from having `@example` declaration",
       recommended: true,
+      requiresTypeChecking: true,
     },
     schema: [],
   },

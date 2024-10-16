@@ -7,15 +7,16 @@ export default createRule({
   meta: {
     messages: {
       wrongFirstTypeArgForMethodExample:
-        "The first type argument of the Example decorator should be the same as method's return type '{{ correctType }}'",
+        "The first type argument of the '@Example' decorator should be the same as method's return type '{{ correctType }}'",
       wrongFirstTypeArgForPropertyExample:
-        "The first type argument of the Example decorator should be the same as the property type '{{ correctType }}'",
+        "The first type argument of the '@Example' decorator should be the same as the property type '{{ correctType }}'",
     },
     type: 'problem',
     docs: {
       description:
-        "Enforce that Example's first type argument is the same as its method's return type.",
+        "require `@Example` decorator's first type argument to be the same as its method's return type",
       recommended: true,
+      requiresTypeChecking: true,
     },
     schema: [],
   },

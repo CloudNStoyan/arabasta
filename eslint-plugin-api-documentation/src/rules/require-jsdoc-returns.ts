@@ -21,15 +21,16 @@ export default createRule<RuleOptions, RuleMessageIds>({
   name: 'require-jsdoc-returns',
   meta: {
     messages: {
-      returnsIsMissing: 'Missing JSDoc @returns declaration.',
+      returnsIsMissing: "Missing JSDoc '@returns' declaration",
       returnsIsNotAllowed:
-        "JSDoc @returns declaration is not allowed on methods that return 'void' or 'undefined'.",
-      returnsDescriptionIsMissing: 'Missing JSDoc @returns description.',
+        "JSDoc '@returns' declaration is not allowed on methods that return 'void' or 'undefined'",
+      returnsDescriptionIsMissing: "Missing JSDoc '@returns' description",
     },
     type: 'problem',
     docs: {
-      description: 'Requires that return statements are documented.',
+      description: 'require return statements to be documented',
       recommended: true,
+      requiresTypeChecking: true,
     },
     schema: [
       {

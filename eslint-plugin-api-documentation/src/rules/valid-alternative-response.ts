@@ -28,7 +28,7 @@ export default createRule<RuleOptions, RuleMessageIds>({
     type: 'problem',
     docs: {
       description:
-        'Enforce that correct response decorators are used when using alternative responses.',
+        'require correct response decorators when using alternative responses',
       recommended: true,
     },
     fixable: 'code',
@@ -42,20 +42,26 @@ export default createRule<RuleOptions, RuleMessageIds>({
               type: 'string',
             },
             type: 'array',
+            description: 'The list of functions that are alternative response',
           },
           specialStatuses: {
             items: {
               type: 'object',
+              additionalProperties: false,
               properties: {
                 functionName: {
                   type: 'string',
+                  description: 'The alternative response function name',
                 },
                 statusCode: {
                   type: 'number',
+                  description: "The alternative response's status code",
                 },
               },
             },
             type: 'array',
+            description:
+              'The list of alternative responses function names and special statuses',
           },
         },
       },

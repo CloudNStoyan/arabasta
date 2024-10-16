@@ -18,6 +18,10 @@
     }
   },
   "scripts": {
+    "format": "prettier --cache --write .",
+    "format-check": "prettier --cache --check .",
+    "lint:eslint-docs": "npm run update:eslint-docs -- --check",
+    "update:eslint-docs": "eslint-doc-generator && npm run format",
     "prebuild": "rimraf dist",
     "build": "tsc --p tsconfig.build.json",
     "test": "vitest run --dir ./src/rules",
@@ -28,8 +32,10 @@
     "@typescript-eslint/utils": "^8.8.1"
   },
   "devDependencies": {
-    "@types/node": "^22.7.5",
     "@typescript-eslint/rule-tester": "^8.8.1",
+    "eslint-doc-generator": "^1.7.1",
+    "json-schema-to-typescript": "^15.0.2",
+    "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "typescript": "~5.3.3",
     "typescript-eslint": "^8.8.1",
