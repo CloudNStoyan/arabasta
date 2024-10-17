@@ -12,7 +12,7 @@ import requireJsdocReturnsRule from './rules/require-jsdoc-returns.js';
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-api-documentation',
-    version: '1.0.0',
+    version: '1.0.1',
   },
   configs: {},
   rules: {

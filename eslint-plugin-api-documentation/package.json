@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-plugin-api-documentation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "commonjs",
   "description": "ESLint plugin that enforces api documentation",
   "author": "Stoyan Kolev",
