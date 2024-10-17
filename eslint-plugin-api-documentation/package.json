@@ -34,7 +34,8 @@
     "build": "tsc --p tsconfig.build.json",
     "arethetypeswrong": "attw --pack .",
     "lint:package": "npm run lint:eslint-docs && npm run format-check && publint && npm run arethetypeswrong",
-    "test": "vitest run --dir ./src/rules && npm run lint:package",
+    "test:only": "vitest run --dir ./src/rules",
+    "test": "npm run test:only && npm run lint:package",
     "typecheck": "tsc --p tsconfig.json --noEmit"
   },
   "dependencies": {

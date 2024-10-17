@@ -103,15 +103,13 @@ export default createRule<RuleOptions, RuleMessageIds>({
           returnType === 'void' || returnType === 'undefined';
         const hasReturnsJSDocDeclaration = propertyReturns.length > 0;
 
-        if (
-          returnTypeIsUndefinedOrVoid &&
-          hasReturnsJSDocDeclaration &&
-          disallowOnVoidOrUndefined
-        ) {
-          context.report({
-            node: jsdocNode,
-            messageId: 'returnsIsNotAllowed',
-          });
+        if (returnTypeIsUndefinedOrVoid) {
+          if (hasReturnsJSDocDeclaration && disallowOnVoidOrUndefined) {
+            context.report({
+              node: jsdocNode,
+              messageId: 'returnsIsNotAllowed',
+            });
+          }
           return;
         }
 

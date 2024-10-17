@@ -38,7 +38,23 @@ ruleTester.run(
         `,
       },
       {
-        name: "when the 'disallowOnVoidOrUndefined' option is set to 'false' and methods have a JSDoc's @returns declaration",
+        name: "when methods returns 'void' or 'undefined' and don't have a JSDoc's @returns declaration",
+        code: normalizeIndent`
+        class UsersController {
+          /**
+           * Get all users
+           */
+          getAllUsers(): Promise<void> {}
+
+          /**
+           * Get all admins
+           */
+          getAllAdmins(): Promise<undefined> {}
+        }
+        `,
+      },
+      {
+        name: "when the 'disallowOnVoidOrUndefined' option is set to 'false' and methods that return 'void' or 'undefined' have a JSDoc's @returns declaration",
         code: normalizeIndent`
         class UsersController {
           /**
@@ -94,7 +110,7 @@ ruleTester.run(
         ],
       },
       {
-        name: "when the 'disallowOnVoidOrUndefined' option is set to 'true' and methods have a JSDoc's @returns declaration",
+        name: "when the 'disallowOnVoidOrUndefined' option is set to 'true' and methods that return 'void' or 'undefined' have a JSDoc's @returns declaration",
         code: normalizeIndent`
         class UsersController {
           /**
