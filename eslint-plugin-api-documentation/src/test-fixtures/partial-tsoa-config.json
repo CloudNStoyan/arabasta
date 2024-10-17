@@ -1,0 +1,8 @@
+{
+  "spec": {
+    "securityDefinitions": {
+      "api_key": {}
+    },
+    "tags": [{ "name": "test_tag_1" }, { "name": "test_tag_2" }]
+  }
+}
