@@ -32,8 +32,8 @@
     "update:eslint-docs": "eslint-doc-generator",
     "prebuild": "rimraf dist",
     "build": "tsc --p tsconfig.build.json",
-    "lint:types": "attw --pack .",
-    "lint:package": "npm run lint:eslint-docs && npm run format-check && publint",
+    "arethetypeswrong": "attw --pack .",
+    "lint:package": "npm run lint:eslint-docs && npm run format-check && publint && npm run arethetypeswrong",
     "test": "vitest run --dir ./src/rules && npm run lint:package",
     "typecheck": "tsc --p tsconfig.json --noEmit"
   },
