@@ -13,6 +13,7 @@ on:
           - eslint-plugin-redux-use-app-functions
           - eslint-plugin-report-caught-error
           - eslint-plugin-require-useeffect-dependency-array
+          - eslint-plugin-api-documentation
 
 jobs:
   build:
