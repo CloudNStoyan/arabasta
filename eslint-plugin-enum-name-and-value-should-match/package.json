@@ -1,0 +1,42 @@
+{
+  "name": "@arabasta/eslint-plugin-enum-name-and-value-should-match",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "ESLint plugin that requires enum values to match the name of their key",
+  "author": "Stoyan Kolev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudNStoyan/arabasta.git",
+    "directory": "eslint-plugin-enum-name-and-value-should-match"
+  },
+  "types": "./src/index.d.ts",
+  "main": "./src/eslint-plugin-enum-name-and-value-should-match.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/eslint-plugin-enum-name-and-value-should-match.js"
+    }
+  },
+  "scripts": {
+    "test": "vitest run --dir ./src/rules/"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.10.0",
+    "eslint": "^9.0.0",
+    "vitest": "^1.4.0"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/parser": ">= 7.0.0",
+    "eslint": ">=8.0.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "enum-name-and-value-should-match",
+    "enum",
+    "enums"
+  ]
+}
