@@ -1,6 +1,8 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
+const { replaceSection } = require('./markdown-helpers');
+
 async function getFilesRecursively(inputDirectory, result = []) {
   const directoryEntries = await fs.readdir(inputDirectory);
   for (const directoryEntry of directoryEntries) {
@@ -63,33 +65,17 @@ function deduplicateArray(items) {
 }
 
 async function updateReadmePluginSection(pluginSectionContents) {
-  const lines = (await fs.readFile(path.join(__dirname, '../', 'README.md')))
-    .toString()
-    .split('\n');
+  const filePath = path.join(__dirname, '../', 'README.md');
 
-  const startSectionIndex = lines.findIndex((x) => x.startsWith('## Plugins'));
+  const readmeContent = (await fs.readFile(filePath)).toString();
 
-  if (startSectionIndex === -1) {
-    throw new Error('"Plugins" section not found in README.md');
-  }
-
-  const nextSectionIndex = lines.findIndex(
-    (x, i) => i > startSectionIndex && x.startsWith('##')
+  const updatedReadme = replaceSection(
+    'plugin-packages',
+    readmeContent,
+    pluginSectionContents
   );
 
-  if (nextSectionIndex === -1) {
-    throw new Error('Next section (after Plugins) not found in README.md');
-  }
-
-  const result = [
-    ...lines.slice(0, startSectionIndex),
-    ...pluginSectionContents.split('\n'),
-    ...lines.slice(nextSectionIndex),
-  ];
-
-  const updatedReadme = result.join('\n');
-
-  await fs.writeFile(path.join(__dirname, '../', 'README.md'), updatedReadme);
+  await fs.writeFile(filePath, updatedReadme);
 }
 
 async function createPluginsFile() {
@@ -123,11 +109,7 @@ async function createPluginsFile() {
     }
   }
 
-  let pluginSectionContents = `## Plugins\n\n`;
-  pluginSectionContents +=
-    'Plugin packages included in this ESLint config:\n\n';
-  pluginSectionContents += pluginPackageLines.map((x) => `- ${x}`).join('\n');
-  pluginSectionContents += '\n';
+  const pluginSectionContents = `${pluginPackageLines.map((x) => `- ${x}`).join('\n')}\n`;
 
   await updateReadmePluginSection(pluginSectionContents);
 }

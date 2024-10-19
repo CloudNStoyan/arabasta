@@ -8,7 +8,12 @@ Custom ESLint config to share between my projects. Originally extracted from [vi
 ## Requirements
 
 - This config currently only works with ESLint v8
+
+<!-- start generated block (required-typescript-version) -->
+
 - The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.7.4 <5.6.0`
+
+<!-- end generated block (required-typescript-version) -->
 
 ## Installation
 
@@ -73,6 +78,8 @@ A complete CJS example including React, TypeScript and Jest can be found here: [
 
 Plugin packages included in this ESLint config:
 
+<!-- start generated block (plugin-packages) -->
+
 - @arabasta/eslint-plugin-no-testing-library-without-cleanup@1.0.5
 - @arabasta/eslint-plugin-redux-use-app-functions@1.0.5
 - @arabasta/eslint-plugin-report-caught-error@1.0.6
@@ -91,6 +98,8 @@ Plugin packages included in this ESLint config:
 - eslint-plugin-react-refresh@0.4.12
 - eslint-plugin-testing-library@6.3.0
 - eslint-plugin-unused-imports@3.2.0
+
+<!-- end generated block (plugin-packages) -->
 
 ## License
 
