@@ -212,6 +212,12 @@ function getInputConfigs() {
   return configs;
 }
 
+/**
+ * Returns all rules that are present in plugins
+ * but are not present in any configs that we use
+ * and therefore not used when linting.
+ * Excludes deprecated rules.
+ */
 function getNonConfiguredRules(eslintConfigArray, resolvedConfigs) {
   const allRules = new Set(
     resolvedConfigs.flatMap((x) => Object.keys(x.rules))
@@ -260,7 +266,7 @@ function getDisabledRules(resolvedConfigs) {
   return disabledRules;
 }
 
-async function writeFile(filePath, object) {
+async function writeJsonFile(filePath, object) {
   await fs.mkdir(path.dirname(filePath), {
     recursive: true,
   });
@@ -296,7 +302,7 @@ async function writeFile(filePath, object) {
 
       for (const config of configs) {
         if (config.resolved) {
-          await writeFile(
+          await writeJsonFile(
             `${path.join(
               __dirname,
               'generated',
@@ -311,12 +317,12 @@ async function writeFile(filePath, object) {
 
     const resolvedConfigs = allConfigs.map((x) => x.resolved);
 
-    await writeFile(
+    await writeJsonFile(
       path.join(__dirname, 'generated', variation, 'non-configured-rules.json'),
       getNonConfiguredRules(createConfigVariation(variation), resolvedConfigs)
     );
 
-    await writeFile(
+    await writeJsonFile(
       path.join(__dirname, 'generated', variation, 'disabled-rules.json'),
       getDisabledRules(resolvedConfigs)
     );
