@@ -1208,7 +1208,7 @@
     "react",
     "react-hooks",
     "react-refresh",
-    "testing-library:eslint-plugin-testing-library@6.3.0",
+    "testing-library:eslint-plugin-testing-library@6.4.0",
     "unused-imports",
     "vitest:vitest@1.1.6"
   ],
