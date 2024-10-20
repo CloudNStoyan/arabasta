@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-config",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "commonjs",
   "description": "Custom ESLint config to share between my projects. Originally extracted from vite-workshop (https://github.com/HristoKolev/vite-workshop)",
   "author": "Hristo Kolev",
@@ -38,7 +38,7 @@
     "@arabasta/eslint-plugin-require-useeffect-dependency-array": "^1.0.9",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
     "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.12.0",
+    "@eslint/js": "^9.13.0",
     "@vitest/eslint-plugin": "^1.1.7",
     "confusing-browser-globals": "^1.0.11",
     "eslint-config-prettier": "^9.1.0",
@@ -52,11 +52,11 @@
     "eslint-plugin-new-with-error": "^5.0.0",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.12",
-    "eslint-plugin-testing-library": "^6.3.0",
+    "eslint-plugin-react-refresh": "^0.4.13",
+    "eslint-plugin-testing-library": "^6.4.0",
     "eslint-plugin-unused-imports": "^3.2.0",
     "globals": "^15.11.0",
-    "typescript-eslint": "^8.8.1"
+    "typescript-eslint": "^8.10.0"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
@@ -65,7 +65,7 @@
   },
   "peerDependencies": {
     "eslint": "^8",
-    "typescript": ">=4.7.4 <5.6.0"
+    "typescript": ">=4.7.4 <5.7.0"
   },
   "peerDependenciesMeta": {
     "typescript": {
