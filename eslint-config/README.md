@@ -11,7 +11,7 @@ Custom ESLint config to share between my projects. Originally extracted from [vi
 
 <!-- start generated block (required-typescript-version) -->
 
-- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.7.4 <5.6.0`
+- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.7.4 <5.7.0`
 
 <!-- end generated block (required-typescript-version) -->
 
@@ -95,8 +95,8 @@ Plugin packages included in this ESLint config:
 - eslint-plugin-new-with-error@5.0.0
 - eslint-plugin-react@7.37.1
 - eslint-plugin-react-hooks@5.0.0
-- eslint-plugin-react-refresh@0.4.12
-- eslint-plugin-testing-library@6.3.0
+- eslint-plugin-react-refresh@0.4.13
+- eslint-plugin-testing-library@6.4.0
 - eslint-plugin-unused-imports@3.2.0
 
 <!-- end generated block (plugin-packages) -->

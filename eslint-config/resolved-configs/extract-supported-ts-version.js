@@ -19,6 +19,20 @@ async function updateReadmeTypescriptVersionNotice(
   await fs.writeFile(filePath, updatedReadme);
 }
 
+async function updatePackageJSON(constraint) {
+  const filePath = path.join(__dirname, '../', 'package.json');
+
+  const packageJSONContent = (await fs.readFile(filePath)).toString();
+
+  const packageJSONObject = JSON.parse(packageJSONContent);
+
+  packageJSONObject.peerDependencies.typescript = constraint;
+
+  const updatePackageJSONContent = JSON.stringify(packageJSONObject, null, 2);
+
+  await fs.writeFile(filePath, updatePackageJSONContent);
+}
+
 async function extractSupportedTsVersion() {
   const fileContents = (
     await fs.readFile(
@@ -45,6 +59,8 @@ async function extractSupportedTsVersion() {
     path.join(__dirname, 'generated', 'supported-ts-versions.txt'),
     constraint
   );
+
+  await updatePackageJSON(constraint);
 
   await updateReadmeTypescriptVersionNotice(
     '- The optional TypeScript config requires a `typescript` version ' +
