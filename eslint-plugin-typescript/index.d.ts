@@ -7,6 +7,7 @@ declare const plugin: TSESLint.FlatConfig.Plugin & {
   };
   rules: {
     'no-destructuring-arrays-as-objects': TSESLint.AnyRuleModule;
+    'enum-value-should-match-enum-name': TSESLint.AnyRuleModule;
   };
 };
 

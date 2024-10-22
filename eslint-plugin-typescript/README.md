@@ -53,10 +53,12 @@ export default [
 
 💼 Configurations enabled in.\
 ✅ Set in the `recommended` configuration.\
+💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).\
 💭 Requires [type information](https://typescript-eslint.io/linting/typed-linting).
 
-| Name                                                                                   | Description                              | 💼  | 💭  |
-| :------------------------------------------------------------------------------------- | :--------------------------------------- | :-- | :-- |
-| [no-destructuring-arrays-as-objects](docs/rules/no-destructuring-arrays-as-objects.md) | disallow destructuring arrays as objects | ✅  | 💭  |
+| Name                                                                                   | Description                              | 💼  | 💡  | 💭  |
+| :------------------------------------------------------------------------------------- | :--------------------------------------- | :-- | :-- | :-- |
+| [enum-value-should-match-enum-name](docs/rules/enum-value-should-match-enum-name.md)   | requires enum values to match enum keys  | ✅  | 💡  |     |
+| [no-destructuring-arrays-as-objects](docs/rules/no-destructuring-arrays-as-objects.md) | disallow destructuring arrays as objects | ✅  |     | 💭  |
 
 <!-- end auto-generated rules list -->
