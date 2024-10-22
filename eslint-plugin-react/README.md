@@ -42,7 +42,7 @@ export default [
 {
   "extends": [
     // ...
-    "plugin:@arabasta/javascript/recommended-legacy"
+    "plugin:@arabasta/react/recommended-legacy"
   ]
 }
 ```

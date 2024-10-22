@@ -8,13 +8,13 @@ Require `useEffect` to have a dependency array.
 
 ## Rule Details
 
-Examples of **incorrect** code for this rule with the default options:
+Examples of **incorrect** code for this rule:
 
 ```js
 useEffect(() => {});
 ```
 
-Examples of **correct** code for this rule with the default options:
+Examples of **correct** code for this rule:
 
 ```js
 useEffect(() => {}, []);
