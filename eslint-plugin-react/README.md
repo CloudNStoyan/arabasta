@@ -53,6 +53,6 @@ export default [
 ✅ Set in the `recommended` configuration.\
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).
 
-| Name                                                                                   | Description                          | 💼  | 🔧  |
-| -------------------------------------------------------------------------------------- | ------------------------------------ | --- | --- |
-| [require-useeffect-dependency-array](docs/rules/require-useeffect-dependency-array.md) | require caught errors to be reported | ✅  | 🔧  |
+| Name                                                                                   | Description                                    | 💼  | 🔧  |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------- | --- | --- |
+| [require-useeffect-dependency-array](docs/rules/require-useeffect-dependency-array.md) | require `useEffect` to have a dependency array | ✅  | 🔧  |
