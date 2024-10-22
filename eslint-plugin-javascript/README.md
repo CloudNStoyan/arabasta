@@ -27,11 +27,11 @@ pnpm add --save-dev @arabasta/eslint-plugin-javascript
 
 ```js
 // ...
-import apiDocumentation from '@arabasta/eslint-plugin-javascript';
+import arabastaJavascript from '@arabasta/eslint-plugin-javascript';
 
 export default [
   // ...
-  apiDocumentation.configs.recommended,
+  arabastaJavascript.configs.recommended,
 ];
 ```
 

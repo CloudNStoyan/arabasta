@@ -30,7 +30,7 @@
     "typecheck": "tsc --p tsconfig.json --noEmit",
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
-    "test": "vitest run --globals --dir ./src/rules"
+    "test": "vitest run --dir ./src/rules"
   },
   "devDependencies": {
     "@types/eslint": "~9.6.0",
