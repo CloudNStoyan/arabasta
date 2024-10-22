@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/%40arabasta%2Feslint-plugin-javascript)](https://www.npmjs.com/package/@arabasta/eslint-plugin-javascript)
 [![NPM License](https://img.shields.io/npm/l/%40arabasta%2Feslint-plugin-javascript)](https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-javascript/LICENSE)
 
-ESLint plugin that enforces api documentation.
+ESLint plugin for javascript rules.
 
 ## Installation
 
@@ -53,6 +53,6 @@ export default [
 ✅ Set in the `recommended` configuration.\
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
-| Name                                                    | Description                          | 💼  | 💡  |
-| ------------------------------------------------------- | ------------------------------------ | --- | --- |
-| [report-caught-error](docs/rule/report-caught-error.md) | require caught errors to be reported | ✅  | 💡  |
+| Name                                                     | Description                          | 💼  | 💡  |
+| -------------------------------------------------------- | ------------------------------------ | --- | --- |
+| [report-caught-error](docs/rules/report-caught-error.md) | require caught errors to be reported | ✅  | 💡  |
