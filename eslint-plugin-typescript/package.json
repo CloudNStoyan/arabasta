@@ -1,0 +1,64 @@
+{
+  "name": "@arabasta/eslint-plugin-typescript",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "ESLint plugin for typescript rules",
+  "author": "Stoyan Kolev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudNStoyan/arabasta.git",
+    "directory": "eslint-plugin-typescript"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "index.d.ts"
+  ],
+  "types": "./index.d.ts",
+  "main": "./dist/eslint-plugin-typescript.js",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./dist/eslint-plugin-typescript.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc --p tsconfig.build.json",
+    "lint:eslint-docs": "eslint-doc-generator --check",
+    "update:eslint-docs": "eslint-doc-generator",
+    "typecheck": "tsc --p tsconfig.json --noEmit",
+    "format": "prettier --cache --write .",
+    "format-check": "prettier --cache --check .",
+    "test:only": "vitest run --dir ./src/rules",
+    "test": "npm run test:only && npm run lint:eslint-docs"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^8.11.0",
+    "ts-api-utils": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.8",
+    "@typescript-eslint/rule-tester": "^8.11.0",
+    "eslint-doc-generator": "^1.7.1",
+    "json-schema-to-typescript": "^15.0.2",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "typescript": "~5.3.3",
+    "vitest": "^2.1.2"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/parser": ">= 7.0.0",
+    "eslint": ">=8.0.0",
+    "typescript": ">= 5.0.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "typescript"
+  ]
+}
