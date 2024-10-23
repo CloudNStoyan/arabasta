@@ -24,7 +24,7 @@ Examples of **correct** code for this rule with the default options:
 
 ```js
 try {
-  // doing something try-catch worthy.
+  // doing something try-catch worthy..
 } catch (error) {
   console.error(error);
 }
