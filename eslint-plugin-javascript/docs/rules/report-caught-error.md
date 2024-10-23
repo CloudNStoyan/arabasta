@@ -41,12 +41,18 @@ type Options = [
      * The function name that is used to report errors.
      */
     reportFunctionName: string;
+
+    /**
+     * Whether or not to require the error identifier to be passed as first argument to the report function.
+     */
+    shouldPassErrorToFunction: boolean;
   },
 ];
 
 const defaultOptions: Options = [
   {
     reportFunctionName: 'console.error',
+    shouldPassErrorToFunction: true,
   },
 ];
 ```

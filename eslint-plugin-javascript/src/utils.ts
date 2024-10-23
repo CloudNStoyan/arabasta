@@ -1,7 +1,29 @@
+import { Rule } from 'eslint';
 import type * as ESTree from 'estree';
 
 export const PLUGIN_DOCS_URL =
   'https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-javascript/docs/rules';
+
+export function parseOptions<Options>(
+  context: Rule.RuleContext,
+  defaultOptions: Options
+) {
+  const passedOptions = context.options[0] as Options | undefined;
+
+  if (!passedOptions) {
+    return defaultOptions;
+  }
+
+  const options: Options = Object.assign({}, defaultOptions);
+
+  for (const optionName in options) {
+    if (passedOptions[optionName] !== undefined) {
+      options[optionName] = passedOptions[optionName];
+    }
+  }
+
+  return options;
+}
 
 export function getFullFunctionName(node: ESTree.Expression | ESTree.Super) {
   if (node.type === 'Identifier') {

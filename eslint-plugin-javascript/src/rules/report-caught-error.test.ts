@@ -45,6 +45,48 @@ ruleTester.run(
         `,
       },
       {
+        name: "when 'shouldPassErrorToFunction' option is set to false while the report function has arguments",
+        code: normalizeIndent`
+          try {
+          } catch (error) {
+            console.error(error);
+          }
+        `,
+        options: [
+          {
+            shouldPassErrorToFunction: false,
+          },
+        ],
+      },
+      {
+        name: "when 'shouldPassErrorToFunction' option is set to false while the report function doesn't have any arguments",
+        code: normalizeIndent`
+          try {
+          } catch (error) {
+            console.error();
+          }
+        `,
+        options: [
+          {
+            shouldPassErrorToFunction: false,
+          },
+        ],
+      },
+      {
+        name: "when 'shouldPassErrorToFunction' option is set to false while the report function doesn't have error identifier in arguments",
+        code: normalizeIndent`
+          try {
+          } catch (error) {
+            console.error('dinosaur');
+          }
+        `,
+        options: [
+          {
+            shouldPassErrorToFunction: false,
+          },
+        ],
+      },
+      {
         name: "when setting the report function name to 'reportUnknownError'.",
         code: normalizeIndent`
           try {
@@ -103,12 +145,44 @@ ruleTester.run(
             messageId: 'firstStatementMustBeFunction',
             suggestions: [
               {
-                messageId: 'addReportError',
+                messageId: 'addReportErrorWithArgument',
                 output: normalizeIndent`
                 try {
                 } catch (error) { console.error(error);
                   let a = 1;
                   console.error(error);
+                }
+              `,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "when the first statement of the catch block is not the report function and 'shouldPassErrorToFunction' is set to false.",
+        code: normalizeIndent`
+          try {
+          } catch (error) {
+            let a = 1;
+            console.error('dinosaur');
+          }
+        `,
+        options: [
+          {
+            shouldPassErrorToFunction: false,
+          },
+        ],
+        errors: [
+          {
+            messageId: 'firstStatementMustBeFunction',
+            suggestions: [
+              {
+                messageId: 'addReportError',
+                output: normalizeIndent`
+                try {
+                } catch (error) { console.error();
+                  let a = 1;
+                  console.error('dinosaur');
                 }
               `,
               },
@@ -126,18 +200,7 @@ ruleTester.run(
         `,
         errors: [
           {
-            messageId: 'functionNameIsNotValid',
-            suggestions: [
-              {
-                messageId: 'fixFunctionName',
-                output: normalizeIndent`
-                try {
-                } catch(error) {
-                  console.error(error);
-                }
-              `,
-              },
-            ],
+            messageId: 'firstStatementMustBeFunction',
           },
         ],
       },
@@ -177,17 +240,6 @@ ruleTester.run(
         errors: [
           {
             messageId: 'functionShouldHaveArg',
-            suggestions: [
-              {
-                messageId: 'fixArgumentName',
-                output: normalizeIndent`
-                try {
-                } catch (error) {
-                  console.error(error);
-                }
-                `,
-              },
-            ],
           },
         ],
       },

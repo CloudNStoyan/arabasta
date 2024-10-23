@@ -1,8 +1,14 @@
-import { getFullFunctionName, PLUGIN_DOCS_URL } from '../utils';
+import { getFullFunctionName, parseOptions, PLUGIN_DOCS_URL } from '../utils';
 import type { Rule } from 'eslint';
 
-const defaultRuleOptions = {
+interface RuleOptions {
+  reportFunctionName: string;
+  shouldPassErrorToFunction: boolean;
+}
+
+const defaultRuleOptions: RuleOptions = {
   reportFunctionName: 'console.error',
+  shouldPassErrorToFunction: true,
 };
 
 const rule: Rule.RuleModule = {
@@ -10,16 +16,12 @@ const rule: Rule.RuleModule = {
     messages: {
       firstStatementMustBeFunction:
         "The first statement of a catch block should be '{{ functionName }}'.",
-      functionNameIsNotValid:
-        "'{{ incorrectFunctionName }}' is not the correct report function, it should be '{{ correctFunctionName }}'.",
       functionShouldHaveArg:
         "'{{ functionName }}' should have the error passed as a first argument.",
       addReportError:
+        "Add '{{ functionName }}()' to the body of the catch block.",
+      addReportErrorWithArgument:
         "Add '{{ functionName }}({{ errorIdentifierName }})' to the body of the catch block.",
-      fixFunctionName:
-        "Replace '{{ incorrectFunctionName }}' with '{{ correctFunctionName}}'.",
-      fixArgumentName:
-        "Replace '{{ incorrectArgumentName }}' with '{{ correctArgumentName}}'.",
       addArgument:
         "Add '{{ errorIdentifierName }}' to '{{ functionName }}' as the first argument.",
     },
@@ -39,12 +41,20 @@ const rule: Rule.RuleModule = {
             type: 'string',
             description: 'The function name that is used to report errors',
           },
+          shouldPassErrorToFunction: {
+            type: 'boolean',
+            description:
+              'Whether or not to require the error identifier to be passed as first argument to the report function.',
+          },
         },
       },
     ],
   },
   create(context) {
-    const { reportFunctionName } = context.options[0] || defaultRuleOptions;
+    const { reportFunctionName, shouldPassErrorToFunction } = parseOptions(
+      context,
+      defaultRuleOptions
+    );
 
     return {
       CatchClause(node) {
@@ -67,6 +77,35 @@ const rule: Rule.RuleModule = {
               firstStatement.expression.callee
             )
           ) {
+            if (shouldPassErrorToFunction) {
+              context.report({
+                node,
+                messageId: 'firstStatementMustBeFunction',
+                data: {
+                  functionName: reportFunctionName,
+                },
+                suggest: [
+                  {
+                    messageId: 'addReportErrorWithArgument',
+                    data: {
+                      functionName: reportFunctionName,
+                      errorIdentifierName,
+                    },
+                    fix: (fixer) => {
+                      return fixer.insertTextBeforeRange(
+                        [
+                          blockStatement.range![0] + 1,
+                          blockStatement.range![1],
+                        ],
+                        ` ${reportFunctionName}(${errorIdentifierName});`
+                      );
+                    },
+                  },
+                ],
+              });
+              return;
+            }
+
             context.report({
               node,
               messageId: 'firstStatementMustBeFunction',
@@ -83,7 +122,7 @@ const rule: Rule.RuleModule = {
                   fix: (fixer) => {
                     return fixer.insertTextBeforeRange(
                       [blockStatement.range![0] + 1, blockStatement.range![1]],
-                      ` ${reportFunctionName}(${errorIdentifierName});`
+                      ` ${reportFunctionName}();`
                     );
                   },
                 },
@@ -102,97 +141,66 @@ const rule: Rule.RuleModule = {
           if (fullFunctionName !== reportFunctionName) {
             context.report({
               node,
-              messageId: 'functionNameIsNotValid',
+              messageId: 'firstStatementMustBeFunction',
               data: {
-                correctFunctionName: reportFunctionName,
-                incorrectFunctionName: fullFunctionName,
+                functionName: reportFunctionName,
               },
-              suggest: [
-                {
-                  messageId: 'fixFunctionName',
-                  data: {
-                    incorrectFunctionName: fullFunctionName,
-                    correctFunctionName: reportFunctionName,
-                  },
-                  fix: (fixer) => {
-                    return fixer.replaceText(
-                      firstStatementExpressionCallee,
-                      reportFunctionName
-                    );
-                  },
-                },
-              ],
             });
+            return;
+          }
+
+          if (!shouldPassErrorToFunction) {
+            // we don't track if the error is passed to the function
             return;
           }
 
           const firstStatementArguments = firstStatement.expression.arguments;
 
           if (
-            !(
-              firstStatementArguments &&
-              firstStatementArguments.length &&
-              firstStatementArguments[0] &&
-              firstStatementArguments[0].type === 'Identifier' &&
-              firstStatementArguments[0].name === node.param.name
-            )
+            Array.isArray(firstStatementArguments) &&
+            firstStatementArguments.length > 0
           ) {
+            // the name of the first argument is the name of the error identifier
+            const reportFunctionArgument = firstStatementArguments[0];
             if (
-              firstStatementArguments[0] &&
-              'name' in firstStatementArguments[0]
+              reportFunctionArgument.type !== 'Identifier' ||
+              reportFunctionArgument.name !== errorIdentifierName
             ) {
-              const firstStatementArgumentName =
-                firstStatementArguments[0].name;
-
               context.report({
                 node,
                 messageId: 'functionShouldHaveArg',
                 data: {
                   functionName: fullFunctionName,
                 },
-                suggest: [
-                  {
-                    messageId: 'fixArgumentName',
-                    data: {
-                      incorrectArgumentName: firstStatementArgumentName,
-                      correctArgumentName: errorIdentifierName,
-                    },
-                    fix: (fixer) => {
-                      return fixer.replaceText(
-                        firstStatementArguments[0],
-                        errorIdentifierName
-                      );
-                    },
-                  },
-                ],
               });
-              return;
             }
-
-            context.report({
-              node,
-              messageId: 'functionShouldHaveArg',
-              data: {
-                functionName: fullFunctionName,
-              },
-              suggest: [
-                {
-                  messageId: 'addArgument',
-                  data: {
-                    functionName: reportFunctionName,
-                    errorIdentifierName,
-                  },
-                  fix: (fixer) => {
-                    return fixer.replaceText(
-                      firstStatement.expression,
-                      `${reportFunctionName}(${errorIdentifierName})`
-                    );
-                  },
-                },
-              ],
-            });
             return;
           }
+
+          // report function doesn't have any arguments
+
+          context.report({
+            node,
+            messageId: 'functionShouldHaveArg',
+            data: {
+              functionName: fullFunctionName,
+            },
+            suggest: [
+              {
+                messageId: 'addArgument',
+                data: {
+                  functionName: reportFunctionName,
+                  errorIdentifierName,
+                },
+                fix: (fixer) => {
+                  return fixer.replaceText(
+                    firstStatement.expression,
+                    `${reportFunctionName}(${errorIdentifierName})`
+                  );
+                },
+              },
+            ],
+          });
         }
       },
     };
