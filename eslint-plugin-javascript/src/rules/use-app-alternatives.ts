@@ -1,4 +1,4 @@
-import { getFullFunctionName, PLUGIN_DOCS_URL } from '../utils';
+import { getFullFunctionName, parseOptions, PLUGIN_DOCS_URL } from '../utils';
 import type { Rule } from 'eslint';
 
 interface AppAlternative {
@@ -66,8 +66,7 @@ const rule: Rule.RuleModule = {
     ],
   },
   create(context) {
-    const { alternatives } =
-      (context.options[0] as RuleOptions) || defaultRuleOptions;
+    const { alternatives } = parseOptions(context, defaultRuleOptions);
 
     const alternativeFunctionsMap = new Map<string, AppAlternative>();
 
