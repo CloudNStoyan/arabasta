@@ -57,4 +57,4 @@ export default [
 | Name                                                       | Description                                    | 💼  | 🔧  | 💡  |
 | ---------------------------------------------------------- | ---------------------------------------------- | --- | --- | --- |
 | [report-caught-error](docs/rules/report-caught-error.md)   | require caught errors to be reported           | ✅  |     | 💡  |
-| [use-app-alternatives](docs/rules/use-app-alternatives.md) | require the usage of app alternative functions | ✅  | 🔧  | 💡  |
+| [use-app-alternatives](docs/rules/use-app-alternatives.md) | require the usage of app alternative functions | ✅  | 🔧  |     |
