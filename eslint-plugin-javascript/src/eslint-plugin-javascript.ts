@@ -1,4 +1,5 @@
 import reportCaughtErrorRule from './rules/report-caught-error';
+import useAppAlternativesRule from './rules/use-app-alternatives';
 
 const plugin = {
   meta: {
@@ -8,12 +9,14 @@ const plugin = {
   configs: {},
   rules: {
     'report-caught-error': reportCaughtErrorRule,
+    'use-app-alternatives': useAppAlternativesRule,
   },
   processors: {},
 };
 
 const recommendedRules = {
   '@arabasta/javascript/report-caught-error': 'error',
+  '@arabasta/javascript/use-app-alternatives': 'error',
 };
 
 plugin.configs = {

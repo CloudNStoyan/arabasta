@@ -7,6 +7,7 @@ declare const plugin: ESLint.Plugin & {
   };
   rules: {
     'report-caught-error': Rule.RuleModule;
+    'use-app-alternatives': Rule.RuleModule;
   };
 };
 
