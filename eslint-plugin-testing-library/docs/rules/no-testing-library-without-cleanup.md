@@ -10,6 +10,7 @@ Examples of **incorrect** code for this rule:
 
 ```js
 import { renderHook } from '@testing-library/react';
+
 // other code ..
 
 renderHook();
@@ -23,6 +24,7 @@ Examples of **correct** code for this rule:
 import { cleanup } from '@testing-library/react';
 
 // other code ..
+
 cleanup();
 
 // other code ..
