@@ -1,10 +1,11 @@
 import enumValueShouldMatchEnumNameRule from './rules/enum-value-should-match-enum-name';
 import noDestructuringArraysAsObjectsRule from './rules/no-destructuring-arrays-as-objects';
+import packageJson from '../package.json';
 
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-typescript',
-    version: '1.0.0',
+    version: packageJson.version,
   },
   configs: {},
   rules: {

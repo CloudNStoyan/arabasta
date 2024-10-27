@@ -1,9 +1,10 @@
 import noTestingLibraryWithoutCleanupRule from './rules/no-testing-library-without-cleanup';
+import packageJson from '../package.json';
 
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-testing-library',
-    version: '1.0.0',
+    version: packageJson.version,
   },
   configs: {},
   rules: {

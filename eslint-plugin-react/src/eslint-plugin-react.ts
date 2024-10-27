@@ -1,9 +1,10 @@
 import requireUseeffectDependencyArrayRule from './rules/require-useeffect-dependency-array';
+import packageJson from '../package.json';
 
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-react',
-    version: '1.0.0',
+    version: packageJson.version,
   },
   configs: {},
   rules: {
