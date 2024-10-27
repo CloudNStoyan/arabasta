@@ -1,39 +1,30 @@
 import { getFullFunctionName, parseOptions, PLUGIN_DOCS_URL } from '../utils';
 import type { Rule } from 'eslint';
 
-interface AppAlternative {
-  alternativeTo: string;
-  appFunction: string;
+interface AlternativeFunction {
+  from: string;
+  to: string;
 }
 
 interface RuleOptions {
-  alternatives: AppAlternative[];
+  alternatives: AlternativeFunction[];
 }
 
 const defaultRuleOptions: RuleOptions = {
-  alternatives: [
-    {
-      alternativeTo: 'useDispatch',
-      appFunction: 'useAppDispatch',
-    },
-    {
-      alternativeTo: 'useSelector',
-      appFunction: 'useAppSelector',
-    },
-  ],
+  alternatives: [],
 };
 
 const rule: Rule.RuleModule = {
   meta: {
     messages: {
-      useAppFunction:
-        "You must use '{{ alternative }}' instead of '{{ functionName }}'.",
+      useAlternativeFunction:
+        "You must use '{{ to }}' instead of '{{ from }}'.",
     },
     type: 'problem',
     docs: {
-      description: 'require the usage of app alternative functions',
-      recommended: true,
-      url: `${PLUGIN_DOCS_URL}/use-app-alternatives.md`,
+      description: 'require the usage of alternative functions',
+      recommended: false,
+      url: `${PLUGIN_DOCS_URL}/use-alternative-functions.md`,
     },
     fixable: 'code',
     schema: [
@@ -47,15 +38,15 @@ const rule: Rule.RuleModule = {
               type: 'object',
               additionalProperties: false,
               properties: {
-                alternativeTo: {
+                from: {
                   type: 'string',
                   description:
-                    'The name of the function that will be replaced by the alternative function.',
+                    'The name of the function that will be replaced by the alternative (`to`) function.',
                 },
-                appFunction: {
+                to: {
                   type: 'string',
                   description:
-                    'The name of the alternative function that will replace the `alternativeTo` function.',
+                    'The name of the alternative function that will replace the `from` function.',
                 },
               },
               description: 'An array of alternative functions.',
@@ -68,10 +59,10 @@ const rule: Rule.RuleModule = {
   create(context) {
     const { alternatives } = parseOptions(context, defaultRuleOptions);
 
-    const alternativeFunctionsMap = new Map<string, AppAlternative>();
+    const alternativeFunctionsMap = new Map<string, AlternativeFunction>();
 
     for (const alternative of alternatives) {
-      alternativeFunctionsMap.set(alternative.alternativeTo, alternative);
+      alternativeFunctionsMap.set(alternative.from, alternative);
     }
 
     return {
@@ -86,13 +77,13 @@ const rule: Rule.RuleModule = {
 
         context.report({
           node,
-          messageId: 'useAppFunction',
+          messageId: 'useAlternativeFunction',
           data: {
-            alternative: alternative.appFunction,
-            functionName: fullFunctionName,
+            to: alternative.to,
+            from: fullFunctionName,
           },
           fix: (fixer) => {
-            return fixer.replaceText(node.callee, alternative.appFunction);
+            return fixer.replaceText(node.callee, alternative.to);
           },
         });
       },

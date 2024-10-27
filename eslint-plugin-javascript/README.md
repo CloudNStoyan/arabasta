@@ -54,7 +54,7 @@ export default [
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
-| Name                                                       | Description                                    | 💼  | 🔧  | 💡  |
-| ---------------------------------------------------------- | ---------------------------------------------- | --- | --- | --- |
-| [report-caught-error](docs/rules/report-caught-error.md)   | require caught errors to be reported           | ✅  |     | 💡  |
-| [use-app-alternatives](docs/rules/use-app-alternatives.md) | require the usage of app alternative functions | ✅  | 🔧  |     |
+| Name                                                                 | Description                                | 💼  | 🔧  | 💡  |
+| -------------------------------------------------------------------- | ------------------------------------------ | --- | --- | --- |
+| [report-caught-error](docs/rules/report-caught-error.md)             | require caught errors to be reported       | ✅  |     | 💡  |
+| [use-alternative-functions](docs/rules/use-alternative-functions.md) | require the usage of alternative functions |     | 🔧  |     |

@@ -1,22 +1,22 @@
 import reportCaughtErrorRule from './rules/report-caught-error';
-import useAppAlternativesRule from './rules/use-app-alternatives';
+import useAlternativeFunctionsRule from './rules/use-alternative-functions';
+import packageJson from '../package.json';
 
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-javascript',
-    version: '1.0.0',
+    version: packageJson.version,
   },
   configs: {},
   rules: {
     'report-caught-error': reportCaughtErrorRule,
-    'use-app-alternatives': useAppAlternativesRule,
+    'use-alternative-functions': useAlternativeFunctionsRule,
   },
   processors: {},
 };
 
 const recommendedRules = {
   '@arabasta/javascript/report-caught-error': 'error',
-  '@arabasta/javascript/use-app-alternatives': 'error',
 };
 
 plugin.configs = {
