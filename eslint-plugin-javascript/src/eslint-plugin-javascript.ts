@@ -1,11 +1,10 @@
 import reportCaughtErrorRule from './rules/report-caught-error';
 import useAlternativeFunctionsRule from './rules/use-alternative-functions';
-import packageJson from '../package.json';
 
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-javascript',
-    version: packageJson.version,
+    version: '1.0.0',
   },
   configs: {},
   rules: {

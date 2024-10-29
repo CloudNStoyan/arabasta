@@ -3,20 +3,22 @@ import { RuleTester } from 'eslint';
 
 const ruleTester = new RuleTester();
 
-const ruleTestOptions = [
-  {
-    alternatives: [
+const ruleTestSettings = {
+  '@arabasta/alternative-functions': {
+    useDispatch: [
       {
         from: 'useDispatch',
         to: 'useAppDispatch',
       },
+    ],
+    useSelector: [
       {
         from: 'useSelector',
         to: 'useAppSelector',
       },
     ],
   },
-];
+};
 
 // Throws error if the tests in ruleTester.run() do not pass
 ruleTester.run(
@@ -28,26 +30,26 @@ ruleTester.run(
     valid: [
       {
         code: 'useAppDispatch();',
-        options: ruleTestOptions,
+        settings: ruleTestSettings,
       },
       {
         code: 'useAppSelector();',
-        options: ruleTestOptions,
+        settings: ruleTestSettings,
       },
       {
         code: 'foo();',
-        options: ruleTestOptions,
+        settings: ruleTestSettings,
       },
       {
         code: 'bar();',
-        options: ruleTestOptions,
+        settings: ruleTestSettings,
       },
     ],
     // 'invalid' checks cases that should not pass
     invalid: [
       {
         code: 'useDispatch();',
-        options: ruleTestOptions,
+        settings: ruleTestSettings,
         output: 'useAppDispatch();',
         errors: [
           {
@@ -57,7 +59,7 @@ ruleTester.run(
       },
       {
         code: 'useSelector();',
-        options: ruleTestOptions,
+        settings: ruleTestSettings,
         output: 'useAppSelector();',
         errors: [
           {
