@@ -1196,9 +1196,8 @@
   },
   "plugins": [
     "@",
-    "@arabasta/redux-use-app-functions:@arabasta/eslint-plugin-redux-use-app-functions@1.0.5",
-    "@arabasta/report-caught-error:@arabasta/eslint-plugin-report-caught-error@1.0.6",
-    "@arabasta/require-useeffect-dependency-array:@arabasta/eslint-plugin-require-useeffect-dependency-array@1.0.9",
+    "@arabasta/javascript:@arabasta/eslint-plugin-javascript@1.0.0",
+    "@arabasta/react:@arabasta/eslint-plugin-react@1.0.0",
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.0",
     "es",
     "import",
@@ -1210,13 +1209,9 @@
     "unused-imports"
   ],
   "rules": {
-    "@arabasta/redux-use-app-functions/use-app-dispatch": ["error"],
-    "@arabasta/redux-use-app-functions/use-app-selector": ["error"],
-    "@arabasta/redux-use-app-functions/use-create-app-async-thunk": ["error"],
-    "@arabasta/report-caught-error/report-caught-error": ["error"],
-    "@arabasta/require-useeffect-dependency-array/require-useeffect-dependency-array": [
-      "error"
-    ],
+    "@arabasta/javascript/report-caught-error": ["error"],
+    "@arabasta/javascript/use-alternative-functions": ["error"],
+    "@arabasta/react/require-useeffect-dependency-array": ["error"],
     "@babel/object-curly-spacing": ["off"],
     "@babel/semi": ["off"],
     "@eslint-community/eslint-comments/disable-enable-pair": ["error"],
@@ -2742,6 +2737,22 @@
     "yoda": ["error"]
   },
   "settings": {
+    "@arabasta/alternative-functions": {
+      "arabasta/redux": [
+        {
+          "from": "useDispatch",
+          "to": "useAppDispatch"
+        },
+        {
+          "from": "useSelector",
+          "to": "useAppSelector"
+        },
+        {
+          "from": "createAsyncThunk",
+          "to": "createAppAsyncThunk"
+        }
+      ]
+    },
     "import/extensions": [".js", ".cjs", ".mjs", ".jsx"],
     "import/resolver": {
       "node": {

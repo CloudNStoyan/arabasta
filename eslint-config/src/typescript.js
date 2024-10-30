@@ -1,5 +1,5 @@
 const tseslint = require('typescript-eslint');
-const noDestructuringArraysAsObjects = require('@arabasta/eslint-plugin-no-destructuring-arrays-as-objects');
+const arabastaTypescript = require('@arabasta/eslint-plugin-typescript');
 const deprecation = require('eslint-plugin-deprecation');
 const { FlatCompat } = require('@eslint/eslintrc');
 const prettier = require('eslint-config-prettier');
@@ -8,7 +8,7 @@ const compat = new FlatCompat();
 
 module.exports = tseslint.config({
   extends: [
-    noDestructuringArraysAsObjects.configs.recommended,
+    arabastaTypescript.configs.recommended,
     ...tseslint.configs.strictTypeChecked,
     ...compat.extends('plugin:import/typescript'),
     prettier,

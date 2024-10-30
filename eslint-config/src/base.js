@@ -1,4 +1,4 @@
-const reportCaughtError = require('@arabasta/eslint-plugin-report-caught-error');
+const arabastaJavascript = require('@arabasta/eslint-plugin-javascript');
 const eslint = require('@eslint/js');
 const eslintComments = require('@eslint-community/eslint-plugin-eslint-comments/configs');
 const confusingBrowserGlobals = require('confusing-browser-globals');
@@ -15,7 +15,7 @@ const compat = new FlatCompat();
 
 module.exports = tseslint.config(
   eslint.configs.recommended,
-  reportCaughtError.configs.recommended,
+  arabastaJavascript.configs.recommended,
   eslintComments.recommended,
   ...compat.extends('plugin:import/recommended'),
   prettier,
@@ -589,7 +589,6 @@ module.exports = tseslint.config(
         { commonjs: true, caseSensitive: true },
       ],
       'sort-imports': ['error', { ignoreDeclarationSort: true }],
-      '@arabasta/report-caught-error/report-caught-error': ['error'],
       'es/no-optional-catch-binding': 'error',
       curly: ['error', 'all'],
     },

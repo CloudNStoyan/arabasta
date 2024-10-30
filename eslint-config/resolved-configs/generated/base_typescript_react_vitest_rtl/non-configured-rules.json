@@ -1,4 +1,5 @@
 [
+  "@arabasta/javascript/use-alternative-functions",
   "@eslint-community/eslint-comments/no-restricted-disable",
   "@eslint-community/eslint-comments/no-unused-disable",
   "@eslint-community/eslint-comments/no-use",

@@ -1,11 +1,11 @@
 const tseslint = require('typescript-eslint');
 const testingLibrary = require('eslint-plugin-testing-library');
-const noTLWithoutCleanup = require('@arabasta/eslint-plugin-no-testing-library-without-cleanup');
+const arabastaTestingLibrary = require('@arabasta/eslint-plugin-testing-library');
 
 module.exports = tseslint.config({
   extends: [
     testingLibrary.configs['flat/react'],
-    noTLWithoutCleanup.configs.recommended,
+    arabastaTestingLibrary.configs.recommended,
   ],
   rules: {
     'testing-library/no-manual-cleanup': 'off',
