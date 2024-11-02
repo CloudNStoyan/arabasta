@@ -80,10 +80,10 @@ Plugin packages included in this ESLint config:
 
 <!-- start generated block (plugin-packages) -->
 
-- @arabasta/eslint-plugin-no-testing-library-without-cleanup@1.0.5
-- @arabasta/eslint-plugin-redux-use-app-functions@1.0.5
-- @arabasta/eslint-plugin-report-caught-error@1.0.6
-- @arabasta/eslint-plugin-require-useeffect-dependency-array@1.0.9
+- @arabasta/eslint-plugin-javascript@1.0.0
+- @arabasta/eslint-plugin-react@1.0.0
+- @arabasta/eslint-plugin-testing-library@1.0.0
+- @arabasta/eslint-plugin-typescript@1.0.0
 - @eslint-community/eslint-plugin-eslint-comments@4.4.0
 - @typescript-eslint/eslint-plugin@7.18.0
 - @vitest/eslint-plugin@1.1.7

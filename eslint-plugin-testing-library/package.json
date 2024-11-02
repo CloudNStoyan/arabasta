@@ -1,0 +1,55 @@
+{
+  "name": "@arabasta/eslint-plugin-testing-library",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "ESLint plugin for testing library rules",
+  "author": "Stoyan Kolev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudNStoyan/arabasta.git",
+    "directory": "eslint-plugin-testing-library"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "index.d.ts"
+  ],
+  "types": "./index.d.ts",
+  "main": "./dist/eslint-plugin-testing-library.js",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./dist/eslint-plugin-testing-library.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc --p tsconfig.build.json",
+    "typecheck": "tsc --p tsconfig.json --noEmit",
+    "format": "prettier --cache --write .",
+    "format-check": "prettier --cache --check .",
+    "test": "vitest run --dir ./src/rules"
+  },
+  "devDependencies": {
+    "@types/eslint": "~9.6.0",
+    "@types/estree": "^1.0.6",
+    "@types/node": "^22.7.8",
+    "eslint": "~9.6.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "typescript": "~5.3.3",
+    "vitest": "^2.1.2"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.0.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "testing-library"
+  ]
+}

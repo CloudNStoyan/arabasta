@@ -1,5 +1,5 @@
 const tseslint = require('typescript-eslint');
-const requireUseeffectDependencyArray = require('@arabasta/eslint-plugin-require-useeffect-dependency-array');
+const arabastaReact = require('@arabasta/eslint-plugin-react');
 const { FlatCompat } = require('@eslint/eslintrc');
 const jsxA11y = require('eslint-plugin-jsx-a11y');
 const reactESLint = require('eslint-plugin-react');
@@ -8,7 +8,7 @@ const reactRefresh = require('eslint-plugin-react-refresh');
 const compat = new FlatCompat();
 
 module.exports = tseslint.config(
-  requireUseeffectDependencyArray.configs.recommended,
+  arabastaReact.configs.recommended,
   reactESLint.configs.flat.recommended,
   reactESLint.configs.flat['jsx-runtime'],
   jsxA11y.flatConfigs.recommended,
