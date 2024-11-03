@@ -17,6 +17,7 @@ declare const plugin: TSESLint.FlatConfig.Plugin & {
     'require-jsdoc-example-for-enum-type': TSESLint.AnyRuleModule;
     'require-tags-metadata': TSESLint.AnyRuleModule;
     'require-security-metadata': TSESLint.AnyRuleModule;
+    'require-tags-decorator': TSESLint.AnyRuleModule;
   };
 };
 

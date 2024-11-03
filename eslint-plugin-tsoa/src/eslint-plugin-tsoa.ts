@@ -8,6 +8,7 @@ import requireJsdocExampleForEnumTypeRule from './rules/require-jsdoc-example-fo
 import requireTagsMetadataRule from './rules/require-tags-metadata.js';
 import requireSecurityMetadataRule from './rules/require-security-metadata.js';
 import requireJsdocReturnsRule from './rules/require-jsdoc-returns.js';
+import requireTagsDecoratorRule from './rules/require-tags-decorator.js';
 
 const plugin = {
   meta: {
@@ -26,6 +27,7 @@ const plugin = {
     'require-jsdoc-example-for-enum-type': requireJsdocExampleForEnumTypeRule,
     'require-tags-metadata': requireTagsMetadataRule,
     'require-security-metadata': requireSecurityMetadataRule,
+    'require-tags-decorator': requireTagsDecoratorRule,
   },
   processors: {},
 };
@@ -41,6 +43,7 @@ const recommendedRules = {
   '@arabasta/tsoa/require-jsdoc-example-for-enum-type': 'error',
   '@arabasta/tsoa/require-tags-metadata': 'error',
   '@arabasta/tsoa/require-security-metadata': 'error',
+  '@arabasta/tsoa/require-tags-decorator': 'error',
 };
 
 plugin.configs = {
