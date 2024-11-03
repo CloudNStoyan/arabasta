@@ -8,12 +8,11 @@ on:
         required: true
         type: choice
         options:
-          - eslint-plugin-no-destructuring-arrays-as-objects
-          - eslint-plugin-no-testing-library-without-cleanup
-          - eslint-plugin-redux-use-app-functions
-          - eslint-plugin-report-caught-error
-          - eslint-plugin-require-useeffect-dependency-array
-          - eslint-plugin-api-documentation
+          - eslint-plugin-javascript
+          - eslint-plugin-react
+          - eslint-plugin-testing-library
+          - eslint-plugin-typescript
+          - eslint-config
 
 jobs:
   build:
@@ -28,8 +27,9 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm test
+      - run: npm test --if-present
       - run: npx publint --strict
+      - run: npx @arethetypeswrong/cli --pack
 
   publish-npm:
     needs: build

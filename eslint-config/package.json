@@ -1,0 +1,80 @@
+{
+  "name": "@arabasta/eslint-config",
+  "version": "1.0.6",
+  "type": "commonjs",
+  "description": "Custom ESLint config to share between my projects. Originally extracted from vite-workshop (https://github.com/HristoKolev/vite-workshop)",
+  "author": "Hristo Kolev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudNStoyan/arabasta.git",
+    "directory": "eslint-config"
+  },
+  "types": "./src/index.d.ts",
+  "main": "./src/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./src/index.d.mts",
+        "default": "./src/index.mjs"
+      },
+      "require": {
+        "types": "./src/index.d.ts",
+        "default": "./src/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "format": "prettier --cache --write .",
+    "format-check": "prettier --cache --check .",
+    "generate-resolved-configs": "rimraf resolved-configs/generated && node resolved-configs/generate.js && npm run format",
+    "fail-on-uncommitted-changes": "git add . && git diff --quiet && git diff --cached --quiet",
+    "test": "npm run generate-resolved-configs && npm run fail-on-uncommitted-changes || echo \"Changes detected after generating resolved-configs configs.\" && git status && npm run fail-on-uncommitted-changes"
+  },
+  "dependencies": {
+    "@arabasta/eslint-plugin-javascript": "^1.0.0",
+    "@arabasta/eslint-plugin-react": "^1.0.0",
+    "@arabasta/eslint-plugin-testing-library": "^1.0.0",
+    "@arabasta/eslint-plugin-typescript": "^1.0.0",
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.13.0",
+    "@vitest/eslint-plugin": "^1.1.7",
+    "confusing-browser-globals": "^1.0.11",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-deprecation": "^3.0.0",
+    "eslint-plugin-es": "^4.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest": "^28.8.3",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-new-with-error": "^5.0.0",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.13",
+    "eslint-plugin-testing-library": "^6.4.0",
+    "eslint-plugin-unused-imports": "^3.2.0",
+    "globals": "^15.11.0",
+    "typescript-eslint": "^8.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1"
+  },
+  "peerDependencies": {
+    "eslint": "^8",
+    "typescript": ">=4.7.4 <5.7.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslintconfig"
+  ]
+}
