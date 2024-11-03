@@ -11,7 +11,7 @@ import requireJsdocReturnsRule from './rules/require-jsdoc-returns.js';
 
 const plugin = {
   meta: {
-    name: '@arabasta/eslint-plugin-api-documentation',
+    name: '@arabasta/eslint-plugin-tsoa',
     version: '1.0.1',
   },
   configs: {},
@@ -31,28 +31,28 @@ const plugin = {
 };
 
 const recommendedRules = {
-  '@arabasta/api-documentation/require-example-decorator': 'error',
-  '@arabasta/api-documentation/require-jsdoc-returns': 'error',
-  '@arabasta/api-documentation/valid-alternative-response': 'error',
-  '@arabasta/api-documentation/valid-alternative-response-type': 'error',
-  '@arabasta/api-documentation/valid-security-decorator': 'error',
-  '@arabasta/api-documentation/valid-example-decorator-type': 'error',
-  '@arabasta/api-documentation/valid-response-decorator-type': 'error',
-  '@arabasta/api-documentation/require-jsdoc-example-for-enum-type': 'error',
-  '@arabasta/api-documentation/require-tags-metadata': 'error',
-  '@arabasta/api-documentation/require-security-metadata': 'error',
+  '@arabasta/tsoa/require-example-decorator': 'error',
+  '@arabasta/tsoa/require-jsdoc-returns': 'error',
+  '@arabasta/tsoa/valid-alternative-response': 'error',
+  '@arabasta/tsoa/valid-alternative-response-type': 'error',
+  '@arabasta/tsoa/valid-security-decorator': 'error',
+  '@arabasta/tsoa/valid-example-decorator-type': 'error',
+  '@arabasta/tsoa/valid-response-decorator-type': 'error',
+  '@arabasta/tsoa/require-jsdoc-example-for-enum-type': 'error',
+  '@arabasta/tsoa/require-tags-metadata': 'error',
+  '@arabasta/tsoa/require-security-metadata': 'error',
 };
 
 plugin.configs = {
   recommended: {
-    name: '@arabasta/eslint-plugin-api-documentation/recommended',
+    name: '@arabasta/eslint-plugin-tsoa/recommended',
     plugins: {
-      '@arabasta/api-documentation': plugin,
+      '@arabasta/tsoa': plugin,
     },
     rules: recommendedRules,
   },
   'recommended-legacy': {
-    plugins: ['@arabasta/api-documentation'],
+    plugins: ['@arabasta/tsoa'],
     rules: recommendedRules,
   },
 };

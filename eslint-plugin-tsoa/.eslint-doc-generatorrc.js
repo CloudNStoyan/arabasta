@@ -97,8 +97,6 @@ const config = {
     'requiresTypeChecking',
   ],
   ruleDocSectionOptions: false,
-  urlRuleDoc: (name) =>
-    `https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-api-documentation/docs/rules/${name}.md`,
   postprocess: async (content, pathToFile) => {
     // This gets the prettier options that we normally have configured for the whole repo,
     // `markdown.md` is just a dummy path for prettier to generate the correct options for.

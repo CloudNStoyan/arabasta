@@ -10,7 +10,7 @@ type NodeWithDecorator =
   | TSESTree.Parameter;
 
 const PLUGIN_DOCS_URL =
-  'https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-api-documentation/docs/rules';
+  'https://github.com/CloudNStoyan/arabasta/blob/main/eslint-plugin-tsoa/docs/rules';
 
 export interface ApiDocumentationRuleDocs {
   description: string;
