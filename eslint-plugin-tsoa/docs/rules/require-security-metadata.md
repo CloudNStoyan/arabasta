@@ -1,6 +1,6 @@
 # require-security-metadata
 
-Require all security definitions in the `@Security` decorator to be present in the `TSOA` config.
+Require all security definitions used by the `@Security` decorator to be present in the `TSOA` config.
 
 💼 This rule is enabled in the ✅ `recommended` config.
 

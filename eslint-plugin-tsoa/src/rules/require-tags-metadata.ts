@@ -26,7 +26,7 @@ export default createRule<RuleOptions, RuleMessageIds>({
     type: 'problem',
     docs: {
       description:
-        'require all tags in the `@Tags` decorator to be present in the `TSOA` config',
+        'require tags used by the `@Tags` decorator to be present in the `TSOA` config',
       recommended: true,
     },
     schema: [

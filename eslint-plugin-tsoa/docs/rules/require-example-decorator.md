@@ -1,6 +1,6 @@
 # require-example-decorator
 
-Require `@Example` decorator when the method returns an array.
+Require the `@Example` decorator on methods that return an array.
 
 💼 This rule is enabled in the ✅ `recommended` config.
 

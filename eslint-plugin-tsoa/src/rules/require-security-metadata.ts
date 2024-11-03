@@ -28,7 +28,7 @@ export default createRule<RuleOptions, RuleMessageIds>({
     type: 'problem',
     docs: {
       description:
-        'require all security definitions in the `@Security` decorator to be present in the `TSOA` config',
+        'require all security definitions used by the `@Security` decorator to be present in the `TSOA` config',
       recommended: true,
     },
     schema: [

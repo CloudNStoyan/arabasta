@@ -15,7 +15,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description:
-        'require `@Example` decorator when the method returns an array',
+        'require the `@Example` decorator on methods that return an array',
       recommended: true,
     },
     schema: [],

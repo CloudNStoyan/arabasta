@@ -1,6 +1,6 @@
 # require-tags-metadata
 
-Require all tags in the `@Tags` decorator to be present in the `TSOA` config.
+Require tags used by the `@Tags` decorator to be present in the `TSOA` config.
 
 💼 This rule is enabled in the ✅ `recommended` config.
 
