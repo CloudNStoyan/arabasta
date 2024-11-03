@@ -22,9 +22,9 @@ export default createRule<RuleOptions, RuleMessageIds>({
   meta: {
     messages: {
       requireCorrectResponseDecoratorForMethods:
-        "Methods using the '@Security' decorator or being inside a class that uses it are required to have the '@Response(401)' decorator on them or their class",
+        "Methods using the '@Security' decorator or being inside a class that uses it are required to have the '@Response({{ statusCode }})' decorator on them or their class",
       requireCorrectResponseDecoratorForClasses:
-        "Classes using the '@Security' decorator are required to have the '@Response(401)' decorator on them",
+        "Classes using the '@Security' decorator are required to have the '@Response({{ statusCode }})' decorator on them",
     },
     type: 'problem',
     docs: {
@@ -96,6 +96,9 @@ export default createRule<RuleOptions, RuleMessageIds>({
           context.report({
             node,
             messageId: 'requireCorrectResponseDecoratorForMethods',
+            data: {
+              statusCode,
+            },
           });
         }
       },
@@ -111,13 +114,16 @@ export default createRule<RuleOptions, RuleMessageIds>({
 
         if (
           !hasResponseDecoratorWithStatus({
-            status: 401,
+            status: statusCode,
             decorators: responseDecorators,
           })
         ) {
           context.report({
             node,
             messageId: 'requireCorrectResponseDecoratorForClasses',
+            data: {
+              statusCode,
+            },
           });
         }
       },
