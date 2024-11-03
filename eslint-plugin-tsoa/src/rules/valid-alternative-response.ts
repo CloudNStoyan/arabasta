@@ -4,6 +4,7 @@ import {
   getAllDecoratorsWithName,
   hasResponseDecoratorWithStatus,
   createRule,
+  StatusCode,
 } from '../utils.js';
 
 type RuleOptions = [
@@ -11,7 +12,7 @@ type RuleOptions = [
     functionNames?: string[];
     specialStatuses?: {
       functionName: string;
-      statusCode: number;
+      statusCode: StatusCode;
     }[];
   },
 ];
@@ -54,7 +55,14 @@ export default createRule<RuleOptions, RuleMessageIds>({
                   description: 'The alternative response function name',
                 },
                 statusCode: {
-                  type: 'number',
+                  oneOf: [
+                    {
+                      type: 'string',
+                    },
+                    {
+                      type: 'number',
+                    },
+                  ],
                   description: "The alternative response's status code",
                 },
               },
@@ -139,7 +147,7 @@ export default createRule<RuleOptions, RuleMessageIds>({
             continue;
           }
 
-          let status: number;
+          let status: StatusCode;
           if (specialStatusesMap.has(usedFunction.fullFunctionName)) {
             status = specialStatusesMap.get(usedFunction.fullFunctionName);
           } else {

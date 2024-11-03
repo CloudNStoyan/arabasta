@@ -2,6 +2,8 @@ import { TSESTree } from '@typescript-eslint/utils';
 import { ESLintUtils } from '@typescript-eslint/utils';
 import ts from 'typescript';
 
+export type StatusCode = string | number;
+
 type NodeWithDecorator =
   | TSESTree.ClassDeclaration
   | TSESTree.MethodDefinition
@@ -118,7 +120,7 @@ export function hasResponseDecoratorWithStatus({
   status,
   decorators,
 }: {
-  status: number;
+  status: StatusCode;
   decorators: TSESTree.Decorator[];
 }) {
   for (const decorator of decorators) {

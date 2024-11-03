@@ -4,9 +4,20 @@ import {
   hasResponseDecoratorWithStatus,
   getAllDecoratorsWithName,
   createRule,
+  StatusCode,
 } from '../utils';
 
-export default createRule({
+type RuleOptions = [
+  {
+    statusCode: StatusCode;
+  },
+];
+
+type RuleMessageIds =
+  | 'requireCorrectResponseDecoratorForMethods'
+  | 'requireCorrectResponseDecoratorForClasses';
+
+export default createRule<RuleOptions, RuleMessageIds>({
   name: 'valid-security-decorator',
   meta: {
     messages: {
@@ -18,13 +29,36 @@ export default createRule({
     type: 'problem',
     docs: {
       description:
-        'require `@Response(401)` decorator on methods or classes that are affected by the `@Security` decorator',
+        'require `@Response` decorator with a specific status code on methods or classes that are affected by the `@Security` decorator',
       recommended: true,
     },
-    schema: [],
+    schema: [
+      {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          statusCode: {
+            oneOf: [
+              {
+                type: 'string',
+              },
+              {
+                type: 'number',
+              },
+            ],
+            description:
+              'The status code that has to be used with the `@Response` decorator',
+          },
+        },
+      },
+    ],
   },
-  defaultOptions: [],
-  create: (context) => {
+  defaultOptions: [
+    {
+      statusCode: 401,
+    },
+  ],
+  create: (context, [{ statusCode }]) => {
     let currentClassDeclarationNode: TSESTree.ClassDeclaration;
 
     return {
@@ -55,7 +89,7 @@ export default createRule({
 
         if (
           !hasResponseDecoratorWithStatus({
-            status: 401,
+            status: statusCode,
             decorators: responseDecorators,
           })
         ) {

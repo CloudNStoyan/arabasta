@@ -40,6 +40,21 @@ ruleTester.run(
         }
         `,
       },
+      {
+        name: 'when a method uses security decorator and the correct response decorator with non default options',
+        code: normalizeIndent`
+        class Users {
+          @Security('test_security')
+          @Response(403)
+          getAllUsers() {}
+        }
+        `,
+        options: [
+          {
+            statusCode: 403,
+          },
+        ],
+      },
     ],
     // 'invalid' checks cases that should not pass
     invalid: [

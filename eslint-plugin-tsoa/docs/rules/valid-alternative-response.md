@@ -34,7 +34,7 @@ type Options = [
       /**
        * The alternative response's status code
        */
-      statusCode?: number;
+      statusCode?: string | number;
     }[];
   },
 ];
