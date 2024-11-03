@@ -13,7 +13,7 @@ import requireTagsDecoratorRule from './rules/require-tags-decorator.js';
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-tsoa',
-    version: '1.0.1',
+    version: '1.0.0',
   },
   configs: {},
   rules: {
