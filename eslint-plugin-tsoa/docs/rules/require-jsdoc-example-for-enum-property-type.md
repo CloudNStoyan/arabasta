@@ -1,6 +1,6 @@
-# require-jsdoc-example-for-enum-type
+# require-jsdoc-example-for-enum-property-type
 
-Require JSDoc's `@example` declaration for enum properties and ban other complex types from having `@example` declaration.
+Require JSDoc's `@example` declaration for enum properties.
 
 💼 This rule is enabled in the ✅ `recommended` config.
 

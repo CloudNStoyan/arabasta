@@ -1,4 +1,4 @@
-import requireJsdocExampleForEnumType from './require-jsdoc-example-for-enum-type';
+import requireJsdocExampleForEnumPropertyType from './require-jsdoc-example-for-enum-property-type';
 import { RuleTester } from '@typescript-eslint/rule-tester';
 import { normalizeIndent } from '../test-utils';
 
@@ -12,8 +12,8 @@ const ruleTester = new RuleTester({
 
 // Throws error if the tests in ruleTester.run() do not pass
 ruleTester.run(
-  'require-jsdoc-example-for-enum-type', // rule name
-  requireJsdocExampleForEnumType, // rule code
+  'require-jsdoc-example-for-enum-property-type', // rule name
+  requireJsdocExampleForEnumPropertyType, // rule code
   {
     // checks
     // 'valid' checks cases that should pass
@@ -122,21 +122,6 @@ ruleTester.run(
           }
         `,
         errors: [{ messageId: 'exampleValueIsNotValid' }],
-      },
-      {
-        name: "when the property value is not enum but a complex type and has an '@example' JSDoc declaration",
-        code: normalizeIndent`
-          type AnimalKinds = "Cat" | "Dog";
-
-          interface Animal {
-            /**
-             * Animal kind
-             * @example "Crocodile"
-             */
-            kind: AnimalKinds
-          }
-        `,
-        errors: [{ messageId: 'exampleIsForbidden' }],
       },
     ],
   }

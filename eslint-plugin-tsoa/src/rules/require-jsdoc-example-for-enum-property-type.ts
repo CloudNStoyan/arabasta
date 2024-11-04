@@ -4,19 +4,16 @@ import { createRule, isTypeEnum } from '../utils';
 import ts from 'typescript';
 
 export default createRule({
-  name: 'require-jsdoc-example-for-enum-type',
+  name: 'require-jsdoc-example-for-enum-property-type',
   meta: {
     messages: {
       exampleIsMissing: "Missing JSDoc '@example' declaration",
       exampleDescriptionIsMissing: "Missing JSDoc '@example' description",
-      exampleIsForbidden:
-        "Using JSDoc '@example' on complex types is forbidden",
       exampleValueIsNotValid: "JSDoc '@example' contains invalid enum value",
     },
     type: 'problem',
     docs: {
-      description:
-        "require JSDoc's `@example` declaration for enum properties and ban other complex types from having `@example` declaration",
+      description: "require JSDoc's `@example` declaration for enum properties",
       recommended: true,
       requiresTypeChecking: true,
     },
@@ -56,12 +53,6 @@ export default createRule({
         });
 
         if (!isTypeEnum(propertyType)) {
-          if (propertyExamples.length > 0) {
-            context.report({
-              node,
-              messageId: 'exampleIsForbidden',
-            });
-          }
           return;
         }
 

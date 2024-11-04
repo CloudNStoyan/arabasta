@@ -7,6 +7,7 @@ declare const plugin: TSESLint.FlatConfig.Plugin & {
   };
   rules: {
     'no-destructuring-arrays-as-objects': TSESLint.AnyRuleModule;
+    'no-jsdoc-example-for-complex-property-type': TSESLint.AnyRuleModule;
     'require-example-decorator': TSESLint.AnyRuleModule;
     'require-jsdoc-returns': TSESLint.AnyRuleModule;
     'valid-alternative-response': TSESLint.AnyRuleModule;
@@ -14,7 +15,7 @@ declare const plugin: TSESLint.FlatConfig.Plugin & {
     'valid-security-decorator': TSESLint.AnyRuleModule;
     'valid-example-decorator-type': TSESLint.AnyRuleModule;
     'valid-response-decorator-type': TSESLint.AnyRuleModule;
-    'require-jsdoc-example-for-enum-type': TSESLint.AnyRuleModule;
+    'require-jsdoc-example-for-enum-property-type': TSESLint.AnyRuleModule;
     'require-tags-metadata': TSESLint.AnyRuleModule;
     'require-security-metadata': TSESLint.AnyRuleModule;
     'require-tags-decorator': TSESLint.AnyRuleModule;
