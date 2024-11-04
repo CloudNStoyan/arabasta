@@ -6,7 +6,6 @@ declare const plugin: TSESLint.FlatConfig.Plugin & {
     'recommended-legacy': TSESLint.ClassicConfig.Config;
   };
   rules: {
-    'no-destructuring-arrays-as-objects': TSESLint.AnyRuleModule;
     'no-jsdoc-example-for-complex-property-type': TSESLint.AnyRuleModule;
     'require-example-decorator': TSESLint.AnyRuleModule;
     'require-jsdoc-returns': TSESLint.AnyRuleModule;
