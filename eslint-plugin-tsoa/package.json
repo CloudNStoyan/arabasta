@@ -27,13 +27,13 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc --p tsconfig.build.json",
-    "lint:eslint-docs": "eslint-doc-generator --check",
-    "update:eslint-docs": "eslint-doc-generator",
-    "typecheck": "tsc --p tsconfig.json --noEmit",
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
+    "lint:eslint-docs": "eslint-doc-generator --check",
+    "test": "npm run test:only && npm run lint:eslint-docs",
     "test:only": "vitest run --dir ./src/rules",
-    "test": "npm run test:only && npm run lint:eslint-docs"
+    "typecheck": "tsc --p tsconfig.json --noEmit",
+    "update:eslint-docs": "eslint-doc-generator"
   },
   "overrides": {
     "@types/eslint": "file:./"
@@ -54,9 +54,9 @@
     "vitest": "^2.1.4"
   },
   "peerDependencies": {
-    "@typescript-eslint/parser": ">= 7.0.0",
+    "@typescript-eslint/parser": ">=7.0.0",
     "eslint": ">=8.0.0",
-    "typescript": ">= 5.0.0"
+    "typescript": ">=5.0.0"
   },
   "license": "MIT",
   "keywords": [

@@ -46,6 +46,7 @@ export default [
             'main',
             'exports',
             'scripts',
+            'overrides',
             'dependencies',
             'devDependencies',
             'peerDependencies',
