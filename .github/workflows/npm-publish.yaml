@@ -11,6 +11,7 @@ on:
           - eslint-plugin-javascript
           - eslint-plugin-react
           - eslint-plugin-testing-library
+          - eslint-plugin-tsoa
           - eslint-plugin-typescript
           - eslint-config
 
