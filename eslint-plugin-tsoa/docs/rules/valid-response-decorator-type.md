@@ -1,6 +1,6 @@
 # valid-response-decorator-type
 
-Require `@Response` decorator's first type argument to exists and optionally to be one of the allowed types.
+Require `@Response` decorator's first type argument to exists if the status code begins with `4` or `5` and optionally to be one of the allowed types.
 
 💼 This rule is enabled in the ✅ `recommended` config.
 

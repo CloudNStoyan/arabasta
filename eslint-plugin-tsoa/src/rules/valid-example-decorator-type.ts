@@ -14,7 +14,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description:
-        "require `@Example` decorator's first type argument to be the same as its method's return type",
+        "require `@Example` decorator's first type argument to be the same as its method's return type or its property type",
       recommended: true,
       requiresTypeChecking: true,
     },

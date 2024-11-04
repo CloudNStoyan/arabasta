@@ -24,7 +24,7 @@ export default createRule<RuleOptions, RuleMessageIds>({
     type: 'problem',
     docs: {
       description:
-        "require `@Response` decorator's first type argument to exists and optionally to be one of the allowed types",
+        "require `@Response` decorator's first type argument to exists if the status code begins with `4` or `5` and optionally to be one of the allowed types",
       recommended: true,
       requiresTypeChecking: true,
     },
