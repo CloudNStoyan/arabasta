@@ -27,10 +27,10 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc --p tsconfig.build.json",
-    "typecheck": "tsc --p tsconfig.json --noEmit",
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
-    "test": "vitest run --dir ./src/rules"
+    "test": "vitest run --dir ./src/rules",
+    "typecheck": "tsc --p tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@types/eslint": "~9.6.0",
