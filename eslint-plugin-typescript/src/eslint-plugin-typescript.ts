@@ -4,7 +4,7 @@ import noDestructuringArraysAsObjectsRule from './rules/no-destructuring-arrays-
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-typescript',
-    version: '1.0.0',
+    version: '1.0.1',
   },
   configs: {},
   rules: {

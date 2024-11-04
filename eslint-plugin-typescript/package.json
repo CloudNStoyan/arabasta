@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-plugin-typescript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "commonjs",
   "description": "ESLint plugin for typescript rules",
   "author": "Stoyan Kolev",
@@ -27,13 +27,13 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc --p tsconfig.build.json",
-    "lint:eslint-docs": "eslint-doc-generator --check",
-    "update:eslint-docs": "eslint-doc-generator",
-    "typecheck": "tsc --p tsconfig.json --noEmit",
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
+    "lint:eslint-docs": "eslint-doc-generator --check",
+    "test": "npm run test:only && npm run lint:eslint-docs",
     "test:only": "vitest run --dir ./src/rules",
-    "test": "npm run test:only && npm run lint:eslint-docs"
+    "typecheck": "tsc --p tsconfig.json --noEmit",
+    "update:eslint-docs": "eslint-doc-generator"
   },
   "dependencies": {
     "@typescript-eslint/utils": "^8.11.0",
@@ -50,9 +50,9 @@
     "vitest": "^2.1.2"
   },
   "peerDependencies": {
-    "@typescript-eslint/parser": ">= 7.0.0",
+    "@typescript-eslint/parser": ">=7.0.0",
     "eslint": ">=8.0.0",
-    "typescript": ">= 5.0.0"
+    "typescript": ">=5.0.0"
   },
   "license": "MIT",
   "keywords": [
