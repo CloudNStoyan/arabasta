@@ -171,7 +171,7 @@ function createConfigVariation(variation) {
     configs.push(
       ...tseslint.config({
         name: 'TSOA files',
-        files: [`src/routes/**/*.+(${allExtensions.join('|')})`],
+        files: [`src/**/*.+(${allExtensions.join('|')})`],
         extends: [...tsoaConfig],
         rules: {
           // Put your rules here.
