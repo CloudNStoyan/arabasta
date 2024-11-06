@@ -28,7 +28,7 @@ module.exports = tseslint.config(
       'jsdoc/check-tag-names': [
         'error',
         {
-          // add custom TSOA and OpenAPI JSDoc's declarations
+          // Add custom TSOA and OpenAPI JSDoc's declarations
           definedTags: [
             'format',
             'isDateTime',
