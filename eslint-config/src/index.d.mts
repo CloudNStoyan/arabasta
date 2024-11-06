@@ -11,3 +11,4 @@ export const typescriptConfig: TSESLint.FlatConfig.ConfigArray;
 export const typescriptDefinitionsConfig: TSESLint.FlatConfig.ConfigArray;
 export const vitestConfig: TSESLint.FlatConfig.ConfigArray;
 export const rtlVitestConfig: TSESLint.FlatConfig.ConfigArray;
+export const tsoaConfig: TSESLint.FlatConfig.ConfigArray;

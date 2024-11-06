@@ -9,6 +9,7 @@ import typescriptConfig from './typescript.js';
 import typescriptDefinitionsConfig from './typescript-definitions.js';
 import vitestConfig from './vitest.js';
 import rtlVitestConfig from './rtl-vitest.js';
+import tsoaConfig from './tsoa.js';
 
 export {
   baseConfig,
@@ -22,4 +23,5 @@ export {
   typescriptDefinitionsConfig,
   vitestConfig,
   rtlVitestConfig,
+  tsoaConfig,
 };

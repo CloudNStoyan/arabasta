@@ -123,6 +123,16 @@ function getConfigVariations() {
 
   current = [
     ...current,
+    ...current
+      .filter((x) => {
+        const tags = x.split(TAG_DELIMITER);
+        return tags.includes('typescript');
+      })
+      .map((x) => `${x}${TAG_DELIMITER}tsoa`),
+  ];
+
+  current = [
+    ...current,
     ...current.map((x) => `${x}${TAG_DELIMITER}react`),
     ...current.map(
       (x) => `${x}${TAG_DELIMITER}react${TAG_DELIMITER}react-redux`
