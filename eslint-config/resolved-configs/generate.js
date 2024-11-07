@@ -203,6 +203,7 @@ function getInputConfigs() {
     'src/file.ts',
     'src/file.test.ts',
     'declaration-file.d.ts',
+    'mock-api/file.ts',
   ];
 
   const configs = [];

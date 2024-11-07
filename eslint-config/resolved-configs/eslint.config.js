@@ -171,7 +171,7 @@ function createConfigVariation(variation) {
     configs.push(
       ...tseslint.config({
         name: 'TSOA files',
-        files: [`src/**/*.+(${allExtensions.join('|')})`],
+        files: [`mock-api/**/*.+(${typeScriptExtensions.join('|')})`],
         extends: [...tsoaConfig],
         rules: {
           // Put your rules here.
