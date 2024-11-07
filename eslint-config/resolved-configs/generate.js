@@ -203,8 +203,9 @@ function getInputConfigs() {
     'src/file.ts',
     'src/file.test.ts',
     'declaration-file.d.ts',
-    'mock-api/file.ts',
   ];
+
+  const tsoaTestInputFiles = ['mock-api/file.ts'];
 
   const configs = [];
 
@@ -215,6 +216,12 @@ function getInputConfigs() {
 
     if (variation.split(TAG_DELIMITER).includes('typescript')) {
       for (const testInputFile of tsTestInputFiles) {
+        configs.push({ variation, testInputFile });
+      }
+    }
+
+    if (variation.split(TAG_DELIMITER).includes('tsoa')) {
+      for (const testInputFile of tsoaTestInputFiles) {
         configs.push({ variation, testInputFile });
       }
     }
