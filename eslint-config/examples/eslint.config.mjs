@@ -5,6 +5,7 @@ import {
   reactTypescriptConfig,
   reduxConfig,
   rtlVitestConfig,
+  tsoaConfig,
   typescriptConfig,
   typescriptDefinitionsConfig,
   vitestConfig,
@@ -89,6 +90,15 @@ export default [
     name: 'React files',
     files: [`src/**/*.+(${allExtensions.join('|')})`],
     extends: [...reactConfig, ...reactTypescriptConfig, ...reduxConfig],
+    rules: {
+      // Put your rules here.
+    },
+  }),
+
+  ...tseslint.config({
+    name: 'TSOA files',
+    files: [`mock-api/**/*.+(${typeScriptExtensions.join('|')})`],
+    extends: [...tsoaConfig],
     rules: {
       // Put your rules here.
     },
