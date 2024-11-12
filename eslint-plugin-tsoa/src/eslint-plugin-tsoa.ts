@@ -10,11 +10,12 @@ import requireSecurityMetadataRule from './rules/require-security-metadata.js';
 import requireJsdocReturnsRule from './rules/require-jsdoc-returns.js';
 import requireTagsDecoratorRule from './rules/require-tags-decorator.js';
 import noJsdocExampleForComplexPropertyTypeRule from './rules/no-jsdoc-example-for-complex-property-type.js';
+import requirePropertyExampleDecoratorRule from './rules/require-property-example-decorator.js';
 
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-tsoa',
-    version: '1.0.0',
+    version: '1.1.0',
   },
   configs: {},
   rules: {
@@ -22,6 +23,7 @@ const plugin = {
       noJsdocExampleForComplexPropertyTypeRule,
     'require-example-decorator': requireExampleDecoratorRule,
     'require-jsdoc-returns': requireJsdocReturnsRule,
+    'require-property-example-decorator': requirePropertyExampleDecoratorRule,
     'valid-alternative-response': validAlternativeResponseRule,
     'valid-alternative-response-type': validAlternativeResponseTypeRule,
     'valid-security-decorator': validSecurityDecoratorRule,
@@ -40,6 +42,7 @@ const recommendedRules = {
   '@arabasta/tsoa/no-jsdoc-example-for-complex-property-type': 'error',
   '@arabasta/tsoa/require-example-decorator': 'error',
   '@arabasta/tsoa/require-jsdoc-returns': 'error',
+  '@arabasta/tsoa/require-property-example-decorator': 'error',
   '@arabasta/tsoa/valid-alternative-response': 'error',
   '@arabasta/tsoa/valid-alternative-response-type': 'error',
   '@arabasta/tsoa/valid-security-decorator': 'error',
