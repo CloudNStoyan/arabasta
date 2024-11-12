@@ -86,7 +86,10 @@ export function hasDecoratorWithName({
   node,
   decoratorName,
 }: {
-  node: TSESTree.MethodDefinition | TSESTree.ClassDeclaration;
+  node:
+    | TSESTree.MethodDefinition
+    | TSESTree.ClassDeclaration
+    | TSESTree.PropertyDefinition;
   decoratorName: string;
 }) {
   if (!Array.isArray(node?.decorators)) {

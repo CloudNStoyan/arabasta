@@ -10,4 +10,5 @@ module.exports = {
   typescriptDefinitionsConfig: require('./typescript-definitions'),
   vitestConfig: require('./vitest'),
   rtlVitestConfig: require('./rtl-vitest'),
+  tsoaConfig: require('./tsoa'),
 };

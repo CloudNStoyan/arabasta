@@ -9,6 +9,7 @@ declare const plugin: TSESLint.FlatConfig.Plugin & {
     'no-jsdoc-example-for-complex-property-type': TSESLint.AnyRuleModule;
     'require-example-decorator': TSESLint.AnyRuleModule;
     'require-jsdoc-returns': TSESLint.AnyRuleModule;
+    'require-property-example-decorator': TSESLint.AnyRuleModule;
     'valid-alternative-response': TSESLint.AnyRuleModule;
     'valid-alternative-response-type': TSESLint.AnyRuleModule;
     'valid-security-decorator': TSESLint.AnyRuleModule;

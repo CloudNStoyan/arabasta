@@ -12,6 +12,7 @@ declare const _default: {
   typescriptDefinitionsConfig: TSESLint.FlatConfig.ConfigArray;
   vitestConfig: TSESLint.FlatConfig.ConfigArray;
   rtlVitestConfig: TSESLint.FlatConfig.ConfigArray;
+  tsoaConfig: TSESLint.FlatConfig.ConfigArray;
 };
 
 export = _default;

@@ -123,6 +123,16 @@ function getConfigVariations() {
 
   current = [
     ...current,
+    ...current
+      .filter((x) => {
+        const tags = x.split(TAG_DELIMITER);
+        return tags.includes('typescript');
+      })
+      .map((x) => `${x}${TAG_DELIMITER}tsoa`),
+  ];
+
+  current = [
+    ...current,
     ...current.map((x) => `${x}${TAG_DELIMITER}react`),
     ...current.map(
       (x) => `${x}${TAG_DELIMITER}react${TAG_DELIMITER}react-redux`
@@ -195,6 +205,8 @@ function getInputConfigs() {
     'declaration-file.d.ts',
   ];
 
+  const tsoaTestInputFiles = ['mock-api/file.ts'];
+
   const configs = [];
 
   for (const variation of getConfigVariations()) {
@@ -204,6 +216,12 @@ function getInputConfigs() {
 
     if (variation.split(TAG_DELIMITER).includes('typescript')) {
       for (const testInputFile of tsTestInputFiles) {
+        configs.push({ variation, testInputFile });
+      }
+    }
+
+    if (variation.split(TAG_DELIMITER).includes('tsoa')) {
+      for (const testInputFile of tsoaTestInputFiles) {
         configs.push({ variation, testInputFile });
       }
     }

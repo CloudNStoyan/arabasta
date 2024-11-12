@@ -14,6 +14,7 @@ const {
   typescriptDefinitionsConfig,
   rtlVitestConfig,
   vitestConfig,
+  tsoaConfig,
 } = require('..');
 
 function createConfigVariation(variation) {
@@ -159,6 +160,19 @@ function createConfigVariation(variation) {
           ...vitestConfig,
           ...(variationTags.includes('rtl') ? [...rtlVitestConfig] : []),
         ],
+        rules: {
+          // Put your rules here.
+        },
+      })
+    );
+  }
+
+  if (variationTags.includes('tsoa')) {
+    configs.push(
+      ...tseslint.config({
+        name: 'TSOA files',
+        files: [`mock-api/**/*.+(${typeScriptExtensions.join('|')})`],
+        extends: [...tsoaConfig],
         rules: {
           // Put your rules here.
         },

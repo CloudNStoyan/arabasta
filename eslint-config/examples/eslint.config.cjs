@@ -6,6 +6,7 @@ const {
   reactTypescriptConfig,
   reduxConfig,
   rtlJestConfig,
+  tsoaConfig,
   typescriptConfig,
   typescriptDefinitionsConfig,
 } = require('@arabasta/eslint-config');
@@ -89,6 +90,15 @@ module.exports = [
     name: 'React files',
     files: [`src/**/*.+(${allExtensions.join('|')})`],
     extends: [...reactConfig, ...reactTypescriptConfig, ...reduxConfig],
+    rules: {
+      // Put your rules here.
+    },
+  }),
+
+  ...tseslint.config({
+    name: 'TSOA files',
+    files: [`mock-api/**/*.+(${typeScriptExtensions.join('|')})`],
+    extends: [...tsoaConfig],
     rules: {
       // Put your rules here.
     },
