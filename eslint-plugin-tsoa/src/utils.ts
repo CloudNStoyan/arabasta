@@ -1,4 +1,5 @@
-import { TSESTree } from '@typescript-eslint/utils';
+import { getJSDocComment, parseComment } from '@es-joy/jsdoccomment';
+import { TSESLint, TSESTree } from '@typescript-eslint/utils';
 import { ESLintUtils } from '@typescript-eslint/utils';
 import ts from 'typescript';
 
@@ -33,6 +34,24 @@ const HTTP_METHOD_DECORATOR_NAMES = [
   'Delete',
   'Head',
 ];
+
+export function parseJSDoc(
+  sourceCode: TSESLint.SourceCode,
+  node: TSESTree.Node
+) {
+  const jsdocNode = getJSDocComment(sourceCode as any, node as any, {
+    maxLines: 1,
+    minLines: 0,
+  });
+
+  if (!jsdocNode) {
+    return { jsdoc: null, jsdocNode: null };
+  }
+
+  const jsdoc = parseComment(jsdocNode);
+
+  return { jsdoc, jsdocNode: jsdocNode as TSESTree.Node };
+}
 
 export function isTypeEnum(type: ts.Type) {
   return type.symbol?.flags & ts.SymbolFlags.Enum;

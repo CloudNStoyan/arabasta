@@ -1,6 +1,5 @@
 import { ESLintUtils } from '@typescript-eslint/utils';
-import { getJSDocComment, parseComment } from '@es-joy/jsdoccomment';
-import { createRule, isTypeEnum } from '../utils';
+import { createRule, parseJSDoc, isTypeEnum } from '../utils';
 
 type RuleOptions = [
   {
@@ -58,16 +57,11 @@ export default createRule<RuleOptions, RuleMessageIds>({
 
         const propertyType = services.getTypeAtLocation(node);
 
-        const jsdocNode = getJSDocComment(sourceCode, node, {
-          maxLines: 1,
-          minLines: 0,
-        });
+        const { jsdoc } = parseJSDoc(sourceCode, node);
 
-        if (!jsdocNode) {
+        if (!jsdoc) {
           return;
         }
-
-        const jsdoc = parseComment(jsdocNode);
 
         const targetTagName = 'example';
 
