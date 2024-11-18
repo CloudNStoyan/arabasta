@@ -2,12 +2,24 @@
   "name": "arabasta",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "eslint-plugin-javascript",
+    "eslint-plugin-react",
+    "eslint-plugin-testing-library",
+    "eslint-plugin-tsoa",
+    "eslint-plugin-typescript"
+  ],
   "type": "commonjs",
   "scripts": {
     "format": "prettier --cache --write .",
     "format-check": "prettier --cache --check .",
     "lint": "eslint ./ --max-warnings 0",
     "lint:fix": "npm run lint -- --fix"
+  },
+  "overrides": {
+    "@es-joy/jsdoccomment": {
+      "@types/eslint": "file:./"
+    }
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

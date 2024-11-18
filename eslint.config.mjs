@@ -37,6 +37,7 @@ export default [
             'name',
             'version',
             'private',
+            'workspaces',
             'type',
             'description',
             'author',
