@@ -1,7 +1,6 @@
 import { getTypeName, isPromiseLike } from '@typescript-eslint/type-utils';
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils';
-import { getJSDocComment, parseComment } from '@es-joy/jsdoccomment';
-import { createRule } from '../utils';
+import { createRule, parseJSDoc } from '../utils';
 
 type RuleOptions = [
   {
@@ -79,16 +78,11 @@ export default createRule<RuleOptions, RuleMessageIds>({
       MethodDefinition(node) {
         const returnType = getFunctionReturnTypeName(node);
 
-        const jsdocNode = getJSDocComment(sourceCode, node, {
-          maxLines: 1,
-          minLines: 0,
-        });
+        const { jsdoc, jsdocNode } = parseJSDoc(sourceCode, node);
 
-        if (!jsdocNode) {
+        if (!jsdoc || !jsdocNode) {
           return;
         }
-
-        const jsdoc = parseComment(jsdocNode);
 
         const targetTagName = 'returns';
 

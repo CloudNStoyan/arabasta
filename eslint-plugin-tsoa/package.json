@@ -35,9 +35,6 @@
     "typecheck": "tsc --p tsconfig.json --noEmit",
     "update:eslint-docs": "eslint-doc-generator"
   },
-  "overrides": {
-    "@types/eslint": "file:./"
-  },
   "dependencies": {
     "@es-joy/jsdoccomment": "^0.50.0",
     "@typescript-eslint/type-utils": "^8.12.2",
