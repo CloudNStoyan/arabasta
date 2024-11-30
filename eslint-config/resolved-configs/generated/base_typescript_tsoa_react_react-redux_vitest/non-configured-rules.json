@@ -223,6 +223,7 @@
   "vitest/padding-around-describe-blocks",
   "vitest/padding-around-expect-groups",
   "vitest/padding-around-test-blocks",
+  "vitest/valid-expect-in-promise",
   "@typescript-eslint/adjacent-overload-signatures",
   "@typescript-eslint/array-type",
   "@typescript-eslint/ban-tslint-comment",

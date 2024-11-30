@@ -91,6 +91,7 @@
       "CSSMatrixComponent": false,
       "CSSMediaRule": false,
       "CSSNamespaceRule": false,
+      "CSSNestedDeclarations": false,
       "CSSNumericArray": false,
       "CSSNumericValue": false,
       "CSSPageDescriptors": false,
@@ -414,7 +415,6 @@
       "IntersectionObserver": false,
       "IntersectionObserverEntry": false,
       "Intl": false,
-      "Iterator": false,
       "JSON": false,
       "Keyboard": false,
       "KeyboardEvent": false,
@@ -1178,7 +1178,7 @@
       "visualViewport": false,
       "window": false
     },
-    "parser": "typescript-eslint/parser@8.10.0",
+    "parser": "typescript-eslint/parser@8.14.0",
     "parserOptions": {
       "ecmaFeatures": {
         "generators": false,
@@ -1199,19 +1199,19 @@
     "@",
     "@arabasta/javascript:@arabasta/eslint-plugin-javascript@1.0.0",
     "@arabasta/react:@arabasta/eslint-plugin-react@1.0.0",
-    "@arabasta/typescript:@arabasta/eslint-plugin-typescript@1.0.0",
-    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.0",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.10.0",
+    "@arabasta/typescript:@arabasta/eslint-plugin-typescript@1.0.1",
+    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.1",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.14.0",
     "deprecation:eslint-plugin-deprecation@3.0.0",
     "es",
     "import",
-    "jsx-a11y:eslint-plugin-jsx-a11y@6.10.0",
+    "jsx-a11y:eslint-plugin-jsx-a11y@6.10.2",
     "new-with-error",
     "react",
     "react-hooks",
     "react-refresh",
     "unused-imports",
-    "vitest:vitest@1.1.6"
+    "vitest:vitest@1.1.11"
   ],
   "rules": {
     "@arabasta/javascript/report-caught-error": ["error"],
@@ -1898,7 +1898,7 @@
     "no-caller": ["error"],
     "no-case-declarations": ["error"],
     "no-catch-shadow": ["off"],
-    "no-class-assign": ["error"],
+    "no-class-assign": ["off"],
     "no-comma-dangle": ["off"],
     "no-compare-neg-zero": ["error"],
     "no-cond-assign": ["error", "always"],
