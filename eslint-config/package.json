@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-config",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "commonjs",
   "description": "Custom ESLint config to share between my projects. Originally extracted from vite-workshop (https://github.com/HristoKolev/vite-workshop)",
   "author": "Hristo Kolev",
@@ -35,11 +35,11 @@
     "@arabasta/eslint-plugin-react": "^1.0.0",
     "@arabasta/eslint-plugin-testing-library": "^1.0.0",
     "@arabasta/eslint-plugin-tsoa": "^1.1.0",
-    "@arabasta/eslint-plugin-typescript": "^1.0.0",
-    "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
-    "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.13.0",
-    "@vitest/eslint-plugin": "^1.1.7",
+    "@arabasta/eslint-plugin-typescript": "^1.0.1",
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.16.0",
+    "@vitest/eslint-plugin": "^1.1.12",
     "confusing-browser-globals": "^1.0.11",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -47,26 +47,26 @@
     "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-es": "^4.1.0",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jest": "^28.8.3",
-    "eslint-plugin-jsdoc": "^50.4.3",
-    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-jest": "^28.9.0",
+    "eslint-plugin-jsdoc": "^50.6.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-new-with-error": "^5.0.0",
-    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.13",
-    "eslint-plugin-testing-library": "^6.4.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "eslint-plugin-testing-library": "^7.0.0",
     "eslint-plugin-unused-imports": "^3.2.0",
-    "globals": "^15.11.0",
-    "typescript-eslint": "^8.10.0"
+    "globals": "^15.12.0",
+    "typescript-eslint": "~8.14.0"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.1",
     "rimraf": "^6.0.1"
   },
   "peerDependencies": {
     "eslint": "^8",
-    "typescript": ">=4.7.4 <5.7.0"
+    "typescript": ">=4.8.4 <5.8.0"
   },
   "peerDependenciesMeta": {
     "typescript": {

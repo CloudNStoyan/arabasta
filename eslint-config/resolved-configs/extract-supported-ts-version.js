@@ -46,9 +46,9 @@ async function extractSupportedTsVersion() {
 
   const lines = fileContents.split('\n');
 
-  const mark = 'const SUPPORTED_TYPESCRIPT_VERSIONS = ';
+  const mark = 'exports.SUPPORTED_TYPESCRIPT_VERSIONS = ';
 
-  const line = lines.find((x) => x.startsWith(mark));
+  const line = lines.findLast((x) => x.startsWith(mark));
 
   const constraint = line
     .replaceAll(mark, '')
