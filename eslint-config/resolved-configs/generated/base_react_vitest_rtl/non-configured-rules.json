@@ -189,6 +189,7 @@
   "vitest/padding-around-describe-blocks",
   "vitest/padding-around-expect-groups",
   "vitest/padding-around-test-blocks",
+  "vitest/valid-expect-in-promise",
   "testing-library/consistent-data-testid",
   "testing-library/prefer-explicit-assert",
   "testing-library/prefer-implicit-assert",

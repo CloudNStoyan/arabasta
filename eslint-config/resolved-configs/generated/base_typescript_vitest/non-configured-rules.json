@@ -207,5 +207,6 @@
   "vitest/padding-around-before-each-blocks",
   "vitest/padding-around-describe-blocks",
   "vitest/padding-around-expect-groups",
-  "vitest/padding-around-test-blocks"
+  "vitest/padding-around-test-blocks",
+  "vitest/valid-expect-in-promise"
 ]
