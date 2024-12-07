@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-config",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "commonjs",
   "description": "Custom ESLint config to share between my projects. Originally extracted from vite-workshop (https://github.com/HristoKolev/vite-workshop)",
   "author": "Hristo Kolev",
@@ -34,7 +34,7 @@
     "@arabasta/eslint-plugin-javascript": "^1.0.0",
     "@arabasta/eslint-plugin-react": "^1.0.0",
     "@arabasta/eslint-plugin-testing-library": "^1.0.0",
-    "@arabasta/eslint-plugin-tsoa": "^1.1.0",
+    "@arabasta/eslint-plugin-tsoa": "^1.1.1",
     "@arabasta/eslint-plugin-typescript": "^1.0.1",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
     "@eslint/eslintrc": "^3.2.0",

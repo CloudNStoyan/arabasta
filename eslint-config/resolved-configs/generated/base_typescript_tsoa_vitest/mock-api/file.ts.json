@@ -1196,7 +1196,7 @@
   "plugins": [
     "@",
     "@arabasta/javascript:@arabasta/eslint-plugin-javascript@1.0.0",
-    "@arabasta/tsoa:@arabasta/eslint-plugin-tsoa@1.1.0",
+    "@arabasta/tsoa:@arabasta/eslint-plugin-tsoa@1.1.1",
     "@arabasta/typescript:@arabasta/eslint-plugin-typescript@1.0.1",
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.1",
     "@typescript-eslint:@typescript-eslint/eslint-plugin@8.14.0",
@@ -1740,7 +1740,7 @@
           },
           {
             "comment": "JsdocBlock:not(*:has(JsdocTag[tag=isInt], JsdocTag[tag=isFloat], JsdocTag[tag=isLong], JsdocTag[tag=isDouble]))",
-            "context": "TSPropertySignature[typeAnnotation.typeAnnotation.type=\"TSNumberKeyword\"],TSTypeAliasDeclaration[typeAnnotation.type=\"TSNumberKeyword\"]",
+            "context": "TSPropertySignature[typeAnnotation.typeAnnotation.type=\"TSNumberKeyword\"],TSTypeAliasDeclaration[typeAnnotation.type=\"TSNumberKeyword\"],PropertyDefinition[typeAnnotation.typeAnnotation.type=\"TSNumberKeyword\"]",
             "message": "Missing JSDoc number type declaration (@isInt, @isFloat, @isLong, @isDouble)."
           }
         ]
@@ -1775,7 +1775,9 @@
         "contexts": [
           "TSTypeAliasDeclaration",
           "TSInterfaceDeclaration",
-          "TSInterfaceDeclaration TSPropertySignature"
+          "TSInterfaceDeclaration TSPropertySignature",
+          "PropertyDefinition",
+          "ClassDeclaration:not([superClass])"
         ],
         "enableFixer": true,
         "exemptEmptyConstructors": false,

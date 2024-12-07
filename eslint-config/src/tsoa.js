@@ -81,13 +81,13 @@ module.exports = tseslint.config(
       'jsdoc/require-example': [
         'error',
         {
-          // Do not require `@example` for complex types and array
+          // Do not require `@example` for interface's properties that are complex types or arrays
           contexts: [
             'TSInterfaceDeclaration TSPropertySignature:not([typeAnnotation.typeAnnotation.type="TSArrayType"], [typeAnnotation.typeAnnotation.type="TSTypeReference"])',
           ],
         },
       ],
-      // Require JSDoc on Methods, Types, Interfaces and Interface's properties
+      // Require JSDoc on Methods, Types, Interfaces, Interface's properties, Classes and Class's properties
       'jsdoc/require-jsdoc': [
         'error',
         {
@@ -98,6 +98,8 @@ module.exports = tseslint.config(
             'TSTypeAliasDeclaration',
             'TSInterfaceDeclaration',
             'TSInterfaceDeclaration TSPropertySignature',
+            'PropertyDefinition',
+            'ClassDeclaration:not([superClass])',
           ],
           checkConstructors: false,
         },
@@ -112,7 +114,7 @@ module.exports = tseslint.config(
               context: 'MethodDefinition',
               message: 'Missing JSDoc @summary declaration.',
             },
-            // We don't want `@example` on properties that
+            // We don't want `@example` on interface's properties that
             // are arrays because they can't be type-checked
             {
               comment: 'JsdocBlock:has(JsdocTag[tag=example])',
@@ -125,7 +127,7 @@ module.exports = tseslint.config(
               comment:
                 'JsdocBlock:not(*:has(JsdocTag[tag=isInt], JsdocTag[tag=isFloat], JsdocTag[tag=isLong], JsdocTag[tag=isDouble]))',
               context:
-                'TSPropertySignature[typeAnnotation.typeAnnotation.type="TSNumberKeyword"],TSTypeAliasDeclaration[typeAnnotation.type="TSNumberKeyword"]',
+                'TSPropertySignature[typeAnnotation.typeAnnotation.type="TSNumberKeyword"],TSTypeAliasDeclaration[typeAnnotation.type="TSNumberKeyword"],PropertyDefinition[typeAnnotation.typeAnnotation.type="TSNumberKeyword"]',
               message:
                 'Missing JSDoc number type declaration (@isInt, @isFloat, @isLong, @isDouble).',
             },
