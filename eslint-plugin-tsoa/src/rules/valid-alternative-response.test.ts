@@ -56,6 +56,17 @@ ruleTester.run(
         `,
       },
       {
+        name: 'when this.noContentResult is used in a method that has the `@SuccessResponse` decorator',
+        code: normalizeIndent`
+        class User {
+          @SuccessResponse(204)
+          getAllUsers() {
+            return this.noContentResult();
+          }
+        }
+        `,
+      },
+      {
         name: 'when this.noContentResult is used in a method that is inside a class that has the correct response decorator',
         code: normalizeIndent`
         @Response(204)
