@@ -83,7 +83,7 @@ Plugin packages included in this ESLint config:
 - @arabasta/eslint-plugin-javascript@1.0.0
 - @arabasta/eslint-plugin-react@1.0.0
 - @arabasta/eslint-plugin-testing-library@1.0.0
-- @arabasta/eslint-plugin-tsoa@1.1.0
+- @arabasta/eslint-plugin-tsoa@1.1.1
 - @arabasta/eslint-plugin-typescript@1.0.1
 - @eslint-community/eslint-plugin-eslint-comments@4.4.1
 - @typescript-eslint/eslint-plugin@7.18.0
