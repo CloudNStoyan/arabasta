@@ -134,6 +134,10 @@ export default createRule<RuleOptions, RuleMessageIds>({
             decoratorName: 'Response',
           }),
           ...getAllDecoratorsWithName({
+            node,
+            decoratorName: 'SuccessResponse',
+          }),
+          ...getAllDecoratorsWithName({
             node: currentClassDeclarationNode,
             decoratorName: 'Response',
           }),

@@ -15,7 +15,7 @@ import requirePropertyExampleDecoratorRule from './rules/require-property-exampl
 const plugin = {
   meta: {
     name: '@arabasta/eslint-plugin-tsoa',
-    version: '1.1.0',
+    version: '1.1.1',
   },
   configs: {},
   rules: {
