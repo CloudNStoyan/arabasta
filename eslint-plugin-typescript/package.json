@@ -36,7 +36,7 @@
     "update:eslint-docs": "eslint-doc-generator"
   },
   "dependencies": {
-    "@typescript-eslint/utils": "^8.11.0",
+    "@typescript-eslint/utils": "^8.24.0",
     "ts-api-utils": "^1.4.3"
   },
   "devDependencies": {
