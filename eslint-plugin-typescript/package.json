@@ -40,14 +40,14 @@
     "ts-api-utils": "^1.4.3"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
-    "@typescript-eslint/rule-tester": "^8.19.0",
+    "@types/node": "^22.13.5",
+    "@typescript-eslint/rule-tester": "^8.24.1",
     "eslint-doc-generator": "^2.0.2",
-    "json-schema-to-typescript": "^15.0.2",
-    "prettier": "^3.4.2",
+    "json-schema-to-typescript": "^15.0.4",
+    "prettier": "^3.5.2",
     "rimraf": "^6.0.1",
-    "typescript": "~5.7.2",
-    "vitest": "^2.1.8"
+    "typescript": "~5.7.3",
+    "vitest": "^2.1.9"
   },
   "peerDependencies": {
     "@typescript-eslint/parser": ">=7.0.0",
