@@ -224,5 +224,7 @@
   "vitest/padding-around-describe-blocks",
   "vitest/padding-around-expect-groups",
   "vitest/padding-around-test-blocks",
-  "vitest/valid-expect-in-promise"
+  "vitest/valid-expect-in-promise",
+  "vitest/prefer-strict-boolean-matchers",
+  "vitest/require-mock-type-parameters"
 ]

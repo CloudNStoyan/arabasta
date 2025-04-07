@@ -225,6 +225,8 @@
   "vitest/padding-around-expect-groups",
   "vitest/padding-around-test-blocks",
   "vitest/valid-expect-in-promise",
+  "vitest/prefer-strict-boolean-matchers",
+  "vitest/require-mock-type-parameters",
   "@typescript-eslint/adjacent-overload-signatures",
   "@typescript-eslint/array-type",
   "@typescript-eslint/ban-tslint-comment",
