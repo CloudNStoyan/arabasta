@@ -11,7 +11,7 @@ Custom ESLint config to share between my projects. Originally extracted from [vi
 
 <!-- start generated block (required-typescript-version) -->
 
-- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.8.4 <5.8.0`
+- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.8.4 <5.9.0`
 
 <!-- end generated block (required-typescript-version) -->
 
@@ -87,18 +87,18 @@ Plugin packages included in this ESLint config:
 - @arabasta/eslint-plugin-typescript@1.0.1
 - @eslint-community/eslint-plugin-eslint-comments@4.4.1
 - @typescript-eslint/eslint-plugin@7.18.0
-- @vitest/eslint-plugin@1.1.12
+- @vitest/eslint-plugin@1.1.39
 - eslint-plugin-deprecation@3.0.0
 - eslint-plugin-es@4.1.0
 - eslint-plugin-import@2.31.0
-- eslint-plugin-jest@28.9.0
-- eslint-plugin-jsdoc@50.6.0
+- eslint-plugin-jest@28.11.0
+- eslint-plugin-jsdoc@50.6.9
 - eslint-plugin-jsx-a11y@6.10.2
 - eslint-plugin-new-with-error@5.0.0
-- eslint-plugin-react@7.37.2
-- eslint-plugin-react-hooks@5.0.0
-- eslint-plugin-react-refresh@0.4.14
-- eslint-plugin-testing-library@7.0.0
+- eslint-plugin-react@7.37.5
+- eslint-plugin-react-hooks@5.2.0
+- eslint-plugin-react-refresh@0.4.19
+- eslint-plugin-testing-library@7.1.1
 - eslint-plugin-unused-imports@3.2.0
 
 <!-- end generated block (plugin-packages) -->
