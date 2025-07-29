@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-config",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "type": "commonjs",
   "description": "Custom ESLint config to share between my projects. Originally extracted from vite-workshop (https://github.com/HristoKolev/vite-workshop)",
   "author": "Hristo Kolev",
