@@ -105,9 +105,17 @@ async function addResolvedConfig(input) {
     );
   }
 
+  let globals;
+
+  if (resolved?.languageOptions?.globals) {
+    globals = resolved.languageOptions.globals;
+    delete resolved.languageOptions.globals;
+  }
+
   return {
     ...input,
     resolved,
+    globals,
   };
 }
 
@@ -328,6 +336,18 @@ async function writeJsonFile(filePath, object) {
               config.testInputFile
             )}.json`,
             config.resolved
+          );
+        }
+
+        if (config.globals) {
+          await writeJsonFile(
+            `${path.join(
+              __dirname,
+              'generated',
+              config.variation,
+              config.testInputFile
+            )}.globals.json`,
+            config.globals
           );
         }
       }

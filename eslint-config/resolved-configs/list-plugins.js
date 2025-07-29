@@ -83,7 +83,10 @@ async function createPluginsFile() {
 
   const rawPlugins = (await getFilesRecursively('./resolved-configs/generated'))
     .filter(
-      (x) => x.endsWith('.json') && !excludedFiles.includes(path.basename(x))
+      (x) =>
+        x.endsWith('.json') &&
+        !x.endsWith('.globals.json') &&
+        !excludedFiles.includes(path.basename(x))
     )
     // eslint-disable-next-line global-require,import/no-dynamic-require
     .flatMap((x) => require(`./${path.relative(__dirname, x)}`).plugins);
