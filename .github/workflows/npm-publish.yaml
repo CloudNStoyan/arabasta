@@ -14,6 +14,11 @@ on:
           - eslint-plugin-tsoa
           - eslint-plugin-typescript
           - eslint-config
+      npm_tag:
+        description: 'NPM tag'
+        required: false
+        type: string
+        default: 'latest'
 
 jobs:
   build:
@@ -48,6 +53,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm publish --provenance --access public
+      - run: npm publish --provenance --access public --tag ${{ inputs.npm_tag }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
