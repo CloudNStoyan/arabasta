@@ -86,9 +86,8 @@ Plugin packages included in this ESLint config:
 - @arabasta/eslint-plugin-tsoa@1.1.1
 - @arabasta/eslint-plugin-typescript@1.0.1
 - @eslint-community/eslint-plugin-eslint-comments@4.5.0
-- @typescript-eslint/eslint-plugin@7.18.0
+- @typescript-eslint/eslint-plugin@8.38.0
 - @vitest/eslint-plugin@1.3.4
-- eslint-plugin-deprecation@3.0.0
 - eslint-plugin-es@4.1.0
 - eslint-plugin-import@2.32.0
 - eslint-plugin-jest@28.14.0
@@ -99,7 +98,7 @@ Plugin packages included in this ESLint config:
 - eslint-plugin-react-hooks@5.2.0
 - eslint-plugin-react-refresh@0.4.20
 - eslint-plugin-testing-library@7.6.3
-- eslint-plugin-unused-imports@3.2.0
+- eslint-plugin-unused-imports@4.1.4
 
 <!-- end generated block (plugin-packages) -->
 

@@ -1,6 +1,5 @@
 const tseslint = require('typescript-eslint');
 const arabastaTypescript = require('@arabasta/eslint-plugin-typescript');
-const deprecation = require('eslint-plugin-deprecation');
 const { FlatCompat } = require('@eslint/eslintrc');
 const prettier = require('eslint-config-prettier');
 
@@ -13,7 +12,6 @@ module.exports = tseslint.config({
     ...compat.extends('plugin:import/typescript'),
     prettier,
   ],
-  plugins: { deprecation },
   languageOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -35,7 +33,6 @@ module.exports = tseslint.config({
         allowNumber: true,
       },
     ],
-    'deprecation/deprecation': 'error',
     '@typescript-eslint/consistent-type-imports': [
       'error',
       {
