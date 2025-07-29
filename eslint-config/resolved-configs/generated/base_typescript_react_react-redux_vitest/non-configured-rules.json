@@ -4,6 +4,7 @@
   "@eslint-community/eslint-comments/no-use",
   "@eslint-community/eslint-comments/require-description",
   "import/consistent-type-specifier-style",
+  "import/enforce-node-protocol-usage",
   "unused-imports/no-unused-vars-ts",
   "unused-imports/no-unused-imports-ts",
   "es/no-accessor-properties",
@@ -178,6 +179,7 @@
   "vitest/no-focused-tests",
   "vitest/no-conditional-tests",
   "vitest/consistent-test-it",
+  "vitest/consistent-vitest-vi",
   "vitest/prefer-to-be",
   "vitest/no-hooks",
   "vitest/no-restricted-vi-methods",
@@ -214,6 +216,7 @@
   "vitest/prefer-todo",
   "vitest/prefer-spy-on",
   "vitest/prefer-comparison-matcher",
+  "vitest/prefer-describe-function-title",
   "vitest/prefer-to-contain",
   "vitest/prefer-expect-assertions",
   "vitest/padding-around-after-all-blocks",
@@ -226,5 +229,10 @@
   "vitest/padding-around-test-blocks",
   "vitest/valid-expect-in-promise",
   "vitest/prefer-strict-boolean-matchers",
-  "vitest/require-mock-type-parameters"
+  "vitest/require-mock-type-parameters",
+  "vitest/no-importing-vitest-globals",
+  "vitest/prefer-importing-vitest-globals",
+  "vitest/prefer-called-once",
+  "vitest/prefer-called-times",
+  "vitest/warn-todo"
 ]

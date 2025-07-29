@@ -20,7 +20,7 @@
     "@",
     "@arabasta/javascript:@arabasta/eslint-plugin-javascript@1.0.0",
     "@arabasta/typescript:@arabasta/eslint-plugin-typescript@1.0.1",
-    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.1",
+    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.5.0",
     "@typescript-eslint:@typescript-eslint/eslint-plugin@8.14.0",
     "deprecation:eslint-plugin-deprecation@3.0.0",
     "es",
@@ -627,6 +627,7 @@
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin", "external"],
+        "sortTypesGroup": false,
         "warnOnUnassignedImports": true
       }
     ],

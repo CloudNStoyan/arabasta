@@ -5,6 +5,7 @@
   "@eslint-community/eslint-comments/no-use",
   "@eslint-community/eslint-comments/require-description",
   "import/consistent-type-specifier-style",
+  "import/enforce-node-protocol-usage",
   "unused-imports/no-unused-vars-ts",
   "unused-imports/no-unused-imports-ts",
   "es/no-accessor-properties",

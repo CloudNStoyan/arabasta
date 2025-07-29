@@ -18,7 +18,7 @@
   "plugins": [
     "@",
     "@arabasta/javascript:@arabasta/eslint-plugin-javascript@1.0.0",
-    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.1",
+    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.5.0",
     "es",
     "import",
     "new-with-error",
@@ -476,6 +476,7 @@
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin", "external"],
+        "sortTypesGroup": false,
         "warnOnUnassignedImports": true
       }
     ],

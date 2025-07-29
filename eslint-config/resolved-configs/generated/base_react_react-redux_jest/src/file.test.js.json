@@ -21,10 +21,10 @@
     "@",
     "@arabasta/javascript:@arabasta/eslint-plugin-javascript@1.0.0",
     "@arabasta/react:@arabasta/eslint-plugin-react@1.0.0",
-    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.1",
+    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.5.0",
     "es",
     "import",
-    "jest:eslint-plugin-jest@28.11.0",
+    "jest:eslint-plugin-jest@28.14.0",
     "jsx-a11y:eslint-plugin-jsx-a11y@6.10.2",
     "new-with-error",
     "react",
@@ -495,6 +495,7 @@
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin", "external"],
+        "sortTypesGroup": false,
         "warnOnUnassignedImports": true
       }
     ],
