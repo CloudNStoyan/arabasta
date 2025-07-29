@@ -334,7 +334,7 @@ async function writeJsonFile(filePath, object) {
               'generated',
               config.variation,
               config.testInputFile
-            )}.json`,
+            )}.resolved.json`,
             config.resolved
           );
         }

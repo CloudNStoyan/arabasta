@@ -79,15 +79,8 @@ async function updateReadmePluginSection(pluginSectionContents) {
 }
 
 async function createPluginsFile() {
-  const excludedFiles = ['disabled-rules.json', 'non-configured-rules.json'];
-
   const rawPlugins = (await getFilesRecursively('./resolved-configs/generated'))
-    .filter(
-      (x) =>
-        x.endsWith('.json') &&
-        !x.endsWith('.globals.json') &&
-        !excludedFiles.includes(path.basename(x))
-    )
+    .filter((x) => x.endsWith('.resolved.json'))
     // eslint-disable-next-line global-require,import/no-dynamic-require
     .flatMap((x) => require(`./${path.relative(__dirname, x)}`).plugins);
 
