@@ -105,9 +105,17 @@ async function addResolvedConfig(input) {
     );
   }
 
+  let globals;
+
+  if (resolved?.languageOptions?.globals) {
+    globals = resolved.languageOptions.globals;
+    delete resolved.languageOptions.globals;
+  }
+
   return {
     ...input,
     resolved,
+    globals,
   };
 }
 
@@ -295,6 +303,9 @@ async function writeJsonFile(filePath, object) {
 (async () => {
   const groups = groupBy(getInputConfigs(), (config) => config.variation);
 
+  const nonConfiguredRules = {};
+  const disabledRules = {};
+
   for (const group of groups) {
     const variation = group.key;
 
@@ -326,8 +337,20 @@ async function writeJsonFile(filePath, object) {
               'generated',
               config.variation,
               config.testInputFile
-            )}.json`,
+            )}.resolved.json`,
             config.resolved
+          );
+        }
+
+        if (config.globals) {
+          await writeJsonFile(
+            `${path.join(
+              __dirname,
+              'generated',
+              config.variation,
+              config.testInputFile
+            )}.globals.json`,
+            config.globals
           );
         }
       }
@@ -335,16 +358,39 @@ async function writeJsonFile(filePath, object) {
 
     const resolvedConfigs = allConfigs.map((x) => x.resolved);
 
-    await writeJsonFile(
-      path.join(__dirname, 'generated', variation, 'non-configured-rules.json'),
-      getNonConfiguredRules(createConfigVariation(variation), resolvedConfigs)
-    );
+    for (const ruleName of getNonConfiguredRules(
+      createConfigVariation(variation),
+      resolvedConfigs
+    )) {
+      nonConfiguredRules[ruleName] ??= new Set();
+      nonConfiguredRules[ruleName].add(variation);
+    }
 
-    await writeJsonFile(
-      path.join(__dirname, 'generated', variation, 'disabled-rules.json'),
-      getDisabledRules(resolvedConfigs)
-    );
+    for (const ruleName of getDisabledRules(resolvedConfigs)) {
+      disabledRules[ruleName] ??= new Set();
+      disabledRules[ruleName].add(variation);
+    }
   }
+
+  for (const ruleName of Object.keys(nonConfiguredRules)) {
+    nonConfiguredRules[ruleName] = Array.from(
+      nonConfiguredRules[ruleName]
+    ).sort();
+  }
+
+  await writeJsonFile(
+    path.join(__dirname, 'generated', 'non-configured-rules.json'),
+    nonConfiguredRules
+  );
+
+  for (const ruleName of Object.keys(disabledRules)) {
+    disabledRules[ruleName] = Array.from(disabledRules[ruleName]).sort();
+  }
+
+  await writeJsonFile(
+    path.join(__dirname, 'generated', 'disabled-rules.json'),
+    disabledRules
+  );
 
   await createPluginsFile();
   await extractSupportedTsVersion();
