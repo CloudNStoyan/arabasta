@@ -23,7 +23,7 @@
     "@",
     "@arabasta/javascript:@arabasta/eslint-plugin-javascript@1.0.0",
     "@arabasta/react:@arabasta/eslint-plugin-react@1.0.0",
-    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.5.0",
+    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.7.1",
     "es",
     "import",
     "jest:eslint-plugin-jest@28.14.0",
@@ -389,7 +389,13 @@
       }
     ],
     "global-require": ["error"],
-    "grouped-accessor-pairs": ["error", "anyOrder"],
+    "grouped-accessor-pairs": [
+      "error",
+      "anyOrder",
+      {
+        "enforceForTSTypes": false
+      }
+    ],
     "guard-for-in": ["error"],
     "handle-callback-err": ["off"],
     "id-denylist": ["off"],
@@ -968,7 +974,12 @@
     "no-loop-func": ["error"],
     "no-loss-of-precision": ["error"],
     "no-magic-numbers": ["off"],
-    "no-misleading-character-class": ["error"],
+    "no-misleading-character-class": [
+      "error",
+      {
+        "allowEscape": false
+      }
+    ],
     "no-mixed-operators": ["off"],
     "no-mixed-requires": ["off"],
     "no-mixed-spaces-and-tabs": ["off"],
@@ -1833,7 +1844,7 @@
     ],
     "require-await": ["off"],
     "require-jsdoc": ["off"],
-    "require-unicode-regexp": ["off"],
+    "require-unicode-regexp": ["off", {}],
     "require-yield": ["error"],
     "rest-spread-spacing": ["off"],
     "semi": ["off"],
