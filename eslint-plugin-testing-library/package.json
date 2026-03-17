@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-plugin-testing-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "commonjs",
   "description": "ESLint plugin for testing library rules",
   "author": "Stoyan Kolev",

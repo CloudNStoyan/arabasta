@@ -1,6 +1,6 @@
 {
   "name": "@arabasta/eslint-plugin-javascript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "commonjs",
   "description": "ESLint plugin for javascript rules",
   "author": "Stoyan Kolev",
