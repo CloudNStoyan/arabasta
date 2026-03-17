@@ -30,7 +30,7 @@ const rule: Rule.RuleModule = {
     }
 
     const alternativeFunctionsArrays = Object.values(
-      alternativeFunctionsSetting
+      alternativeFunctionsSetting ?? {}
     );
 
     const alternativeFunctionsMap = new Map<string, AlternativeFunction>();
