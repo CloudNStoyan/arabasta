@@ -32,9 +32,9 @@
     "react",
     "react-hooks:eslint-plugin-react-hooks",
     "react-refresh",
-    "testing-library:eslint-plugin-testing-library@7.16.0",
+    "testing-library:eslint-plugin-testing-library@7.16.2",
     "unused-imports:unused-imports",
-    "vitest:vitest@1.6.12"
+    "vitest:vitest@1.6.14"
   ],
   "rules": {
     "@arabasta/javascript/report-caught-error": ["error"],

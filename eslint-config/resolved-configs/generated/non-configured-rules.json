@@ -8097,6 +8097,23 @@
     "base_typescript_vitest",
     "base_vitest"
   ],
+  "vitest/unbound-method": [
+    "base_react_react-redux_vitest",
+    "base_react_react-redux_vitest_rtl",
+    "base_react_vitest",
+    "base_react_vitest_rtl",
+    "base_typescript_react_react-redux_vitest",
+    "base_typescript_react_react-redux_vitest_rtl",
+    "base_typescript_react_vitest",
+    "base_typescript_react_vitest_rtl",
+    "base_typescript_tsoa_react_react-redux_vitest",
+    "base_typescript_tsoa_react_react-redux_vitest_rtl",
+    "base_typescript_tsoa_react_vitest",
+    "base_typescript_tsoa_react_vitest_rtl",
+    "base_typescript_tsoa_vitest",
+    "base_typescript_vitest",
+    "base_vitest"
+  ],
   "vitest/warn-todo": [
     "base_react_react-redux_vitest",
     "base_react_react-redux_vitest_rtl",
