@@ -101,7 +101,7 @@ async function createPluginsFile() {
         `ESLint plugin package "${packageName}" not found in package-lock.json`
       );
     } else {
-      pluginPackageLines.push(`${packageName}@${packageManifest.version}`);
+      pluginPackageLines.push(`${packageName}`);
     }
   }
 

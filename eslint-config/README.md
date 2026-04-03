@@ -7,11 +7,11 @@ Custom ESLint config to share between my projects. Originally extracted from [vi
 
 ## Requirements
 
-- This config currently only works with ESLint v8
+- This config currently only works with ESLint v9
 
 <!-- start generated block (required-typescript-version) -->
 
-- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.8.4 <5.9.0`
+- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.8.4 <6.0.0`
 
 <!-- end generated block (required-typescript-version) -->
 
@@ -80,26 +80,25 @@ Plugin packages included in this ESLint config:
 
 <!-- start generated block (plugin-packages) -->
 
-- @arabasta/eslint-plugin-javascript@1.0.0
-- @arabasta/eslint-plugin-react@1.0.0
-- @arabasta/eslint-plugin-testing-library@1.0.0
-- @arabasta/eslint-plugin-tsoa@1.1.1
-- @arabasta/eslint-plugin-typescript@1.0.1
-- @eslint-community/eslint-plugin-eslint-comments@4.5.0
-- @typescript-eslint/eslint-plugin@7.18.0
-- @vitest/eslint-plugin@1.3.4
-- eslint-plugin-deprecation@3.0.0
-- eslint-plugin-es@4.1.0
-- eslint-plugin-import@2.32.0
-- eslint-plugin-jest@28.14.0
-- eslint-plugin-jsdoc@52.0.0
-- eslint-plugin-jsx-a11y@6.10.2
-- eslint-plugin-new-with-error@5.0.0
-- eslint-plugin-react@7.37.5
-- eslint-plugin-react-hooks@5.2.0
-- eslint-plugin-react-refresh@0.4.20
-- eslint-plugin-testing-library@7.6.3
-- eslint-plugin-unused-imports@3.2.0
+- @arabasta/eslint-plugin-javascript
+- @arabasta/eslint-plugin-react
+- @arabasta/eslint-plugin-testing-library
+- @arabasta/eslint-plugin-tsoa
+- @arabasta/eslint-plugin-typescript
+- @eslint-community/eslint-plugin-eslint-comments
+- @typescript-eslint/eslint-plugin
+- @vitest/eslint-plugin
+- eslint-plugin-es
+- eslint-plugin-import
+- eslint-plugin-jest
+- eslint-plugin-jsdoc
+- eslint-plugin-jsx-a11y
+- eslint-plugin-new-with-error
+- eslint-plugin-react
+- eslint-plugin-react-hooks
+- eslint-plugin-react-refresh
+- eslint-plugin-testing-library
+- eslint-plugin-unused-imports
 
 <!-- end generated block (plugin-packages) -->
 

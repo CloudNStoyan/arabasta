@@ -380,7 +380,7 @@ async function writeJsonFile(filePath, object) {
 
   await writeJsonFile(
     path.join(__dirname, 'generated', 'non-configured-rules.json'),
-    nonConfiguredRules
+    sortObjectKeysRecursively(nonConfiguredRules)
   );
 
   for (const ruleName of Object.keys(disabledRules)) {
@@ -389,7 +389,7 @@ async function writeJsonFile(filePath, object) {
 
   await writeJsonFile(
     path.join(__dirname, 'generated', 'disabled-rules.json'),
-    disabledRules
+    sortObjectKeysRecursively(disabledRules)
   );
 
   await createPluginsFile();
