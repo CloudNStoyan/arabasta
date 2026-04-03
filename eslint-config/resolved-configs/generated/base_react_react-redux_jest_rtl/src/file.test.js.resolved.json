@@ -32,7 +32,7 @@
     "react",
     "react-hooks:eslint-plugin-react-hooks",
     "react-refresh",
-    "testing-library:eslint-plugin-testing-library@7.16.0",
+    "testing-library:eslint-plugin-testing-library@7.16.2",
     "unused-imports:unused-imports"
   ],
   "rules": {

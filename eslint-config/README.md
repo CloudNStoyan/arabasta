@@ -11,7 +11,7 @@ Custom ESLint config to share between my projects. Originally extracted from [vi
 
 <!-- start generated block (required-typescript-version) -->
 
-- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.8.4 <6.0.0`
+- The optional TypeScript config requires a `typescript` version that satisfies the following constraint: `>=4.8.4 <6.1.0`
 
 <!-- end generated block (required-typescript-version) -->
 

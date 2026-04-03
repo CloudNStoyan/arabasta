@@ -2,7 +2,7 @@
   "language": "@/js",
   "languageOptions": {
     "ecmaVersion": 2026,
-    "parser": "typescript-eslint/parser@8.57.1",
+    "parser": "typescript-eslint/parser@8.58.0",
     "parserOptions": {
       "ecmaFeatures": {
         "generators": false,
@@ -24,7 +24,7 @@
     "@arabasta/javascript:@arabasta/eslint-plugin-javascript@1.0.0",
     "@arabasta/typescript:@arabasta/eslint-plugin-typescript@1.0.1",
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.7.1",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.57.1",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.58.0",
     "es",
     "import",
     "new-with-error",

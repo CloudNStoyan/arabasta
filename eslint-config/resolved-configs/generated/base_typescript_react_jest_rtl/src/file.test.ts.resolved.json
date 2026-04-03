@@ -2,7 +2,7 @@
   "language": "@/js",
   "languageOptions": {
     "ecmaVersion": 2026,
-    "parser": "typescript-eslint/parser@8.57.1",
+    "parser": "typescript-eslint/parser@8.58.0",
     "parserOptions": {
       "ecmaFeatures": {
         "generators": false,
@@ -27,7 +27,7 @@
     "@arabasta/react:@arabasta/eslint-plugin-react@1.0.0",
     "@arabasta/typescript:@arabasta/eslint-plugin-typescript@1.0.1",
     "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.7.1",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.57.1",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.58.0",
     "es",
     "import",
     "jest:eslint-plugin-jest@28.14.0",
@@ -36,7 +36,7 @@
     "react",
     "react-hooks:eslint-plugin-react-hooks",
     "react-refresh",
-    "testing-library:eslint-plugin-testing-library@7.16.0",
+    "testing-library:eslint-plugin-testing-library@7.16.2",
     "unused-imports:unused-imports"
   ],
   "rules": {
