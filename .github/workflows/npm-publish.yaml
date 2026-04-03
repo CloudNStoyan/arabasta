@@ -21,24 +21,7 @@ on:
         default: 'latest'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ inputs.package }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test --if-present
-      - run: npx publint --strict
-      - run: npx @arethetypeswrong/cli --pack
-
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -53,4 +36,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       - run: npm run build --if-present
+      - run: npm test --if-present
+      - run: npx publint --strict
+      - run: npx @arethetypeswrong/cli --pack
       - run: npm publish --provenance --access public --tag ${{ inputs.npm_tag }}
