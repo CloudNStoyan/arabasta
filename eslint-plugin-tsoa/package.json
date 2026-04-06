@@ -36,7 +36,7 @@
     "update:eslint-docs": "eslint-doc-generator"
   },
   "dependencies": {
-    "@es-joy/jsdoccomment": "^0.50.0",
+    "@es-joy/jsdoccomment": "^0.86.0",
     "@typescript-eslint/type-utils": "^8.19.0",
     "@typescript-eslint/utils": "^8.8.1"
   },
